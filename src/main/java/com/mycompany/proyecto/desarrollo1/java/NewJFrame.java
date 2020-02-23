@@ -15,7 +15,6 @@ import javax.swing.JFrame;
  */
 public class NewJFrame extends javax.swing.JFrame {
     
-    boolean oprimir = false;
 
     /**
      * Creates new form NewJFrame

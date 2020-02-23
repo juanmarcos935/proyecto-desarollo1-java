@@ -5,8 +5,6 @@
  */
 package com.mycompany.proyecto.desarrollo1.java;
 
-import javax.swing.JFrame;
-
 /**
  *
  * @author marcos2
@@ -168,7 +166,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -201,7 +199,7 @@ public class NewJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JFrame jframe = new NewJFrame();
+                NewJFrame jframe = new NewJFrame();
                 jframe.setTitle("CeluSoft");
                 jframe.setVisible(true); 
 

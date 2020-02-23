@@ -5,6 +5,10 @@
  */
 package com.mycompany.proyecto.desarrollo1.java;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+
 /**
  *
  * @author marcos2
@@ -158,7 +162,19 @@ public class NewJFrame extends javax.swing.JFrame {
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String string1 = jTextField1.getText();
+        String string2 = jTextField2.getText();
+        String string3 = "admin";
+        String string4 = "1234";
         
+        if(string1.equals(string3) && string2.equals(string4))
+        {
+            this.dispose();
+            JFrame otrapantalla = new JFrame();
+            otrapantalla.setVisible(true);
+            otrapantalla.setTitle("Otra pantalla");
+            otrapantalla.setSize(300,300);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -166,7 +182,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

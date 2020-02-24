@@ -8,7 +8,9 @@ package com.mycompany.proyecto.desarrollo1.java;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -180,6 +182,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        /*
         String string1 = jTextField1.getText();
         String string2 = jTextField2.getText();
         String string3 = "admin";
@@ -193,6 +196,35 @@ public class NewJFrame extends javax.swing.JFrame {
             otrapantalla.setVisible(true);
             otrapantalla.setTitle("Celusoft como Administrador");
         }
+        */
+        try 
+        {
+            Connection connec = this.connect();
+            Statement st = null;
+            String sql = "SELECT * FROM usuario WHERE nombre_usuario='" + jTextField1.getText() + "' AND clave_usuario='" + jTextField2.getText() + "' AND activo_usuario=true;";
+            st = connec.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next())
+            {
+                JOptionPane.showMessageDialog(null, "Has ingresado exitosamente al sistema");
+                this.dispose();
+                AdminFrame adminframe = new AdminFrame();
+                adminframe.setVisible(true);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Error de ingreso");
+            }
+        } 
+        catch (ClassNotFoundException ex) 
+        {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -236,13 +268,6 @@ public class NewJFrame extends javax.swing.JFrame {
                 NewJFrame jframe = new NewJFrame();
                 jframe.setTitle("CeluSoft");
                 jframe.setVisible(true); 
-                
-                try {
-                    Connection c = jframe.connect();
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
             }
 
 

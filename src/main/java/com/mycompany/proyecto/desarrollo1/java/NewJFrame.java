@@ -169,10 +169,9 @@ public class NewJFrame extends javax.swing.JFrame {
         if(string1.equals(string3) && string2.equals(string4))
         {
             this.dispose();
-            JFrame otrapantalla = new JFrame();
+            AdminFrame otrapantalla = new AdminFrame();
             otrapantalla.setVisible(true);
-            otrapantalla.setTitle("Otra pantalla");
-            otrapantalla.setSize(300,300);
+            otrapantalla.setTitle("Celusoft como Administrador");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

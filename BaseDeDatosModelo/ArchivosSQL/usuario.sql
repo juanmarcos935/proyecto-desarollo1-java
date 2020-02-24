@@ -5,14 +5,18 @@
 --  
 
 CREATE TABLE usuario (
-  usuario_codigo int NOT NULL 
+  id_usuario int NOT NULL ,
+  usuario_tipo char(10) NOT NULL,
+  usuario_login char(20) NOT NULL,
+  usuario_nombre char(20) NOT NULL ,
+  usuario_Apellidos char(20) NOT NULL ,
+  usuario_CC int NOT NULL ,
+  usuario_telefono int NOT NULL 
 );
 CREATE SEQUENCE usuario_usuario_codigo_seq START 1 INCREMENT 1 ;
-ALTER TABLE usuario ALTER COLUMN usuario_codigo SET NOT 0;
-ALTER TABLE usuario ALTER COLUMN usuario_codigo SET DEFAULT nextval('usuario_usuario_codigo_seq');
+
+ALTER TABLE usuario ALTER COLUMN id_usuario SET DEFAULT nextval('usuario_usuario_codigo_seq');
 
 -- 
-ALTER TABLE usuario ADD CONSTRAINT nueva_restricción_única PRIMARY KEY (usuario_codigo);
-
--- 
-ALTER TABLE usuario ADD CONSTRAINT nueva_restricción_única_1 UNIQUE (usuario_codigo);
+ALTER TABLE usuario ADD CONSTRAINT nueva_restricción_única_usuario PRIMARY KEY (id_usuario);
+ALTER TABLE usuario ADD CONSTRAINT nueva_restricción_única_usuarioCC UNIQUE (usuario_CC);

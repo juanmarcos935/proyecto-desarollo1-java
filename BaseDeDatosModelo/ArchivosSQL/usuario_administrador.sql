@@ -5,8 +5,8 @@
 --  
 
 CREATE TABLE usuario_administrador (
-  usuario_codigo int NOT NULL 
+  id_usuario int NOT NULL 
 );
 
 -- 
-ALTER TABLE usuario_administrador ADD CONSTRAINT nueva_restricción_fclave FOREIGN KEY (usuario_codigo) REFERENCES usuario(usuario_codigo) ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE usuario_administrador ADD CONSTRAINT nueva_restricción_fclave_admin_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON UPDATE NO ACTION ON DELETE NO ACTION;

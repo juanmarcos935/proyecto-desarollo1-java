@@ -5,14 +5,14 @@
 --  
 
 CREATE TABLE usuario_gerente (
-  usuario_codigo int(10) NOT NULL 
+  id_usuario int NOT NULL 
 );
 
 -- 
-ALTER TABLE usuario_gerente ADD CONSTRAINT nueva_restricción_única UNIQUE (usuario_codigo);
+
 
 -- 
-ALTER TABLE usuario_gerente ADD CONSTRAINT nueva_restricción_única_1 PRIMARY KEY (usuario_codigo);
+ALTER TABLE usuario_gerente ADD CONSTRAINT nueva_restricción_usuario_gerente PRIMARY KEY (id_usuario);
 
 -- 
-ALTER TABLE usuario_gerente ADD CONSTRAINT nueva_restricción_fclave FOREIGN KEY (usuario_codigo) REFERENCES usuario(usuario_codigo) ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE usuario_gerente ADD CONSTRAINT nueva_restricción_fclave_usuario_gerente_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON UPDATE NO ACTION ON DELETE NO ACTION;

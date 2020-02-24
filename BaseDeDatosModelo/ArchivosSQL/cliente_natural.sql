@@ -5,16 +5,16 @@
 --  
 
 CREATE TABLE cliente_natural (
-  cliente_codigo int NOT NULL ,
-  cliente_lineas int(1) NOT NULL  DEFAULT 0,
-  cliente_cedula int(20) NOT NULL 
+  id_cliente int NOT NULL ,
+  cliente_lineas int NOT NULL  DEFAULT 0,
+  cliente_cedula int NOT NULL 
 );
 
 -- 
-ALTER TABLE cliente_natural ADD CONSTRAINT nueva_restricción_única UNIQUE (cliente_cedula);
+ALTER TABLE cliente_natural ADD CONSTRAINT nueva_restricción_única_clienteCC UNIQUE (cliente_cedula);
 
 -- 
-ALTER TABLE cliente_natural ADD CONSTRAINT nueva_restricción_fclave FOREIGN KEY (cliente_codigo) REFERENCES cliente(cliente_codigo) ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE cliente_natural ADD CONSTRAINT nueva_restricción_fclave_natural_cliente FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 -- 
-ALTER TABLE cliente_natural ADD CONSTRAINT nueva_restricción_de_comprobación CHECK (cliente_lineas >3);
+ALTER TABLE cliente_natural ADD CONSTRAINT nueva_restricción_de_comprobación_natural CHECK (cliente_lineas >3);

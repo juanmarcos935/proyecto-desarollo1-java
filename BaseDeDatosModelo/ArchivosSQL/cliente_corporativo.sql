@@ -5,12 +5,12 @@
 --  
 
 CREATE TABLE cliente_corporativo (
-  cliente_codigo int NOT NULL ,
-  cliente_NIT int(20) NOT NULL 
+  id_cliente int NOT NULL ,
+  cliente_NIT int NOT NULL 
 );
 
 -- 
-ALTER TABLE cliente_corporativo ADD CONSTRAINT nueva_restricción_única_1 UNIQUE (cliente_NIT);
+ALTER TABLE cliente_corporativo ADD CONSTRAINT nueva_restricción_única_clientenit UNIQUE (cliente_NIT);
 
 -- 
-ALTER TABLE cliente_corporativo ADD CONSTRAINT nueva_restricción_fclave FOREIGN KEY (cliente_codigo) REFERENCES cliente(cliente_codigo) ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE cliente_corporativo ADD CONSTRAINT nueva_restricción_fclave_corporativo_cliente FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON UPDATE NO ACTION ON DELETE NO ACTION;

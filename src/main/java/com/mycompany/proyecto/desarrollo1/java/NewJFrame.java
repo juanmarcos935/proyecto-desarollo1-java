@@ -5,9 +5,12 @@
  */
 package com.mycompany.proyecto.desarrollo1.java;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-
+import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,7 +18,23 @@ import javax.swing.JFrame;
  */
 public class NewJFrame extends javax.swing.JFrame {
     
-
+    private final String url = "jdbc:postgresql://localhost:5432/proyectodesarrollo1";
+    private final String user = "postgres";
+    private final String password = "11111";
+    
+    public Connection connect() throws ClassNotFoundException {
+        Connection conn = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection(url, user, password);
+            System.out.println("Connected to the PostgreSQL server successfully.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+ 
+        return conn;
+    }
+    
     /**
      * Creates new form NewJFrame
      */
@@ -164,10 +183,11 @@ public class NewJFrame extends javax.swing.JFrame {
         String string1 = jTextField1.getText();
         String string2 = jTextField2.getText();
         String string3 = "admin";
-        String string4 = "1234";
+        String string4 = "123";
         
         if(string1.equals(string3) && string2.equals(string4))
         {
+            JOptionPane.showMessageDialog(null, "Has ingresado correctamente como administrador");
             this.dispose();
             AdminFrame otrapantalla = new AdminFrame();
             otrapantalla.setVisible(true);
@@ -216,6 +236,12 @@ public class NewJFrame extends javax.swing.JFrame {
                 NewJFrame jframe = new NewJFrame();
                 jframe.setTitle("CeluSoft");
                 jframe.setVisible(true); 
+                
+                try {
+                    Connection c = jframe.connect();
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             }
 

@@ -5,6 +5,8 @@
  */
 package com.mycompany.proyecto.desarrollo1.java;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author marcos2

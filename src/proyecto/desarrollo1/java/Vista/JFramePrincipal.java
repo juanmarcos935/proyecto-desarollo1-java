@@ -165,7 +165,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String login = jTextField1.getText();
+        String password = jTextField2.getText();
         JOptionPane.showMessageDialog(null, "Hello");
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

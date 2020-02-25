@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package proyecto.desarollo1.java;
 
-/**
- *
- * @author marcos
- */
 public class ProyectoDesarollo1Java {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        JFramePrincipal jframeprincipal = new JFramePrincipal();
+        jframeprincipal.setTitle("Celusoft: El sistema de gestión de información de telefonía celular");
+        jframeprincipal.setVisible(true);
     }
     
 }

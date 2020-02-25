@@ -2,7 +2,7 @@
 
 package proyecto.desarollo1.java;
 
-import proyecto.desarollo1.java.Vista.JFramePrincipal;
+import proyecto.desarrollo1.java.Vista.JFramePrincipal;
 
 public class ProyectoDesarollo1Java {
 

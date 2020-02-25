@@ -1,5 +1,5 @@
 
-package proyecto.desarollo1.java.DB;
+package proyecto.desarrollo1.java.DB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

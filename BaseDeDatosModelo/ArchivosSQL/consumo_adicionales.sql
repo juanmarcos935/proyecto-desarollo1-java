@@ -1,6 +1,6 @@
 
 --
--- TABLE: consumo_adiconales
+-- TABLE: consumo_adicionales
 -- 
 --  
 

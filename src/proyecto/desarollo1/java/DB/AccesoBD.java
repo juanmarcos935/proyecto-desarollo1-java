@@ -5,10 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author marcos
- */
 public class AccesoBD {
     
     private final String driver = "org.postgresql.Driver";

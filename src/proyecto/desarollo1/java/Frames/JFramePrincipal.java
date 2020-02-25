@@ -50,7 +50,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jLabel3.setText("Por favor, introduzca su nombre de usuario, contraseña y rol que desempeña");
 
-        jLabel4.setText("Nombre de usuario:");
+        jLabel4.setText("Login:");
 
         jLabel5.setText("Contraseña:");
 

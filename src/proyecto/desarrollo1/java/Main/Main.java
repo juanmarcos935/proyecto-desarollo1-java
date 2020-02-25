@@ -1,10 +1,10 @@
 
 
-package proyecto.desarollo1.java;
+package proyecto.desarrollo1.java.Main;
 
 import proyecto.desarrollo1.java.Vista.JFramePrincipal;
 
-public class ProyectoDesarollo1Java {
+public class Main {
 
     public static void main(String[] args) {
         

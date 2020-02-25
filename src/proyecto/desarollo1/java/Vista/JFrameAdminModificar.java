@@ -84,6 +84,11 @@ public class JFrameAdminModificar extends javax.swing.JFrame {
         });
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Tipo de usuario");
 
@@ -99,27 +104,38 @@ public class JFrameAdminModificar extends javax.swing.JFrame {
 
         jLabel9.setText("Contraseña");
 
+        jTextField3.setEnabled(false);
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
 
+        jTextField4.setEnabled(false);
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
 
+        jTextField5.setEnabled(false);
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
             }
         });
 
+        jTextField6.setEnabled(false);
+
+        jTextField7.setEnabled(false);
+
+        jTextField8.setEnabled(false);
+
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Operador", "Gerente" }));
+        jComboBox1.setEnabled(false);
 
         jButton2.setText("Guardar");
+        jButton2.setEnabled(false);
 
         jButton3.setText("Cancelar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -257,6 +273,27 @@ public class JFrameAdminModificar extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+      jComboBox1.enable();
+      jComboBox1.repaint(); 
+      jTextField3.enable();
+      jTextField3.repaint();
+      jTextField4.enable();
+      jTextField4.repaint();
+      jTextField5.enable();
+      jTextField5.repaint();
+      jTextField6.enable();
+      jTextField6.repaint();
+      jTextField7.enable();
+      jTextField7.repaint();
+      jTextField8.enable();
+      jTextField8.repaint();
+      jButton2.enable();
+      jButton2.repaint();
+      
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

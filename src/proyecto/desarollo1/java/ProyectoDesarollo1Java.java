@@ -2,6 +2,8 @@
 
 package proyecto.desarollo1.java;
 
+import proyecto.desarollo1.java.Frames.JFramePrincipal;
+
 public class ProyectoDesarollo1Java {
 
     public static void main(String[] args) {

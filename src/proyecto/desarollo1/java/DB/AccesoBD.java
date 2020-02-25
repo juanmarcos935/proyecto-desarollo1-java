@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import java.sql.*;
+
 public class AccesoBD {
     
     private final String driver = "org.postgresql.Driver";
@@ -20,27 +22,27 @@ public class AccesoBD {
     {
             try {
             Class.forName(driver);
-                System.out.println( "Driver Cargado" );
+                System.out.println("Driver Cargado");
             } 
             catch( ClassNotFoundException e ) {
-                System.out.println( "No se pudo cargar el driver: "+e.getMessage());
+                System.out.println("No se pudo cargar el driver: "+e.getMessage());
             }
 
             try{               
                 conexion = DriverManager.getConnection(url+ ip  +":" + puerto + "/" + database , usuario, clave);
-                System.out.println( "Conexion Abierta" );
+                System.out.println("Conexion Exitosa a la BD" );
                 return conexion;
              } 
             
             catch( SQLException e ) 
             {
-                System.out.println( "No se pudo abrir la bd: "+e.getMessage() );
+                System.out.println("No se pudo abrir la Base de Datos: "+e.getMessage() );
                 return null;
             }
 
     }
     
-    public Connection getConnetion()
+    public Connection getConnection()
     {
         if (conexion == null) 
         {
@@ -51,6 +53,21 @@ public class AccesoBD {
         {
             return conexion;      
         }            
+    }
+    
+    public void cerrarConexion(Connection connec) throws SQLException
+    {
+        try
+        {
+            if(connec != null)
+            {
+                connec.close();
+            }
+        }
+        catch(SQLException e)
+        {
+            System.out.println("Fue imposible hacer la conexion");
+        }
     }
     
 }

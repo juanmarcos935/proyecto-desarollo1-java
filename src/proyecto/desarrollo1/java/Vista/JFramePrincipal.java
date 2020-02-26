@@ -176,8 +176,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         {
             String login = jTextField1.getText();
             String password = jTextField2.getText();
-            int response = 0;
-            boolean response2;
+            int response;
 
             ConsultasBD consultorBD = new ConsultasBD();
 
@@ -192,18 +191,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 else
                 if (response == 1)
                 {
-                    response2 = consultorBD.loginActivo(login, password);
-                    if(response2 == true)
-                    {
-                        JOptionPane.showMessageDialog(this, "Inicio Sesión Exitoso como Administrador", "Entrando a Celusoft como Administrador", JOptionPane.INFORMATION_MESSAGE);
-                        JFrameAdminIntermedio jframeadmin = new JFrameAdminIntermedio();
-                        jframeadmin.setTitle("Celusoft como Administrador");
-                        jframeadmin.setVisible(true);
-                    }
-                    else
-                    {
-                        JOptionPane.showMessageDialog(this, "Login y contraseña correctos, sin embargo, estas inactivado en el Sistema. Consulta al administrador", "Usuario inactivado", JOptionPane.WARNING_MESSAGE);
-                    }
+                    JOptionPane.showMessageDialog(this, "Inicio Sesión Exitoso como Administrador", "Entrando a Celusoft como Administrador", JOptionPane.INFORMATION_MESSAGE);
+                    JFrameAdminIntermedio jframeadmin = new JFrameAdminIntermedio();
+                    jframeadmin.setTitle("Celusoft como Administrador");
+                    jframeadmin.setVisible(true);
                 }
             } 
             catch (SQLException ex) 
@@ -211,7 +202,12 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            consultorBD.cerrarConexion();
+            try {
+                consultorBD.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -13,7 +13,7 @@ CREATE TABLE usuario (
   usuario_Apellidos char(20) NOT NULL ,
   usuario_CC int NOT NULL ,
   usuario_telefono int NOT NULL ,
-  usuario_estado boolean NOT NULL
+  usuario_estado int NOT NULL
 );
 CREATE SEQUENCE usuario_usuario_codigo_seq START 1 INCREMENT 1 ;
 

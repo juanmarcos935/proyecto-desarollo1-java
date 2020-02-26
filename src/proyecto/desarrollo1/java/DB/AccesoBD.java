@@ -62,6 +62,7 @@ public class AccesoBD {
             if(connec != null)
             {
                 connec.close();
+                System.out.println("Se cerro la conexion con la BD");
             }
         }
         catch(SQLException e)

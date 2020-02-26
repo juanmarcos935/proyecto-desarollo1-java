@@ -29,5 +29,13 @@ public class DAOUsuario {
         consultorBD.cerrarConexion();
         return response;
     }
+    
+    public int loginUsuarioActivo(String login, String password) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int response = consultorBD.loginActivo(login, password);
+        consultorBD.cerrarConexion();
+        return response;
+    }
 
 }

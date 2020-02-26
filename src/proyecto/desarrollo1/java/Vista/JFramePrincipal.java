@@ -175,7 +175,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         {
             String login = jTextField1.getText();
             String password = jTextField2.getText();
-            int response;
+            int response, response2;
 
             DAOUsuario daousuario = new DAOUsuario();
 
@@ -189,10 +189,18 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 else
                 if (response == 1)
                 {
-                    JOptionPane.showMessageDialog(this, "Inicio Sesión Exitoso como Administrador", "Entrando a Celusoft como Administrador", JOptionPane.INFORMATION_MESSAGE);
-                    JFrameAdminIntermedio jframeadmin = new JFrameAdminIntermedio();
-                    jframeadmin.setTitle("Celusoft como Administrador");
-                    jframeadmin.setVisible(true);
+                    response2 = daousuario.loginUsuarioActivo(login, password);
+                    if(response2 == 1)
+                    {
+                        JOptionPane.showMessageDialog(this, "Inicio Sesión Exitoso como Administrador", "Entrando a Celusoft como Administrador", JOptionPane.INFORMATION_MESSAGE);
+                        JFrameAdminIntermedio jframeadmin = new JFrameAdminIntermedio();
+                        jframeadmin.setTitle("Celusoft como Administrador");
+                        jframeadmin.setVisible(true);
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(this, "Login y contraseña correctos, sin embargo su usuario está inactivado en el sistema", "Usuario inactivado", JOptionPane.WARNING_MESSAGE);
+                    }
                 }
             } 
             catch (SQLException ex) 

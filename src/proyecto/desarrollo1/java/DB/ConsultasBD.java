@@ -52,6 +52,23 @@ public class ConsultasBD {
         }
     }
     
+    public int loginActivo(String login, String password) throws SQLException
+    {
+        String consulta_sql_login = "SELECT * FROM usuario WHERE usuario_login='" + login + "' AND usuario_password='" + password + "';";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_login);
+        if(rs.next())
+        {   
+            int activo = 0;
+            activo = rs.getInt(9);
+            return activo;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
 
     
     

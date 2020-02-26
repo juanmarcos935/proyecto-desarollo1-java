@@ -199,7 +199,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
                     }
                     else
                     {
-                        JOptionPane.showMessageDialog(this, "Login y contraseña correctos, sin embargo su usuario está inactivado en el sistema", "Usuario inactivado", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Su usuario se encuentra desactivado, por favor contrate al administrador", "Usuario inactivado", JOptionPane.WARNING_MESSAGE);
                     }
                 }
             } 

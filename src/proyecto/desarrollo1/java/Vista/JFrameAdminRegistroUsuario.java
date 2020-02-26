@@ -91,7 +91,7 @@ public class JFrameAdminRegistroUsuario extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Gerente", "Operador" }));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto/desarollo1/java/modifyuser.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto/desarrollo1/java/Main/modifyuser.png"))); // NOI18N
 
         jButton2.setText("Volver Atrás");
 

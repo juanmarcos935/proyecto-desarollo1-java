@@ -107,6 +107,11 @@ public class JFrameAdminRegistroUsuario extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto/desarrollo1/java/Main/modifyuser.png"))); // NOI18N
 
         jButton2.setText("Volver Atrás");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Usuario activado?");
 
@@ -136,9 +141,8 @@ public class JFrameAdminRegistroUsuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField2)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, 229, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jComboBox1, 0, 229, Short.MAX_VALUE)
+                            .addComponent(jTextField1)
                             .addComponent(jTextField7)
                             .addComponent(jTextField3)
                             .addComponent(jTextField4)
@@ -270,6 +274,10 @@ public class JFrameAdminRegistroUsuario extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,12 @@
  */
 package proyecto.desarrollo1.java.Vista;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import proyecto.desarrollo1.java.Control.DAOUsuario;
+
 /**
  *
  * @author jonathan
@@ -86,6 +92,11 @@ public class JFrameAdminEstado extends javax.swing.JFrame {
         });
 
         jButton3.setText("Volver Atrás");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -156,16 +167,74 @@ public class JFrameAdminEstado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        String login = jTextField1.getText();
+        DAOUsuario daousuario = new DAOUsuario();
+        int activo = 0;
+        
+        
+        
+        try 
+        {
+            
+        
+            String opcion = jComboBox1.getSelectedItem().toString();
+        
+            if(opcion.equals("Habilitado"))
+            {
+                activo = 1;
+            }
+            else if(opcion.equals("Inhabilitado"))
+            {
+                activo = 0;
+            }
+            
+            daousuario.cambiarEstado(login, activo);
+            JOptionPane.showMessageDialog(this, "Cambio de estado de usuario exitoso");
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(JFrameAdminEstado.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-      jComboBox1.enable();
-      jComboBox1.repaint();
-      jButton2.setEnabled(true);
-      jButton2.repaint();
+      if(jTextField1.getText().equals(""))
+      {
+            JOptionPane.showMessageDialog(this, "Campo de login vacío", "Campo de Login Vacio", JOptionPane.WARNING_MESSAGE);
+      }
+      else
+      {
+            String login = jTextField1.getText();
+            DAOUsuario daousuario = new DAOUsuario();
+            int response;
+            
+          try 
+          {
+              response = daousuario.soloLogin(login);
+              if(response == 1)
+              {
+                  JOptionPane.showMessageDialog(this, "Usuario encontrado exitosamente", "Usuario válido en Base de Datos", JOptionPane.INFORMATION_MESSAGE);
+                  jComboBox1.enable();
+                  jComboBox1.repaint();
+                  jButton2.setEnabled(true);
+                  jButton2.repaint();
+              }
+              else
+              {
+                  JOptionPane.showMessageDialog(this, "No existe tal usuario con el login indicado", "Error: usuario no encontrado", JOptionPane.ERROR_MESSAGE);
+              }
+          } 
+          catch (SQLException ex) 
+          {
+              Logger.getLogger(JFrameAdminEstado.class.getName()).log(Level.SEVERE, null, ex);
+          }
+      }
+      
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -50,6 +50,24 @@ public class ConsultasBD {
         }
     }
     
+    public int loginActivo2(String login) throws SQLException
+    {
+        String consulta_sql_login = "SELECT * FROM usuario WHERE usuario_login='" + login + "';";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_login);
+        if(rs.next())
+        {   
+            System.out.println("Por ahora login y contraseña exitosos");
+            int activo = 0;
+            activo = rs.getInt(9);
+            return activo;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
     public int loginTipo(String login, String password) throws SQLException
     {
         String consulta_sql_login = "SELECT * FROM usuario WHERE usuario_login='" + login + "' AND usuario_password='" + password + "';";
@@ -98,6 +116,22 @@ public class ConsultasBD {
             Statement st = connec.createStatement();
             operacion = st.executeUpdate(consulta_sql_registrar_usuario);
             System.out.println("Registro de usuario exitoso");
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void cambiarEstado(String loginviejo, int activo)
+    {
+        int operacion;
+        String consulta = "UPDATE usuario SET usuario_estado = " + activo + " WHERE usuario_login = '" + loginviejo + "';";
+        try
+        {
+            Statement st = connec.createStatement();
+            operacion = st.executeUpdate(consulta);
+            System.out.println("Modificacion de estado de usuario exitosa");
         }
         catch(SQLException e)
         {

@@ -280,7 +280,7 @@ public class JFrameAdminModificar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -368,9 +368,13 @@ public class JFrameAdminModificar extends javax.swing.JFrame {
                     String string6 = jTextField7.getText();
                     String string7 = jTextField8.getText();
                     
-            try {
+            try 
+            {
                 daousuario.modificarUsuario(login, tipo, string2, string3, int1, int2, string6, string7);
-            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Modificación de Usuario exitosa");
+            } 
+            catch (SQLException ex) 
+            {
                 Logger.getLogger(JFrameAdminModificar.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

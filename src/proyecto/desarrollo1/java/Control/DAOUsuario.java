@@ -32,10 +32,19 @@ public class DAOUsuario {
         return response;
     }
     
+    
     public int loginUsuarioActivo(String login, String password) throws SQLException
     {
         consultorBD.empezarConexion();
         int response = consultorBD.loginActivo(login, password);
+        consultorBD.cerrarConexion();
+        return response;
+    }
+    
+    public int loginUsuarioActivo2(String login) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int response = consultorBD.loginActivo2(login);
         consultorBD.cerrarConexion();
         return response;
     }
@@ -54,6 +63,12 @@ public class DAOUsuario {
         consultorBD.modificarUsuario(loginviejo, tipo, nombre, apellido, cedula, telefono, login, contraseña);
         consultorBD.cerrarConexion();
     }
-
+    
+    public void cambiarEstado(String login, int activo) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        consultorBD.cambiarEstado(login, activo);
+        consultorBD.cerrarConexion();
+    }
 
 }

@@ -79,6 +79,11 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
         });
 
         jButton3.setText("Activar o Inactivar Usuarios");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Cerrar sesión");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -167,6 +172,13 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
         jframemodificar.setTitle("Modificación de Usuarios como Administrador");
         jframemodificar.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JOptionPane.showMessageDialog(this, "Has elegido la opción de Activacion de Usuarios");
+        JFrameAdminEstado jframeestado = new JFrameAdminEstado();
+        jframeestado.setTitle("Activacion o inactivacion de usuarios");
+        jframeestado.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

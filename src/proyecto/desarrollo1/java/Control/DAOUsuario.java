@@ -5,6 +5,7 @@
  */
 package proyecto.desarrollo1.java.Control;
 
+
 import java.sql.SQLException;
 import proyecto.desarrollo1.java.DB.ConsultasBD;
 import proyecto.desarrollo1.java.Modelo.Usuario;
@@ -20,5 +21,5 @@ public class DAOUsuario {
         consultorBD.registrarUsuario(user);
         consultorBD.cerrarConexion();
     }
-    
+
 }

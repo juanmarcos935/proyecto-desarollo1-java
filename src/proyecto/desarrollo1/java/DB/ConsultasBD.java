@@ -34,7 +34,7 @@ public class ConsultasBD {
         accesobd.cerrarConexion(connec);
     }
     
-    public String login(String login, String password) throws SQLException
+    public int login(String login, String password) throws SQLException
     {
         String consulta_sql_login = "SELECT * FROM usuario WHERE usuario_login='" + login + "' AND usuario_password='" + password + "';";
         Statement st = connec.createStatement();
@@ -42,12 +42,13 @@ public class ConsultasBD {
         if(rs.next())
         {   
             System.out.println("Por ahora login y contraseña exitosos");
-            System.out.println(rs.getString(2));
-            return rs.getString(2).toString();
+            int tipo = 0;
+            tipo = rs.getInt(2);
+            return tipo;
         }
         else
         {
-            return "FALLIDO";
+            return -1;
         }
     }
     

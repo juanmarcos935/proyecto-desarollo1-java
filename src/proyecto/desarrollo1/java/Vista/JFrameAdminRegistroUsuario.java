@@ -254,9 +254,9 @@ public class JFrameAdminRegistroUsuario extends javax.swing.JFrame {
                     String contraseña = jTextField2.getText();
                     String nombre = jTextField3.getText();
                     String apellido = jTextField4.getText();
-                    String cedulaS = jTextField5.getText();
+                    String cedulaS = jTextField5.getText().trim();
                     int cedula = Integer.parseInt(cedulaS);
-                    String telefonoS = jTextField7.getText();
+                    String telefonoS = jTextField7.getText().trim();
                     int telefono = Integer.parseInt(telefonoS);
 
                     DAOUsuario daousuario = new DAOUsuario();

@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package proyecto.desarrollo1.java.Vista;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import proyecto.desarrollo1.java.Control.DAOUsuario;
 
 /**
  *
@@ -300,6 +304,10 @@ public class JFrameAdminModificar extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        if(jTextField3.getText().equals("") && jTextField4.getText().equals("") && jTextField5.getText().equals("") && jTextField6.getText().equals("") && jTextField7.getText().equals("") && jTextField8.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "No registró ningún cambio", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

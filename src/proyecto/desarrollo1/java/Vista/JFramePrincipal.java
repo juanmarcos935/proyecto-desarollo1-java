@@ -9,8 +9,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import proyecto.desarrollo1.java.DB.ConsultasBD;
-import proyecto.desarrollo1.java.DB.AccesoBD;
+import proyecto.desarrollo1.java.Control.DAOUsuario;
 
 import javax.swing.JOptionPane;
 
@@ -178,12 +177,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
             String password = jTextField2.getText();
             int response;
 
-            ConsultasBD consultorBD = new ConsultasBD();
+            DAOUsuario daousuario = new DAOUsuario();
 
             try 
             {
-                consultorBD.empezarConexion();
-                response = consultorBD.loginTipo(login, password);
+                response = daousuario.loginUsuarioTipo(login, password);
                 if(response == -1)
                 {
                     JOptionPane.showMessageDialog(this, "Login y/o contraseña incorrectos", "Error en credenciales", JOptionPane.ERROR_MESSAGE);
@@ -199,12 +197,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
             } 
             catch (SQLException ex) 
             {
-                Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            try {
-                consultorBD.cerrarConexion();
-            } catch (SQLException ex) {
                 Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
 

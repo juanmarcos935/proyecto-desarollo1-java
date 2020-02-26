@@ -21,5 +21,13 @@ public class DAOUsuario {
         consultorBD.registrarUsuario(user);
         consultorBD.cerrarConexion();
     }
+    
+    public int loginUsuarioTipo(String login, String password) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int response = consultorBD.loginTipo(login, password);
+        consultorBD.cerrarConexion();
+        return response;
+    }
 
 }

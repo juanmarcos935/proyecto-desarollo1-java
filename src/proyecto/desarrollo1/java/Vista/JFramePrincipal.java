@@ -191,6 +191,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 else
                 if (response == 1)
                 {
+                    JOptionPane.showMessageDialog(null, "Inicio Sesión Exitoso como Administrador", "Entrando a Celusoft como Administrador", JOptionPane.INFORMATION_MESSAGE);
                     JFrameAdminIntermedio jframeadmin = new JFrameAdminIntermedio();
                     jframeadmin.setTitle("Celusoft como Administrador");
                     jframeadmin.setVisible(true);

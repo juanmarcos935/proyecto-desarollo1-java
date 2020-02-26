@@ -11,16 +11,16 @@ package proyecto.desarrollo1.java.Modelo;
  */
 public class Usuario {
     private int id;
-    private String tipo;
+    private int tipo;
     private String login;
     private String password;
     private String nombre;
     private String apellido;
     private int cedula;
     private int telefono;
-    private boolean activo;
-
-    public Usuario(int id, String tipo, String login, String password, String nombre, String apellido, int cedula, int telefono, boolean activo) {
+    private int activo;
+    
+    public Usuario(int id, int tipo, String login, String password, String nombre, String apellido, int cedula, int telefono, int activo) {
         this.id = id;
         this.tipo = tipo;
         this.login = login;
@@ -40,11 +40,11 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getTipo() {
+    public int getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(int tipo) {
         this.tipo = tipo;
     }
 
@@ -96,11 +96,17 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public boolean isActivo() {
+    public int getActivo() {
         return activo;
     }
 
-    public void setActivo(boolean activo) {
+    public void setActivo(int activo) {
         this.activo = activo;
     }
+    
+    
+    
 }
+    
+
+    

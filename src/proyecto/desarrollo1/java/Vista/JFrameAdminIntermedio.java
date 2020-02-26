@@ -5,6 +5,8 @@
  */
 package proyecto.desarrollo1.java.Vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author marcos
@@ -63,6 +65,11 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
         jLabel2.setText("Selecciona la acción que deseas ejecutar");
 
         jButton1.setText("Registrar Usuarios");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Modificar Usuarios");
 
@@ -135,8 +142,19 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        int dialogResult = JOptionPane.showConfirmDialog (null, "¿Estás seguro de querer cerrar sesión como Administrador?","Confirmación de cierre de sesión",JOptionPane.WARNING_MESSAGE);
+        if(dialogResult == JOptionPane.YES_OPTION)
+        {
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JOptionPane.showMessageDialog(this, "Has elegido la opción de Registro de Usuarios");
+        JFrameAdminRegistroUsuario jframeregistro = new JFrameAdminRegistroUsuario();
+        jframeregistro.setTitle("Registro de Usuarios como Administrador");
+        jframeregistro.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

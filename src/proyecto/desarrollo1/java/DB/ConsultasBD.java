@@ -76,7 +76,7 @@ public class ConsultasBD {
     public void registrarUsuario(Usuario user) throws SQLException
     {
         int operacion;
-        String consulta_sql_registrar_usuario = "INSERT INTO usuario (id_usuario, usuario_tipo, usuario_login, usuario_password, usuario_nombre, usuario_apelldios, usuario_cc, usuario_telefono, usuario_estado) VALUES (default, '" + user.getTipo() + "', '" + user.getLogin() + "', '" + user.getPassword() + "', '" + user.getNombre() + "', '" + user.getApellido() + "', " + user.getCedula() + ", " + user.getTelefono() + ", " + user.isActivo() + ");";
+        String consulta_sql_registrar_usuario = "INSERT INTO usuario (id_usuario, usuario_tipo, usuario_login, usuario_password, usuario_nombre, usuario_apellidos, usuario_cc, usuario_telefono, usuario_estado) VALUES (default, " + user.getTipo() + ", '" + user.getLogin() + "', '" + user.getPassword() + "', '" + user.getNombre() + "', '" + user.getApellido() + "', " + user.getCedula() + ", " + user.getTelefono() + ", " + user.getActivo() + ");";
         try
         {
             Statement st = connec.createStatement();

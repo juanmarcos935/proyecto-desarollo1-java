@@ -262,6 +262,7 @@ public class JFrameAdminRegistroUsuario extends javax.swing.JFrame {
                     DAOUsuario daousuario = new DAOUsuario();
 
                     daousuario.registrarUsuario(tipo, login, contraseña, nombre, apellido, cedula, telefono, activo);
+                    JOptionPane.showMessageDialog(this, "Registro de Usuario Exitoso");
                 } 
             catch (SQLException ex) 
             {

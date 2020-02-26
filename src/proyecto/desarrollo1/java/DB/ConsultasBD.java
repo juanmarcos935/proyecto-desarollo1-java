@@ -34,7 +34,7 @@ public class ConsultasBD {
         accesobd.cerrarConexion(connec);
     }
     
-    public int login(String login, String password) throws SQLException
+    public int loginTipo(String login, String password) throws SQLException
     {
         String consulta_sql_login = "SELECT * FROM usuario WHERE usuario_login='" + login + "' AND usuario_password='" + password + "';";
         Statement st = connec.createStatement();
@@ -50,6 +50,15 @@ public class ConsultasBD {
         {
             return -1;
         }
+    }
+    
+    public boolean loginActivo(String login, String password) throws SQLException
+    {
+        String consulta_sql_login = "SELECT * FROM usuario WHERE usuario_login='" + login + "' AND usuario_password='" + password + "';";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_login);
+        boolean activo = rs.getBoolean(9);
+        return activo;
     }
     
     

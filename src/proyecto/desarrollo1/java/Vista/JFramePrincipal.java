@@ -177,13 +177,14 @@ public class JFramePrincipal extends javax.swing.JFrame {
             String login = jTextField1.getText();
             String password = jTextField2.getText();
             int response = 0;
+            boolean response2;
 
             ConsultasBD consultorBD = new ConsultasBD();
 
             try 
             {
                 consultorBD.empezarConexion();
-                response = consultorBD.login(login, password);
+                response = consultorBD.loginTipo(login, password);
                 if(response == -1)
                 {
                     JOptionPane.showMessageDialog(this, "Login y/o contraseña incorrectos", "Error en credenciales", JOptionPane.ERROR_MESSAGE);
@@ -191,17 +192,26 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 else
                 if (response == 1)
                 {
-                    JOptionPane.showMessageDialog(null, "Inicio Sesión Exitoso como Administrador", "Entrando a Celusoft como Administrador", JOptionPane.INFORMATION_MESSAGE);
-                    JFrameAdminIntermedio jframeadmin = new JFrameAdminIntermedio();
-                    jframeadmin.setTitle("Celusoft como Administrador");
-                    jframeadmin.setVisible(true);
+                    response2 = consultorBD.loginActivo(login, password);
+                    if(response2 == true)
+                    {
+                        JOptionPane.showMessageDialog(this, "Inicio Sesión Exitoso como Administrador", "Entrando a Celusoft como Administrador", JOptionPane.INFORMATION_MESSAGE);
+                        JFrameAdminIntermedio jframeadmin = new JFrameAdminIntermedio();
+                        jframeadmin.setTitle("Celusoft como Administrador");
+                        jframeadmin.setVisible(true);
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(this, "Login y contraseña correctos, sin embargo, estas inactivado en el Sistema. Consulta al administrador", "Usuario inactivado", JOptionPane.WARNING_MESSAGE);
+                    }
                 }
-
             } 
             catch (SQLException ex) 
             {
                 Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            consultorBD.cerrarConexion();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

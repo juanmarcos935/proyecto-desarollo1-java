@@ -21,12 +21,12 @@ import java.sql.Statement;
  */
 public class ConsultasBD {
     
-    private AccesoBD accesobd;
+    private AccesoBD accesobd = new AccesoBD();
     private Connection connec;
     
-    public void empezarConexion()
+    public void empezarConexion() throws SQLException
     {
-        connec = accesobd.conectarBD();
+        connec = accesobd.getConnection();
     }
     
     public void cerrarConexion() throws SQLException
@@ -42,17 +42,16 @@ public class ConsultasBD {
         if(rs.next())
         {   
             System.out.println("Por ahora login y contraseña exitosos");
-            String consulta_sql_login2 = "SELECT usuario_tipo FROM usuario WHERE usuario_login='" + login + "' AND usuario_password='" + password + "';";
-            Statement st2 = connec.createStatement();
-            ResultSet rs2 = st2.executeQuery(consulta_sql_login2);
-            String tipo = rs2.getString("usuario_tipo");
-            return tipo;
+            System.out.println(rs.getString(2));
+            return rs.getString(2).toString();
         }
         else
         {
             return "FALLIDO";
         }
     }
+    
+    
     
     public void registrarUsuario(Usuario user) throws SQLException
     {

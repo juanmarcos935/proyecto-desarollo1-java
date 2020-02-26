@@ -5,6 +5,13 @@
  */
 package proyecto.desarrollo1.java.Vista;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import proyecto.desarrollo1.java.DB.ConsultasBD;
+import proyecto.desarrollo1.java.DB.AccesoBD;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -12,6 +19,7 @@ import javax.swing.JOptionPane;
  * @author marcos
  */
 public class JFramePrincipal extends javax.swing.JFrame {
+   
 
     /**
      * Creates new form JFramePrincipal
@@ -157,7 +165,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String login = jTextField1.getText();
         String password = jTextField2.getText();
-        JOptionPane.showMessageDialog(null, "Hello");
+        
+        ConsultasBD consultorBD = new ConsultasBD();
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

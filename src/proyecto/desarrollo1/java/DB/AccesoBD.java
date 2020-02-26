@@ -18,18 +18,18 @@ public class AccesoBD {
     protected final String url = "jdbc:postgresql://"; 
     private Connection conexion = null;
     
-    public Connection conectarBD()
+    public Connection conectarBD() throws SQLException
     {
             try {
             Class.forName(driver);
                 System.out.println("Driver Cargado");
             } 
-            catch( ClassNotFoundException e ) {
+            catch( Exception e ) {
                 System.out.println("No se pudo cargar el driver: "+e.getMessage());
             }
 
             try{               
-                conexion = DriverManager.getConnection(url+ ip  +":" + puerto + "/" + database , usuario, clave);
+                conexion = DriverManager.getConnection(url + ip  + ":" + puerto + "/" + database , usuario, clave);
                 System.out.println("Conexion Exitosa a la BD" );
                 return conexion;
              } 
@@ -42,9 +42,9 @@ public class AccesoBD {
 
     }
     
-    public Connection getConnection()
+    public Connection getConnection() throws SQLException
     {
-        if (conexion == null) 
+        if (conexion == null || conexion.isClosed()) 
         {
             return this.conectarBD();
         }

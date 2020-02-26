@@ -163,34 +163,41 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String login = jTextField1.getText();
-        String password = jTextField2.getText();
-        int response = 0;
-        
-        ConsultasBD consultorBD = new ConsultasBD();
-        
-        try 
+
+        if(jTextField1.getText().equals("") || jTextField2.getText().equals(""))
         {
-            consultorBD.empezarConexion();
-            response = consultorBD.login(login, password);
-            if(response == -1)
-            {
-                JOptionPane.showMessageDialog(this, "Login y/o contraseña incorrectos", "Error en credenciales", JOptionPane.ERROR_MESSAGE);
-            }
-            else
-            if (response == 1)
-            {
-                JFrameAdminIntermedio jframeadmin = new JFrameAdminIntermedio();
-                jframeadmin.setTitle("Celusoft como Administrador");
-                jframeadmin.setVisible(true);
-            }
-            
-        } 
-        catch (SQLException ex) 
-        {
-            Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Uno o mas campos vacíos", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
         }
-        
+        else
+        {
+            String login = jTextField1.getText();
+            String password = jTextField2.getText();
+            int response = 0;
+
+            ConsultasBD consultorBD = new ConsultasBD();
+
+            try 
+            {
+                consultorBD.empezarConexion();
+                response = consultorBD.login(login, password);
+                if(response == -1)
+                {
+                    JOptionPane.showMessageDialog(this, "Login y/o contraseña incorrectos", "Error en credenciales", JOptionPane.ERROR_MESSAGE);
+                }
+                else
+                if (response == 1)
+                {
+                    JFrameAdminIntermedio jframeadmin = new JFrameAdminIntermedio();
+                    jframeadmin.setTitle("Celusoft como Administrador");
+                    jframeadmin.setVisible(true);
+                }
+
+            } 
+            catch (SQLException ex) 
+            {
+                Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

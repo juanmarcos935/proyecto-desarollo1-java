@@ -6,7 +6,7 @@
 
 CREATE TABLE usuario (
   id_usuario int NOT NULL ,
-  usuario_tipo char(10) NOT NULL,
+  usuario_tipo int NOT NULL,
   usuario_login char(20) NOT NULL,
   usuario_password char(20) NOT NULL,
   usuario_nombre char(20) NOT NULL ,

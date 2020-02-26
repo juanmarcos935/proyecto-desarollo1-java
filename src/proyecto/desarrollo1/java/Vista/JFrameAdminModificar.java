@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package proyecto.desarrollo1.java.Vista;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -284,29 +285,94 @@ public class JFrameAdminModificar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-      jComboBox1.enable();
-      jComboBox1.repaint(); 
-      jTextField3.enable();
-      jTextField3.repaint();
-      jTextField4.enable();
-      jTextField4.repaint();
-      jTextField5.enable();
-      jTextField5.repaint();
-      jTextField6.enable();
-      jTextField6.repaint();
-      jTextField7.enable();
-      jTextField7.repaint();
-      jTextField8.enable();
-      jTextField8.repaint();
-      jButton4.setEnabled(true);
-      jButton4.repaint();
+        if(jTextField1.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Campo de login vacío", "Campo de Login Vacio", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        {
+            String login = jTextField1.getText();
+            DAOUsuario daousuario = new DAOUsuario();
+            int response;
+            
+            try 
+            {
+                response = daousuario.soloLogin(login);
+                if(response == 1)
+                {
+                    JOptionPane.showMessageDialog(this, "Usuario encontrado exitosamente", "Usuario válido en Base de Datos", JOptionPane.INFORMATION_MESSAGE);
+                    jComboBox1.enable();
+                    jComboBox1.repaint(); 
+                    jTextField3.enable();
+                    jTextField3.repaint();
+                    jTextField4.enable();
+                    jTextField4.repaint();
+                    jTextField5.enable();
+                    jTextField5.repaint();
+                    jTextField6.enable();
+                    jTextField6.repaint();
+                    jTextField7.enable();
+                    jTextField7.repaint();
+                    jTextField8.enable();
+                    jTextField8.repaint();
+                    jButton4.setEnabled(true);
+                    jButton4.repaint(); 
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "No existe tal usuario con el login indicado", "Error: usuario no encontrado", JOptionPane.ERROR_MESSAGE);
+                }
+            } 
+            catch (SQLException ex) 
+            {
+                Logger.getLogger(JFrameAdminModificar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
         if(jTextField3.getText().equals("") && jTextField4.getText().equals("") && jTextField5.getText().equals("") && jTextField6.getText().equals("") && jTextField7.getText().equals("") && jTextField8.getText().equals(""))
         {
             JOptionPane.showMessageDialog(this, "No registró ningún cambio", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        {
+                    String login = jTextField1.getText();
+                    DAOUsuario daousuario = new DAOUsuario();
+            
+                    int tipo = 0;
+                    
+                    String string1 = jComboBox1.getSelectedItem().toString();
+                    if(string1.equals(""))
+                    {
+                        tipo = 0;
+                    }
+                    else if(string1.equals("Administrador"))
+                    {
+                        tipo = 1;
+                    }
+                    else if(string1.equals("Operador"))
+                    {
+                        tipo = 2;
+                    }
+                    else if(string1.equals("Gerente"))
+                    {
+                        tipo = 3;
+                    }
+                    
+                    String string2 = jTextField3.getText();
+                    String string3 = jTextField4.getText();
+                    int int1 = Integer.parseInt(jTextField5.getText().trim());
+                    int int2 = Integer.parseInt(jTextField6.getText().trim());
+                    String string6 = jTextField7.getText();
+                    String string7 = jTextField8.getText();
+                    
+            try {
+                daousuario.modificarUsuario(login, tipo, string2, string3, int1, int2, string6, string7);
+            } catch (SQLException ex) {
+                Logger.getLogger(JFrameAdminModificar.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -340,7 +406,9 @@ public class JFrameAdminModificar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameAdminModificar().setVisible(true);
+                JFrameAdminModificar jframeadminmodificar = new JFrameAdminModificar();
+                jframeadminmodificar.setVisible(true);
+                jframeadminmodificar.jComboBox1.setSelectedIndex(-1);
             }
         });
     }

@@ -162,7 +162,10 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Has elegido la opción de Modificación de Usuarios");
+        JFrameAdminModificar jframemodificar = new JFrameAdminModificar();
+        jframemodificar.setTitle("Modificación de Usuarios como Administrador");
+        jframemodificar.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

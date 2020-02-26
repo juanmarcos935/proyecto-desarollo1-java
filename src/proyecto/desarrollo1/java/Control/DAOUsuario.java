@@ -39,6 +39,21 @@ public class DAOUsuario {
         consultorBD.cerrarConexion();
         return response;
     }
+    
+    public int soloLogin(String login) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int response = consultorBD.consultaLogin(login);
+        consultorBD.cerrarConexion();
+        return response;
+    }
+    
+    public void modificarUsuario(String loginviejo, int tipo, String nombre, String apellido, int cedula, int telefono, String login, String contraseña) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        consultorBD.modificarUsuario(loginviejo, tipo, nombre, apellido, cedula, telefono, login, contraseña);
+        consultorBD.cerrarConexion();
+    }
 
 
 }

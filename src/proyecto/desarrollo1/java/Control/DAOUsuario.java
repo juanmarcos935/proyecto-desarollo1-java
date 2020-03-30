@@ -49,6 +49,14 @@ public class DAOUsuario {
         return response;
     }
     
+    public int loginUsuarioActivo3(String login) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int response = consultorBD.loginActivo3(login);
+        consultorBD.cerrarConexion();
+        return response;
+    }
+    
     public int soloLogin(String login) throws SQLException
     {
         consultorBD.empezarConexion();

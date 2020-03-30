@@ -246,7 +246,7 @@
                                   <Component id="jPasswordField1" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jPasswordField2" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="98" max="32767" attributes="0"/>
+                              <EmptySpace pref="108" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
@@ -296,7 +296,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="11" max="32767" attributes="0"/>
+                      <EmptySpace pref="66" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jTextField5" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
@@ -461,7 +461,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                      <Component id="jComboBox3" pref="387" max="32767" attributes="0"/>
+                                      <Component id="jComboBox3" pref="397" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jButton5" min="-2" pref="91" max="-2" attributes="0"/>
                                   </Group>
@@ -698,9 +698,6 @@
               </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="jPasswordField3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jPasswordField3"/>
-              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordField3ActionPerformed"/>
               </Events>
@@ -711,9 +708,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JPasswordField" name="jPasswordField4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jPasswordField3"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -753,11 +747,11 @@
                                   <Component id="jTextField14" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jComboBox4" alignment="0" pref="279" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton8" pref="94" max="32767" attributes="0"/>
+                      <Component id="jButton8" pref="99" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>

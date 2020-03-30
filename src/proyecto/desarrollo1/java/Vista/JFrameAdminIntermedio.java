@@ -21,6 +21,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
     /**
      * Creates new form JFrameAdminIntermedio
      */
+    int activo_inicial;
     public JFrameAdminIntermedio() {
         initComponents();
     }
@@ -408,7 +409,6 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
             }
         });
 
-        jPasswordField3.setText("jPasswordField3");
         jPasswordField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField3ActionPerformed(evt);
@@ -416,8 +416,6 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
         });
 
         jLabel25.setText("Confirmar contraseña");
-
-        jPasswordField4.setText("jPasswordField3");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -634,6 +632,8 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
         jPanel3.revalidate();
         jPanel1.repaint();
         jPanel1.revalidate();
+        jPasswordField3.setEnabled(false);
+        jPasswordField4.setEnabled(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -645,6 +645,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
         jPanel3.revalidate();
         jPanel1.repaint();
         jPanel1.revalidate();
+        jButton11.setEnabled(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -726,13 +727,13 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        if(jTextField1.getText().equals(""))
+        if(jTextField6.getText().equals(""))
         {
             JOptionPane.showMessageDialog(this, "Campo de login vacío", "Campo de Login Vacio", JOptionPane.WARNING_MESSAGE);
         }
         else
         {
-            String login = jTextField1.getText();
+            String login = jTextField6.getText();
             DAOUsuario daousuario = new DAOUsuario();
             int response;
 
@@ -742,22 +743,24 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
                 if(response == 1)
                 {
                     JOptionPane.showMessageDialog(this, "Usuario encontrado exitosamente", "Usuario válido en Base de Datos", JOptionPane.INFORMATION_MESSAGE);
-                    jComboBox1.enable();
-                    jComboBox1.repaint();
-                    jTextField3.enable();
-                    jTextField3.repaint();
-                    jTextField4.enable();
-                    jTextField4.repaint();
-                    jTextField5.enable();
-                    jTextField5.repaint();
-                    jTextField6.enable();
-                    jTextField6.repaint();
-                    jTextField7.enable();
-                    jTextField7.repaint();
+                    jComboBox3.enable();
+                    jComboBox3.repaint();
                     jTextField8.enable();
                     jTextField8.repaint();
-                    jButton4.setEnabled(true);
-                    jButton4.repaint();
+                    jTextField9.enable();
+                    jTextField9.repaint();
+                    jTextField10.enable();
+                    jTextField10.repaint();
+                    jTextField11.enable();
+                    jTextField11.repaint();
+                    jTextField12.enable();
+                    jTextField12.repaint();
+                    jPasswordField3.enable();
+                    jPasswordField3.repaint();
+                    jPasswordField4.enable();
+                    jPasswordField4.repaint();
+                    jButton7.setEnabled(true);
+                    jButton7.repaint();
                 }
                 else
                 {
@@ -817,11 +820,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
             int tipo = 0;
 
             String string1 = jComboBox3.getSelectedItem().toString();
-            if(string1.equals(""))
-            {
-                tipo = 0;
-            }
-            else if(string1.equals("Administrador"))
+            if(string1.equals("Administrador"))
             {
                 tipo = 1;
             }
@@ -853,61 +852,80 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        if(jTextField1.getText().equals(""))
+        if(jTextField14.getText().equals(""))
         {
             JOptionPane.showMessageDialog(this, "Campo de login vacío", "Campo de Login Vacio", JOptionPane.WARNING_MESSAGE);
         }
         else
         {
-            String login = jTextField1.getText();
+            String login = jTextField14.getText();
             DAOUsuario daousuario = new DAOUsuario();
-            int response;
 
-            try
+            try 
             {
-                response = daousuario.soloLogin(login);
-                if(response == 1)
-                {
-                    JOptionPane.showMessageDialog(this, "Usuario encontrado exitosamente", "Usuario válido en Base de Datos", JOptionPane.INFORMATION_MESSAGE);
-                    jComboBox1.enable();
-                    jComboBox1.repaint();
-                    jButton2.setEnabled(true);
-                    jButton2.repaint();
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(this, "No existe tal usuario con el login indicado", "Error: usuario no encontrado", JOptionPane.ERROR_MESSAGE);
-                }
+                activo_inicial = daousuario.loginUsuarioActivo3(login);
+            } 
+            catch (SQLException ex) 
+            {
+                Logger.getLogger(JFrameAdminIntermedio.class.getName()).log(Level.SEVERE, null, ex);
             }
-            catch (SQLException ex)
+        
+            switch (activo_inicial) 
             {
-                //Logger.getLogger(JFrameAdminEstado.class.getName()).log(Level.SEVERE, null, ex);
+                case 1:
+                    JOptionPane.showMessageDialog(this, "El usuario que ha consultado actualmente está activo", "Usuario activo", JOptionPane.INFORMATION_MESSAGE);
+                    jComboBox4.repaint();
+                    jComboBox4.setEnabled(true);
+                    jButton11.repaint();
+                    jButton11.setEnabled(true);
+                break;
+                case 0:
+                    JOptionPane.showMessageDialog(this, "El usuario que ha consultado actualmente está inactivo", "Usuario inactivo", JOptionPane.INFORMATION_MESSAGE);
+                    jComboBox4.repaint();
+                    jComboBox4.setEnabled(true);
+                    jButton11.repaint();
+                    jButton11.setEnabled(true);
+                break;
+                default:
+                    JOptionPane.showMessageDialog(this, "El usuario que ha consultado no existe", "Usuario inexistente", JOptionPane.ERROR_MESSAGE);
+                break;
             }
         }
 
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        String login = jTextField1.getText();
+        String login = jTextField14.getText();
         DAOUsuario daousuario = new DAOUsuario();
-        int activo = 0;
+        int activo_final;
 
         try
         {
+            String opcion = jComboBox4.getSelectedItem().toString();
 
-            String opcion = jComboBox1.getSelectedItem().toString();
-
-            if(opcion.equals("Habilitado"))
+            if(opcion.equals("Habilitado") && activo_inicial == 1)
             {
-                activo = 1;
+                JOptionPane.showMessageDialog(this, "El usuario ya está habilitado en el sistema", "Usuario habilitado", JOptionPane.ERROR_MESSAGE);
             }
-            else if(opcion.equals("Inhabilitado"))
+            else 
+            if(opcion.equals("Inhabilitado") && activo_inicial == 0)
             {
-                activo = 0;
+                JOptionPane.showMessageDialog(this, "El usuario ya está inhabilitado en el sistema", "Usuario inhabilitado", JOptionPane.ERROR_MESSAGE);
             }
-
-            daousuario.cambiarEstado(login, activo);
-            JOptionPane.showMessageDialog(this, "Cambio de estado de usuario exitoso");
+            else
+            if(opcion.equals("Habilitado") && activo_inicial == 0)
+            {
+                activo_final = 1;
+                daousuario.cambiarEstado(login, activo_final);
+                JOptionPane.showMessageDialog(this, "Usuario activado/habilitado con exito", "Usuario activado/habilitado", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else
+            if(opcion.equals("Inhabilitado") && activo_inicial == 1)
+            {
+                activo_final = 0;
+                daousuario.cambiarEstado(login, activo_final);
+                JOptionPane.showMessageDialog(this, "Usuario inactivado/inhabilitado con exito", "Usuario inactivado/inhabilitado", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
         catch (SQLException ex)
         {

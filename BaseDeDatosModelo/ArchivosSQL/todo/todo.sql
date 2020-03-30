@@ -7,12 +7,12 @@
 CREATE TABLE usuario (
   id_usuario int NOT NULL ,
   usuario_tipo int NOT NULL,
-  usuario_login char(20) NOT NULL,
-  usuario_password char(20) NOT NULL,
-  usuario_nombre char(20) NOT NULL ,
-  usuario_Apellidos char(20) NOT NULL ,
-  usuario_CC int NOT NULL ,
-  usuario_telefono int NOT NULL ,
+  usuario_login varchar(60) NOT NULL,
+  usuario_password varchar(60) NOT NULL,
+  usuario_nombre varchar(60) NOT NULL ,
+  usuario_Apellidos varchar(60) NOT NULL ,
+  usuario_CC varchar(60) NOT NULL ,
+  usuario_telefono varchar(60) NOT NULL ,
   usuario_estado int NOT NULL
 );
 CREATE SEQUENCE usuario_usuario_codigo_seq START 1 INCREMENT 1 ;
@@ -23,57 +23,6 @@ ALTER TABLE usuario ALTER COLUMN id_usuario SET DEFAULT nextval('usuario_usuario
 ALTER TABLE usuario ADD CONSTRAINT nueva_restricción_única_usuario PRIMARY KEY (id_usuario);
 ALTER TABLE usuario ADD CONSTRAINT nueva_restricción_única_usuariologin UNIQUE (usuario_login);
 ALTER TABLE usuario ADD CONSTRAINT nueva_restricción_única_usuarioCC UNIQUE (usuario_CC);
-
-
---
--- TABLE: usuario_operador
--- 
---  
-
-CREATE TABLE usuario_operador (
-  id_usuario int NOT NULL 
-);
-
--- 
-
-
--- 
-ALTER TABLE usuario_operador ADD CONSTRAINT nueva_restricción_única_usu_ope PRIMARY KEY (id_usuario);
-
--- 
-ALTER TABLE usuario_operador ADD CONSTRAINT nueva_restricción_fclave_opera_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-
---
--- TABLE: usuario_administrador
--- 
---  
-
-CREATE TABLE usuario_administrador (
-  id_usuario int NOT NULL 
-);
-
--- 
-ALTER TABLE usuario_administrador ADD CONSTRAINT nueva_restricción_fclave_admin_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-
---
--- TABLE: usuario_gerente
--- 
---  
-
-CREATE TABLE usuario_gerente (
-  id_usuario int NOT NULL 
-);
-
--- 
-
-
--- 
-ALTER TABLE usuario_gerente ADD CONSTRAINT nueva_restricción_usuario_gerente PRIMARY KEY (id_usuario);
-
--- 
-ALTER TABLE usuario_gerente ADD CONSTRAINT nueva_restricción_fclave_usuario_gerente_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 
 --
@@ -99,13 +48,13 @@ ALTER TABLE banco ADD CONSTRAINT nueva_restricción_única_banco PRIMARY KEY (id
 
 CREATE TABLE cliente (
   id_cliente int NOT NULL ,
-  cliente_corporativo boolean NOT NULL , 	
-  cliente_nombre char(20) NOT NULL ,
-  cliente_apellidos char(20),
-  cliente_telefono int NOT NULL ,
-  cliente_direccion char(20) NOT NULL ,
-  cliente_ciudad char(20) NOT NULL ,
-  cliente_estado boolean NOT NULL 
+  cliente_tipo int NOT NULL , 	
+  cliente_nombre varchar(60) NOT NULL ,
+  cliente_apellidos varchar(60),
+  cliente_telefono varchar(60) NOT NULL ,
+  cliente_direccion varchar(60) NOT NULL ,
+  cliente_ciudad varchar(60) NOT NULL ,
+  cliente_estado int NOT NULL 
 );
 CREATE SEQUENCE cliente_cliente_codigo_seq START 1 INCREMENT 1 ;
 
@@ -116,55 +65,13 @@ ALTER TABLE cliente ADD CONSTRAINT nueva_restricción_única_cliente PRIMARY KEY
 
 -- 
 
-
--- 
-
-
---
--- TABLE: cliente_natural
--- 
---  
-
-CREATE TABLE cliente_natural (
-  id_cliente int NOT NULL ,
-  cliente_lineas int NOT NULL  DEFAULT 0,
-  cliente_cedula int NOT NULL 
-);
-
--- 
-ALTER TABLE cliente_natural ADD CONSTRAINT nueva_restricción_única_clienteCC UNIQUE (cliente_cedula);
-
--- 
-ALTER TABLE cliente_natural ADD CONSTRAINT nueva_restricción_fclave_natural_cliente FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON UPDATE NO ACTION ON DELETE NO ACTION;
-
--- 
-ALTER TABLE cliente_natural ADD CONSTRAINT nueva_restricción_de_comprobación_natural CHECK (cliente_lineas >3);
-
-
---
--- TABLE: cliente_corporativo
--- 
---  
-
-CREATE TABLE cliente_corporativo (
-  id_cliente int NOT NULL ,
-  cliente_NIT int NOT NULL 
-);
-
--- 
-ALTER TABLE cliente_corporativo ADD CONSTRAINT nueva_restricción_única_clientenit UNIQUE (cliente_NIT);
-
--- 
-ALTER TABLE cliente_corporativo ADD CONSTRAINT nueva_restricción_fclave_corporativo_cliente FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-
 --
 -- TABLE: pago
 -- 
 --  
 
 CREATE TABLE pago (
-  id_pago int NOT NULL ,
+  id_pago int NOT NULL,
   id_usuario int,
   id_banco int,
   id_cliente int NOT NULL 
@@ -180,7 +87,7 @@ ALTER TABLE pago ADD CONSTRAINT nueva_restricción_única_pago PRIMARY KEY (id_p
 
 
 -- 
-ALTER TABLE pago ADD CONSTRAINT nueva_restricción_fclave_pago_usuario FOREIGN KEY (id_usuario) REFERENCES usuario_operador(id_usuario) ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE pago ADD CONSTRAINT nueva_restricción_fclave_pago_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 -- 
 ALTER TABLE pago ADD CONSTRAINT nueva_restricción_fclave_pago_cliente FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON UPDATE NO ACTION ON DELETE NO ACTION;
@@ -325,7 +232,7 @@ CREATE TABLE gerente_registra_plan (
 );
 
 -- 
-ALTER TABLE gerente_registra_plan ADD CONSTRAINT nueva_restricción_fclave_gerente_registra_usuario FOREIGN KEY (id_usuario) REFERENCES usuario_gerente(id_usuario) ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE gerente_registra_plan ADD CONSTRAINT nueva_restricción_fclave_gerente_registra_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 -- 
 ALTER TABLE gerente_registra_plan ADD CONSTRAINT nueva_restricción_fclave_gerente_registra_contrato FOREIGN KEY (id_contrato) REFERENCES cliente_contrata_plan(id_contrato) ON UPDATE NO ACTION ON DELETE NO ACTION;

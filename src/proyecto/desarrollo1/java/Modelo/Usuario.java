@@ -16,11 +16,11 @@ public class Usuario {
     private String password;
     private String nombre;
     private String apellido;
-    private int cedula;
-    private int telefono;
+    private String cedula;
+    private String telefono;
     private int activo;
     
-    public Usuario(int id, int tipo, String login, String password, String nombre, String apellido, int cedula, int telefono, int activo) {
+    public Usuario(int id, int tipo, String login, String password, String nombre, String apellido, String cedula, String telefono, int activo) {
         this.id = id;
         this.tipo = tipo;
         this.login = login;
@@ -80,19 +80,19 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

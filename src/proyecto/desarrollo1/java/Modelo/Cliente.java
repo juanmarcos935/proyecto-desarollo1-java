@@ -11,18 +11,17 @@ package proyecto.desarrollo1.java.Modelo;
  */
 public class Cliente {
     private int id;
-    private boolean corporativo;
+    private int tipo;
     private String nombre;
     private String apellido;
-    private int telefono;
+    private String telefono;
     private String direccion;
     private String ciudad;
-    private boolean estado;
-    
-    public Cliente(int id, boolean corporativo, String nombre, String apellido, int telefono, String direccion, String ciudad, boolean estado)
-    {
+    private int estado; 
+
+    public Cliente(int id, int tipo, String nombre, String apellido, String telefono, String direccion, String ciudad, int estado) {
         this.id = id;
-        this.corporativo = corporativo;
+        this.tipo = tipo;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
@@ -30,7 +29,6 @@ public class Cliente {
         this.ciudad = ciudad;
         this.estado = estado;
     }
-    
 
     public int getId() {
         return id;
@@ -40,12 +38,12 @@ public class Cliente {
         this.id = id;
     }
 
-    public boolean getCorporativo() {
-        return corporativo;
+    public int getTipo() {
+        return tipo;
     }
 
-    public void setCorporativo(boolean tipo) {
-        this.corporativo = tipo;
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
     }
 
     public String getNombre() {
@@ -64,11 +62,11 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -88,15 +86,13 @@ public class Cliente {
         this.ciudad = ciudad;
     }
 
-    public boolean getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
-    
-    
     
     
 }

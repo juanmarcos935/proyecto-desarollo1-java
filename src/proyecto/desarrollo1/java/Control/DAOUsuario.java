@@ -15,7 +15,7 @@ public class DAOUsuario {
     private ConsultasBD consultorBD = new ConsultasBD();
     private int autoincrement = 3;
     
-    public void registrarUsuario(int tipo, String login, String password, String nombre, String apellido, int cedula, int telefono, int activo) throws SQLException
+    public void registrarUsuario(int tipo, String login, String password, String nombre, String apellido, String cedula, String telefono, int activo) throws SQLException
     {
         Usuario user = new Usuario(autoincrement, tipo, login, password, nombre, apellido, cedula, telefono, activo);
         consultorBD.empezarConexion();
@@ -57,7 +57,7 @@ public class DAOUsuario {
         return response;
     }
     
-    public void modificarUsuario(String loginviejo, int tipo, String nombre, String apellido, int cedula, int telefono, String login, String contraseña) throws SQLException
+    public void modificarUsuario(String loginviejo, int tipo, String nombre, String apellido, String cedula, String telefono, String login, String contraseña) throws SQLException
     {
         consultorBD.empezarConexion();
         consultorBD.modificarUsuario(loginviejo, tipo, nombre, apellido, cedula, telefono, login, contraseña);

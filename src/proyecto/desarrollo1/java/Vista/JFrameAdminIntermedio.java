@@ -654,10 +654,8 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
                 String contraseña = jTextField2.getText();
                 String nombre = jTextField3.getText();
                 String apellido = jTextField4.getText();
-                String cedulaS = jTextField5.getText().trim();
-                int cedula = Integer.parseInt(cedulaS);
-                String telefonoS = jTextField7.getText().trim();
-                int telefono = Integer.parseInt(telefonoS);
+                String cedula = jTextField5.getText().trim();
+                String telefono = jTextField7.getText().trim();
 
                 DAOUsuario daousuario = new DAOUsuario();
 
@@ -779,14 +777,14 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
 
             String string2 = jTextField3.getText();
             String string3 = jTextField4.getText();
-            int int1 = Integer.parseInt(jTextField5.getText().trim());
-            int int2 = Integer.parseInt(jTextField6.getText().trim());
+            String string4 = jTextField5.getText().trim();
+            String string5 = jTextField6.getText().trim();
             String string6 = jTextField7.getText();
             String string7 = jTextField8.getText();
 
             try
             {
-                daousuario.modificarUsuario(login, tipo, string2, string3, int1, int2, string6, string7);
+                daousuario.modificarUsuario(login, tipo, string2, string3, string4, string5, string6, string7);
                 JOptionPane.showMessageDialog(this, "Modificación de Usuario exitosa");
             }
             catch (SQLException ex)

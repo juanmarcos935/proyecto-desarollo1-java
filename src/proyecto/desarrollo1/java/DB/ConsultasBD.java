@@ -110,7 +110,7 @@ public class ConsultasBD {
     public void registrarUsuario(Usuario user) throws SQLException
     {
         int operacion;
-        String consulta_sql_registrar_usuario = "INSERT INTO usuario (id_usuario, usuario_tipo, usuario_login, usuario_password, usuario_nombre, usuario_apellidos, usuario_cc, usuario_telefono, usuario_estado) VALUES (default, " + user.getTipo() + ", '" + user.getLogin() + "', '" + user.getPassword() + "', '" + user.getNombre() + "', '" + user.getApellido() + "', " + user.getCedula() + ", " + user.getTelefono() + ", " + user.getActivo() + ");";
+        String consulta_sql_registrar_usuario = "INSERT INTO usuario (id_usuario, usuario_tipo, usuario_login, usuario_password, usuario_nombre, usuario_apellidos, usuario_cc, usuario_telefono, usuario_estado) VALUES (default, " + user.getTipo() + ", '" + user.getLogin() + "', '" + user.getPassword() + "', '" + user.getNombre() + "', '" + user.getApellido() + "', '" + user.getCedula() + "', '" + user.getTelefono() + "', " + user.getActivo() + ");";
         try
         {
             Statement st = connec.createStatement();
@@ -139,7 +139,7 @@ public class ConsultasBD {
         }
     }
     
-    public void modificarUsuario(String loginviejo, int tipo, String nombre, String apellido, int cedula, int telefono, String login, String contraseña) throws SQLException
+    public void modificarUsuario(String loginviejo, int tipo, String nombre, String apellido, String cedula, String telefono, String login, String contraseña) throws SQLException
     {
         int operacion;
         String string1 = "";
@@ -172,14 +172,14 @@ public class ConsultasBD {
             string3 = "usuario_apellidos = '" + apellido + "',";
         }
         
-        if(cedula != 0)
+        if(!cedula.equals(""))
         {
-            string4 = "usuario_cc = " + cedula + ",";
+            string4 = "usuario_cc = '" + cedula + "',";
         }
         
-        if(telefono != 0)
+        if(!telefono.equals(""))
         {
-            string5 = "usuario_telefono = " + telefono + ",";
+            string5 = "usuario_telefono = '" + telefono + "',";
         }
         
         if(!login.equals(""))

@@ -54,6 +54,7 @@ CREATE TABLE cliente (
   cliente_apellidos varchar(60),
   cliente_direccion varchar(60) NOT NULL ,
   cliente_ciudad varchar(60) NOT NULL ,
+  cliente_CC varchar(60) NOT NULL , 
   cliente_estado int NOT NULL 
 );
 CREATE SEQUENCE cliente_cliente_codigo_seq START 1 INCREMENT 1 ;
@@ -63,6 +64,7 @@ ALTER TABLE cliente ALTER COLUMN cliente_estado SET DEFAULT 1;
 
 -- 
 ALTER TABLE cliente ADD CONSTRAINT nueva_restricción_única_cliente PRIMARY KEY (id_cliente);
+ALTER TABLE cliente ADD CONSTRAINT nueva_restricción_documento_unico_cliente UNIQUE (cliente_CC);
 
 -- 
 

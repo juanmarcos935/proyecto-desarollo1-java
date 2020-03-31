@@ -31,7 +31,8 @@ ALTER TABLE usuario ADD CONSTRAINT nueva_restricción_única_usuarioCC UNIQUE (u
 --  
 
 CREATE TABLE banco (
-  id_banco int NOT NULL
+  id_banco int NOT NULL ,
+  banco_nombre varchar(60) NOT NULL
  
 );
 
@@ -118,68 +119,76 @@ ALTER TABLE banco_reporta_pago ADD CONSTRAINT nueva_restricción_única_banco_re
 -- 
 ALTER TABLE banco_reporta_pago ADD CONSTRAINT nueva_restricción_fclave_banco_reporta_banco FOREIGN KEY (id_banco) REFERENCES banco(id_banco) ON UPDATE NO ACTION ON DELETE NO ACTION;
 
-
---
--- TABLE: adicionales
--- 
---  
-
-CREATE TABLE adicionales (
-  id_plan_adicionales int NOT NULL ,
-  adicionales_minutos_whatsapp int NOT NULL ,
-  adicionales_chat_whatsapp int NOT NULL ,
-  adicionales_chat_facebook int NOT NULL ,
-  adicionales_complejo int NOT NULL
-);
-CREATE SEQUENCE adicionales_plan_adicionales_id_seq START 1 INCREMENT 1 ;
-
-ALTER TABLE adicionales ALTER COLUMN id_plan_adicionales SET DEFAULT nextval('adicionales_plan_adicionales_id_seq');
-
--- 
-ALTER TABLE adicionales ADD CONSTRAINT nueva_restricción_única_adicionales PRIMARY KEY (id_plan_adicionales);
-
-INSERT INTO adicionales (id_plan_adicionales, adicionales_minutos_whatsapp, adicionales_chat_whatsapp, adicionales_chat_facebook, adicionales_complejo) VALUES (default, 500, 250, 250, 0);
-
-INSERT INTO adicionales (id_plan_adicionales, adicionales_minutos_whatsapp, adicionales_chat_whatsapp, adicionales_chat_facebook, adicionales_complejo) VALUES (default, 300, 250, 250, 0);
-
-INSERT INTO adicionales (id_plan_adicionales, adicionales_minutos_whatsapp, adicionales_chat_whatsapp, adicionales_chat_facebook, adicionales_complejo) VALUES (default, 600, 500, 500, 0);
-
-INSERT INTO adicionales (id_plan_adicionales, adicionales_minutos_whatsapp, adicionales_chat_whatsapp, adicionales_chat_facebook, adicionales_complejo) VALUES (default, 999999, 999999, 999999, 1);
-
-INSERT INTO adicionales (id_plan_adicionales, adicionales_minutos_whatsapp, adicionales_chat_whatsapp, adicionales_chat_facebook, adicionales_complejo) VALUES (default, 999999, 999999, 999999, 2);
-
 --
 -- TABLE: plan
--- 
---  
-
+--
+--
 CREATE TABLE plan (
   id_plan int NOT NULL ,
+  plan_nombre varchar(60) NOT NULL ,
   plan_costo int NOT NULL ,
   plan_minutos int NOT NULL ,
   plan_datos float NOT NULL ,
-  plan_mensajes int NOT NULL,
-  id_plan_adicionales int NOT NULL 
+  plan_mensajes int NOT NULL
 );
+
 CREATE SEQUENCE plan_plan_codigo_seq START 1 INCREMENT 1 ;
-
 ALTER TABLE plan ALTER COLUMN id_plan SET DEFAULT nextval('plan_plan_codigo_seq');
-
-
--- 
 ALTER TABLE plan ADD CONSTRAINT nueva_restricción_única_plan PRIMARY KEY (id_plan);
 
--- 
+--
+-- TABLE: voz
+--
+--
 
+CREATE TABLE voz (
+  id_voz int NOT NULL ,
+  voz_nombre varchar(60) NOT NULL ,
+  voz_minutos int NOT NULL
+);
 
--- 
-ALTER TABLE plan ADD CONSTRAINT nueva_restricción_fclave_plan_adicionales FOREIGN KEY (id_plan_adicionales) REFERENCES adicionales(id_plan_adicionales) ON UPDATE NO ACTION ON DELETE NO ACTION;
+CREATE SEQUENCE voz_codigo_seq START 1 INCREMENT 1 ;
+ALTER TABLE voz ALTER COLUMN id_voz SET DEFAULT nextval('voz_codigo_seq');
+ALTER TABLE voz ADD CONSTRAINT nueva_restricción_única_voz PRIMARY KEY (id_voz);
 
-INSERT INTO plan (id_plan, plan_costo, plan_minutos, plan_datos, plan_mensajes, id_plan_adicionales) VALUES (default, 30900, 250, 1.0, 100, 1);
-INSERT INTO plan (id_plan, plan_costo, plan_minutos, plan_datos, plan_mensajes, id_plan_adicionales) VALUES (default, 39900, 150, 4.5, 100, 2);
-INSERT INTO plan (id_plan, plan_costo, plan_minutos, plan_datos, plan_mensajes, id_plan_adicionales) VALUES (default, 49900, 300, 8.5, 100, 3);
-INSERT INTO plan (id_plan, plan_costo, plan_minutos, plan_datos, plan_mensajes, id_plan_adicionales) VALUES (default, 65000, 1000, 20.0, 999999, 4);
-INSERT INTO plan (id_plan, plan_costo, plan_minutos, plan_datos, plan_mensajes, id_plan_adicionales) VALUES (default, 100000, 999999, 30.0, 999999, 5);
+--
+-- TABLE: planes_voz
+--
+--
+
+CREATE TABLE planes_voz (
+  id_voz int NOT NULL,
+  id_plan int NOT NULL
+);
+ALTER TABLE planes_voz ADD CONSTRAINT nueva_restricción_fclave_voz_planes_voz FOREIGN KEY (id_voz) REFERENCES voz(id_voz) ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE planes_voz ADD CONSTRAINT nueva_restricción_fclave_plan_planes_voz FOREIGN KEY (id_plan) REFERENCES plan(id_plan) ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+--
+-- TABLE: aplicaciones
+--
+--
+
+CREATE TABLE aplicaciones (
+  id_aplicaciones int NOT NULL ,
+  aplicaciones_nombre varchar(60) NOT NULL ,
+  aplicaciones_megabytes int NOT NULL
+);
+
+CREATE SEQUENCE aplicaciones_codigo_seq START 1 INCREMENT 1 ;
+ALTER TABLE aplicaciones ALTER COLUMN id_aplicaciones SET DEFAULT nextval('aplicaciones_codigo_seq');
+ALTER TABLE aplicaciones ADD CONSTRAINT nueva_restricción_única_aplicaciones PRIMARY KEY (id_aplicaciones);
+
+--
+-- TABLE: planes_aplicaciones
+--
+--
+
+CREATE TABLE planes_aplicaciones (
+  id_aplicaciones int NOT NULL,
+  id_plan int NOT NULL
+);
+ALTER TABLE planes_aplicaciones ADD CONSTRAINT nueva_restricción_fclave_aplicaciones_planes_plan FOREIGN KEY (id_aplicaciones) REFERENCES aplicaciones(id_aplicaciones) ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE planes_aplicaciones ADD CONSTRAINT nueva_restricción_fclave_plan_planes_plan FOREIGN KEY (id_plan) REFERENCES plan(id_plan) ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 --
 -- TABLE: cliente_contrata_plan

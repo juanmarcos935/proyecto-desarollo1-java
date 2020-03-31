@@ -67,22 +67,6 @@ ALTER TABLE cliente ADD CONSTRAINT nueva_restricción_única_cliente PRIMARY KEY
 ALTER TABLE cliente ADD CONSTRAINT nueva_restricción_documento_unico_cliente UNIQUE (cliente_CC);
 
 -- 
-
-
---
--- TABLE: cliente_planes
--- 
---  
-
-CREATE TABLE cliente_planes(
-  id_cliente int NOT NULL ,
-  cliente_telefono varchar(60) NOT NULL,
-  id_plan int NOT NULL );
-ALTER TABLE cliente_pĺanes ADD CONSTRAINT nueva_restriccion_unica_cliente_planes UNIQUE (cliente_Telefono);
-
-ALTER TABLE cliente_planes ADD CONSTRAINT nueva_restricción_fclave_cliente_planes_id_cliente FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE cliente_planes ADD CONSTRAINT nueva_restricción_fclave_cliente_planes_id_plan FOREIGN KEY (id_plan) REFERENCES plan(id_plan) ON UPDATE NO ACTION ON DELETE NO ACTION;
  
 --
 -- TABLE: pago
@@ -153,6 +137,24 @@ CREATE TABLE plan (
 CREATE SEQUENCE plan_plan_codigo_seq START 1 INCREMENT 1 ;
 ALTER TABLE plan ALTER COLUMN id_plan SET DEFAULT nextval('plan_plan_codigo_seq');
 ALTER TABLE plan ADD CONSTRAINT nueva_restricción_única_plan PRIMARY KEY (id_plan);
+
+
+--
+-- TABLE: cliente_planes
+-- 
+--  
+
+CREATE TABLE cliente_planes (
+  id_cliente int NOT NULL ,
+  cliente_telefono varchar(60) NOT NULL,
+  id_plan int NOT NULL 
+);
+
+ALTER TABLE cliente_planes ADD CONSTRAINT nueva_restriccion_unica_cliente_planes UNIQUE (cliente_telefono);
+
+ALTER TABLE cliente_planes ADD CONSTRAINT nueva_restricción_fclave_cliente_planes_id_cliente FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE cliente_planes ADD CONSTRAINT nueva_restricción_fclave_cliente_planes_id_plan FOREIGN KEY (id_plan) REFERENCES plan(id_plan) ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 --
 -- TABLE: voz
@@ -240,8 +242,6 @@ ALTER TABLE cliente_contrata_plan ADD CONSTRAINT nueva_restricción_fclave_contr
 ALTER TABLE cliente_contrata_plan ADD CONSTRAINT nueva_restricción_fclave_contrata_plan_clienten FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 -- 
-
-
 --
 -- TABLE: consumo_adicionales
 -- 
@@ -270,6 +270,8 @@ CREATE TABLE gerente_registra_plan (
   id_cliente int  NOT NULL ,
   contrato_fecha date NOT NULL 
 );
+
+
 
 -- 
 ALTER TABLE gerente_registra_plan ADD CONSTRAINT nueva_restricción_fclave_gerente_registra_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON UPDATE NO ACTION ON DELETE NO ACTION;

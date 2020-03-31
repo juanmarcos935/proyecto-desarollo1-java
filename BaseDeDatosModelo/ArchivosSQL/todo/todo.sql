@@ -59,6 +59,7 @@ CREATE TABLE cliente (
 CREATE SEQUENCE cliente_cliente_codigo_seq START 1 INCREMENT 1 ;
 
 ALTER TABLE cliente ALTER COLUMN id_cliente SET DEFAULT nextval('cliente_cliente_codigo_seq');
+ALTER TABLE cliente ALTER COLUMN cliente_estado SET DEFAULT 1;
 
 -- 
 ALTER TABLE cliente ADD CONSTRAINT nueva_restricción_única_cliente PRIMARY KEY (id_cliente);

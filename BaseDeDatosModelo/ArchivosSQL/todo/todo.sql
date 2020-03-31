@@ -52,7 +52,6 @@ CREATE TABLE cliente (
   cliente_tipo int NOT NULL , 	
   cliente_nombre varchar(60) NOT NULL ,
   cliente_apellidos varchar(60),
-  cliente_telefono varchar(60) NOT NULL ,
   cliente_direccion varchar(60) NOT NULL ,
   cliente_ciudad varchar(60) NOT NULL ,
   cliente_estado int NOT NULL 
@@ -66,6 +65,22 @@ ALTER TABLE cliente ADD CONSTRAINT nueva_restricción_única_cliente PRIMARY KEY
 
 -- 
 
+
+--
+-- TABLE: cliente_planes
+-- 
+--  
+
+CREATE TABLE cliente_planes(
+  id_cliente int NOT NULL ,
+  cliente_telefono varchar(60) NOT NULL,
+  id_plan int NOT NULL );
+ALTER TABLE cliente_pĺanes ADD CONSTRAINT nueva_restriccion_unica_cliente_planes UNIQUE (cliente_Telefono);
+
+ALTER TABLE cliente_planes ADD CONSTRAINT nueva_restricción_fclave_cliente_planes_id_cliente FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE cliente_planes ADD CONSTRAINT nueva_restricción_fclave_cliente_planes_id_plan FOREIGN KEY (id_plan) REFERENCES plan(id_plan) ON UPDATE NO ACTION ON DELETE NO ACTION;
+ 
 --
 -- TABLE: pago
 -- 

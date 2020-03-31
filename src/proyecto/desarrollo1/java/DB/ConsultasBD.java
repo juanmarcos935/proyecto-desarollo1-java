@@ -103,6 +103,23 @@ public class ConsultasBD {
         }
     }
     
+    public int soloLoginTipo(String login) throws SQLException
+    {
+        String consulta_sql_login = "SELECT * FROM usuario WHERE usuario_login='" + login + "'" + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_login);
+        if(rs.next())
+        {   
+            int tipo = 0;
+            tipo = rs.getInt(2);
+            return tipo;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
     public int loginActivo(String login, String password) throws SQLException
     {
         String consulta_sql_login = "SELECT * FROM usuario WHERE usuario_login='" + login + "' AND usuario_password='" + password + "';";
@@ -166,50 +183,53 @@ public class ConsultasBD {
         String string5 = "";
         String string6 = "";
         String string7 = "";
-        if(tipo == 1)
-        {
-            string1 = "usuario_tipo = 1,";
-        }
-        else if(tipo == 2)
-        {
-            string1 = "usuario_tipo = 2,";
-        }
-        else if(tipo == 3)
-        {
-            string1 = "usuario_tipo = 3,";
+        switch (tipo) {
+            case 1:
+                string1 = "usuario_tipo = 1";
+                break;
+            case 2:
+                string1 = "usuario_tipo = 2";
+                break;
+            case 3:
+                string1 = "usuario_tipo = 3";
+                break;
+            default:
+                break;
         }
         
         if(!nombre.equals(""))
         {
-            string2 = "usuario_nombre = '" + nombre + "',";
+            string2 = ", usuario_nombre = '" + nombre + "'";
         }
         
         if(!apellido.equals(""))
         {
-            string3 = "usuario_apellidos = '" + apellido + "',";
+            string3 = ", usuario_apellidos = '" + apellido + "'";
         }
         
         if(!cedula.equals(""))
         {
-            string4 = "usuario_cc = '" + cedula + "',";
+            string4 = ", usuario_cc = '" + cedula + "'";
         }
         
         if(!telefono.equals(""))
         {
-            string5 = "usuario_telefono = '" + telefono + "',";
+            string5 = ", usuario_telefono = '" + telefono  + "'";
         }
         
         if(!login.equals(""))
         {
-            string6 = "usuario_login = '" + login + "',";
+            string6 = ", usuario_login = '" + login + "'";
         }
         
         if(!contraseña.equals(""))
         {
-            string7 = "usuario_password = '" + contraseña + "'";
+            string7 = ", usuario_password = '" + contraseña + "'";
         }
         
         String consulta_sql_modificar_usuario = "UPDATE usuario SET " + string1 + string2 + string3 + string4 + string5 + string6 + string7 + " WHERE usuario_login='" + loginviejo + "';";
+        System.out.println(consulta_sql_modificar_usuario);
+        
         try
         {
             Statement st = connec.createStatement();

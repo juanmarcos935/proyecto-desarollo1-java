@@ -69,7 +69,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jLabel30 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel24 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         jPasswordField2 = new javax.swing.JPasswordField();
         jPanel6 = new javax.swing.JPanel();
@@ -255,7 +255,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
 
-        jLabel24.setText("Confirmar contraseña:");
+        jLabel26.setText("Confirmar contraseña:");
 
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,7 +285,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
                             .addComponent(jLabel30)
-                            .addComponent(jLabel24))
+                            .addComponent(jLabel26))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBox1, 0, 229, Short.MAX_VALUE)
@@ -297,7 +297,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
                             .addComponent(jComboBox2, 0, 229, Short.MAX_VALUE)
                             .addComponent(jPasswordField1)
                             .addComponent(jPasswordField2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)))
                 .addComponent(jLabel29)
                 .addContainerGap())
         );
@@ -323,7 +323,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
                     .addComponent(jLabel29)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel24)
+                            .addComponent(jLabel26)
                             .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -333,7 +333,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
@@ -449,7 +449,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addGap(29, 29, 29)
-                                .addComponent(jComboBox3, 0, 387, Short.MAX_VALUE)
+                                .addComponent(jComboBox3, 0, 397, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
@@ -589,9 +589,9 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField14)
                             .addComponent(jComboBox4, 0, 279, Short.MAX_VALUE))
-                        .addGap(0, 24, Short.MAX_VALUE)))
+                        .addGap(0, 29, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -848,10 +848,36 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        String loginviejo = jTextField6.getText();
+        DAOUsuario daousuario = new DAOUsuario();
+        int tipo_inicial = 0;
+        
+        try {
+            tipo_inicial = daousuario.soloLoginTipo(loginviejo);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFrameAdminIntermedio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        int tipo = 0;
+
+        String string1 = jComboBox3.getSelectedItem().toString();
+        if(string1.equals("Administrador"))
+        {
+            tipo = 1;
+        }
+        else if(string1.equals("Operador"))
+        {
+            tipo = 2;
+        }
+        else if(string1.equals("Gerente"))
+        {
+            tipo = 3;
+        }
+        
         String password_3 = new String(jPasswordField3.getPassword());
         String password_4 = new String(jPasswordField4.getPassword());
         
-        if(jTextField8.getText().equals("") && jTextField9.getText().equals("") && jTextField10.getText().equals("") && jTextField11.getText().equals("") && jTextField12.getText().equals("") && password_3.equals("") && password_4.equals(""))
+        if(tipo_inicial == tipo && jTextField8.getText().equals("") && jTextField9.getText().equals("") && jTextField10.getText().equals("") && jTextField11.getText().equals("") && jTextField12.getText().equals("") && password_3.equals("") && password_4.equals(""))
         {
             JOptionPane.showMessageDialog(this, "No registró ningún cambio", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
         }
@@ -862,25 +888,6 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
         }
         else
         {
-            String loginviejo = jTextField6.getText();
-            DAOUsuario daousuario = new DAOUsuario();
-
-            int tipo = 0;
-
-            String string1 = jComboBox3.getSelectedItem().toString();
-            if(string1.equals("Administrador"))
-            {
-                tipo = 1;
-            }
-            else if(string1.equals("Operador"))
-            {
-                tipo = 2;
-            }
-            else if(string1.equals("Gerente"))
-            {
-                tipo = 3;
-            }
-
             String nombre2 = jTextField8.getText();
             String apellido3 = jTextField9.getText();
             String cedula4 = jTextField10.getText();
@@ -1096,6 +1103,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;

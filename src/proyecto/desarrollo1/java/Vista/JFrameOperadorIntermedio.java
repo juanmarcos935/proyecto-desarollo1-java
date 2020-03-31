@@ -41,13 +41,10 @@ public class JFrameOperadorIntermedio extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        jButton11 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("frame2"); // NOI18N
@@ -70,13 +67,6 @@ public class JFrameOperadorIntermedio extends javax.swing.JFrame {
 
         jLabel2.setText("Selecciona la acción que deseas ejecutar");
 
-        jButton1.setText("Registrar Clientes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jButton2.setText("Registrar pagos realizados por clientes");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,30 +86,23 @@ public class JFrameOperadorIntermedio extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(jLabel2)
-                .addGap(0, 312, Short.MAX_VALUE))
+                .addGap(221, 221, 221)
+                .addComponent(jButton4)
+                .addContainerGap(411, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(152, 152, 152)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jButton1)
-                        .addGap(127, 127, 127)
-                        .addComponent(jButton2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addComponent(jButton4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton2)
+                    .addComponent(jLabel2))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
                 .addGap(24, 24, 24)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
                 .addComponent(jButton4)
                 .addContainerGap(350, Short.MAX_VALUE))
         );
@@ -156,35 +139,6 @@ public class JFrameOperadorIntermedio extends javax.swing.JFrame {
         jPanel3.add(jPanel5, "jPanelCard5");
         jPanel5.getAccessibleContext().setAccessibleName("Registro de Clientes");
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro de clientes"));
-
-        jButton11.setText("Volver Atrás");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(234, 234, 234)
-                .addComponent(jButton11)
-                .addContainerGap(396, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(218, Short.MAX_VALUE)
-                .addComponent(jButton11)
-                .addGap(208, 208, 208))
-        );
-
-        jPanel3.add(jPanel6, "card4");
-        jPanel6.getAccessibleContext().setAccessibleName("Registrar Pagos");
-
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -197,21 +151,6 @@ public class JFrameOperadorIntermedio extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jPanel3.removeAll();
-        jPanel1.removeAll();
-        jPanel1.add(jLabel23);
-        jPanel3.add(jPanel6);
-        jPanel3.repaint();
-        jPanel3.revalidate();
-        jPanel1.repaint();
-        jPanel1.revalidate();
-        
-        /*JFrameAdminRegistroUsuario jframeregistro = new JFrameAdminRegistroUsuario();
-        jframeregistro.setTitle("Registro de Usuarios como Administrador");
-        jframeregistro.setVisible(true);*/
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jPanel3.removeAll();
@@ -235,18 +174,6 @@ public class JFrameOperadorIntermedio extends javax.swing.JFrame {
         jPanel1.revalidate();
 
     }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        
-        jPanel3.removeAll();
-        jPanel1.removeAll();
-        jPanel1.add(jLabel1);
-        jPanel3.add(jPanel2);
-        jPanel3.repaint();
-        jPanel3.revalidate();
-        jPanel1.repaint();
-        jPanel1.revalidate();
-    }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,9 +211,7 @@ public class JFrameOperadorIntermedio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -297,6 +222,5 @@ public class JFrameOperadorIntermedio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     // End of variables declaration//GEN-END:variables
 }

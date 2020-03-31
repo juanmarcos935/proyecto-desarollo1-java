@@ -57,10 +57,10 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
         jLabel1.setText("Ha iniciado sesión en Celusoft con privilegios de gerente");
         jPanel1.add(jLabel1, "card2");
 
-        jLabel20.setText("Has ingresado al módulo de Registro de pagos por parte del Operador");
+        jLabel20.setText("Has ingresado al módulo de Registro de clientes por parte del Gerente");
         jPanel1.add(jLabel20, "card7");
 
-        jLabel23.setText("Has ingresado al módulo de Cosulta de reportes por parte del Gerente");
+        jLabel23.setText("Has ingresado al módulo de Registro de ventas de planes por parte del Gerente");
         jPanel1.add(jLabel23, "card8");
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
@@ -76,7 +76,7 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Consultar reportes");
+        jButton2.setText("Registrar clientes");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -97,18 +97,17 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(152, 152, 152)
                 .addComponent(jLabel2)
-                .addGap(0, 312, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jButton1)
-                        .addGap(127, 127, 127)
-                        .addComponent(jButton2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addComponent(jButton4)))
+                .addGap(250, 250, 250)
+                .addComponent(jButton4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(112, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(74, 74, 74)
+                .addComponent(jButton1)
+                .addGap(227, 227, 227))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,8 +115,8 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(24, 24, 24)
                 .addComponent(jButton4)
                 .addContainerGap(350, Short.MAX_VALUE))
@@ -126,7 +125,7 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
         jPanel3.add(jPanel2, "jPanelCard2");
         jPanel2.getAccessibleContext().setAccessibleName("");
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Consulta de reportes"));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro de clientes"));
 
         jButton10.setText("Volver Atrás");
         jButton10.addActionListener(new java.awt.event.ActionListener() {

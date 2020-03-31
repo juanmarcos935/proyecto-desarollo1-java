@@ -38,12 +38,16 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -58,6 +62,10 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jButton11 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jButton12 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jButton13 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +80,12 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
 
         jLabel23.setText("Has ingresado al módulo de Registro de ventas de planes por parte del Gerente");
         jPanel1.add(jLabel23, "card8");
+
+        jLabel21.setText("Has ingresado al módulo de Modificación de Cliente por parte del Gerente");
+        jPanel1.add(jLabel21, "card7");
+
+        jLabel22.setText("Has ingresado al módulo de Suspención de servicios por parte del Gerente");
+        jPanel1.add(jLabel22, "card7");
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -100,24 +114,43 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Modificar clientes");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Suspender servicio de clientes");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addComponent(jButton4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(112, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(74, 74, 74)
-                .addComponent(jButton1)
-                .addGap(227, 227, 227))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(229, 229, 229)
+                        .addComponent(jButton4))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(186, 186, 186)
+                        .addComponent(jButton5))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(jLabel2)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,10 +159,13 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(24, 24, 24)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addGap(18, 18, 18)
+                .addComponent(jButton5)
+                .addGap(43, 43, 43)
                 .addComponent(jButton4)
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addContainerGap(320, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel2, "jPanelCard2");
@@ -180,7 +216,7 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
                             .addComponent(jTextField2)
                             .addComponent(jTextField3)
                             .addComponent(jTextField4))))
-                .addContainerGap(352, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,18 +265,74 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(234, 234, 234)
                 .addComponent(jButton11)
-                .addContainerGap(396, Short.MAX_VALUE))
+                .addContainerGap(263, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(218, Short.MAX_VALUE)
+                .addContainerGap(263, Short.MAX_VALUE)
                 .addComponent(jButton11)
                 .addGap(208, 208, 208))
         );
 
         jPanel3.add(jPanel6, "card4");
         jPanel6.getAccessibleContext().setAccessibleName("Registrar Pagos");
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Modificar clientes"));
+
+        jButton12.setText("Volver Atrás");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(249, 249, 249)
+                .addComponent(jButton12)
+                .addContainerGap(248, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addComponent(jButton12)
+                .addContainerGap(344, Short.MAX_VALUE))
+        );
+
+        jPanel3.add(jPanel4, "card5");
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Suspender servicio"));
+
+        jButton13.setText("Volver Atrás");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(254, Short.MAX_VALUE)
+                .addComponent(jButton13)
+                .addGap(243, 243, 243))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(jButton13)
+                .addContainerGap(334, Short.MAX_VALUE))
+        );
+
+        jPanel3.add(jPanel7, "card6");
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
@@ -305,6 +397,50 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
         jPanel1.revalidate();
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jPanel3.removeAll();
+        jPanel1.removeAll();
+        jPanel1.add(jLabel21);
+        jPanel3.add(jPanel4);
+        jPanel3.repaint();
+        jPanel3.revalidate();
+        jPanel1.repaint();
+        jPanel1.revalidate();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        jPanel3.removeAll();
+        jPanel1.removeAll();
+        jPanel1.add(jLabel22);
+        jPanel3.add(jPanel7);
+        jPanel3.repaint();
+        jPanel3.revalidate();
+        jPanel1.repaint();
+        jPanel1.revalidate();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        jPanel3.removeAll();
+        jPanel1.removeAll();
+        jPanel1.add(jLabel1);
+        jPanel3.add(jPanel2);
+        jPanel3.repaint();
+        jPanel3.revalidate();
+        jPanel1.repaint();
+        jPanel1.revalidate();
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        jPanel3.removeAll();
+        jPanel1.removeAll();
+        jPanel1.add(jLabel1);
+        jPanel3.add(jPanel2);
+        jPanel3.repaint();
+        jPanel3.revalidate();
+        jPanel1.repaint();
+        jPanel1.revalidate();
+    }//GEN-LAST:event_jButton13ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -344,12 +480,18 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -359,8 +501,10 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

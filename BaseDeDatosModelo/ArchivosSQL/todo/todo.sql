@@ -129,8 +129,7 @@ CREATE TABLE adicionales (
   adicionales_minutos_whatsapp int NOT NULL ,
   adicionales_chat_whatsapp int NOT NULL ,
   adicionales_chat_facebook int NOT NULL ,
-  adicionales_complejo1 boolean NOT NULL ,
-  adicionales_complejo2 boolean NOT NULL 
+  adicionales_complejo int NOT NULL
 );
 CREATE SEQUENCE adicionales_plan_adicionales_id_seq START 1 INCREMENT 1 ;
 
@@ -139,6 +138,15 @@ ALTER TABLE adicionales ALTER COLUMN id_plan_adicionales SET DEFAULT nextval('ad
 -- 
 ALTER TABLE adicionales ADD CONSTRAINT nueva_restricción_única_adicionales PRIMARY KEY (id_plan_adicionales);
 
+INSERT INTO adicionales (id_plan_adicionales, adicionales_minutos_whatsapp, adicionales_chat_whatsapp, adicionales_chat_facebook, adicionales_complejo) VALUES (default, 500, 250, 250, 0);
+
+INSERT INTO adicionales (id_plan_adicionales, adicionales_minutos_whatsapp, adicionales_chat_whatsapp, adicionales_chat_facebook, adicionales_complejo) VALUES (default, 300, 250, 250, 0);
+
+INSERT INTO adicionales (id_plan_adicionales, adicionales_minutos_whatsapp, adicionales_chat_whatsapp, adicionales_chat_facebook, adicionales_complejo) VALUES (default, 600, 500, 500, 0);
+
+INSERT INTO adicionales (id_plan_adicionales, adicionales_minutos_whatsapp, adicionales_chat_whatsapp, adicionales_chat_facebook, adicionales_complejo) VALUES (default, 999999, 999999, 999999, 1);
+
+INSERT INTO adicionales (id_plan_adicionales, adicionales_minutos_whatsapp, adicionales_chat_whatsapp, adicionales_chat_facebook, adicionales_complejo) VALUES (default, 999999, 999999, 999999, 2);
 
 --
 -- TABLE: plan
@@ -147,10 +155,10 @@ ALTER TABLE adicionales ADD CONSTRAINT nueva_restricción_única_adicionales PRI
 
 CREATE TABLE plan (
   id_plan int NOT NULL ,
+  plan_costo int NOT NULL ,
   plan_minutos int NOT NULL ,
-  plan_datos int NOT NULL ,
+  plan_datos float NOT NULL ,
   plan_mensajes int NOT NULL,
-  plan_costo float NOT NULL ,
   id_plan_adicionales int NOT NULL 
 );
 CREATE SEQUENCE plan_plan_codigo_seq START 1 INCREMENT 1 ;
@@ -167,6 +175,11 @@ ALTER TABLE plan ADD CONSTRAINT nueva_restricción_única_plan PRIMARY KEY (id_p
 -- 
 ALTER TABLE plan ADD CONSTRAINT nueva_restricción_fclave_plan_adicionales FOREIGN KEY (id_plan_adicionales) REFERENCES adicionales(id_plan_adicionales) ON UPDATE NO ACTION ON DELETE NO ACTION;
 
+INSERT INTO plan (id_plan, plan_costo, plan_minutos, plan_datos, plan_mensajes, id_plan_adicionales) VALUES (default, 30900, 250, 1.0, 100, 1);
+INSERT INTO plan (id_plan, plan_costo, plan_minutos, plan_datos, plan_mensajes, id_plan_adicionales) VALUES (default, 39900, 150, 4.5, 100, 2);
+INSERT INTO plan (id_plan, plan_costo, plan_minutos, plan_datos, plan_mensajes, id_plan_adicionales) VALUES (default, 49900, 300, 8.5, 100, 3);
+INSERT INTO plan (id_plan, plan_costo, plan_minutos, plan_datos, plan_mensajes, id_plan_adicionales) VALUES (default, 65000, 1000, 20.0, 999999, 4);
+INSERT INTO plan (id_plan, plan_costo, plan_minutos, plan_datos, plan_mensajes, id_plan_adicionales) VALUES (default, 100000, 999999, 30.0, 999999, 5);
 
 --
 -- TABLE: cliente_contrata_plan
@@ -178,7 +191,7 @@ CREATE TABLE cliente_contrata_plan (
   id_cliente int NOT NULL ,
   id_plan int NOT NULL ,
   contrato_fecha_corte date NOT NULL ,
-  contrato_costo float NOT NULL ,
+  contrato_costo int NOT NULL ,
   contrato_mensajes_consumidos int NOT NULL  DEFAULT 0,
   contrato_datos_consumidos int NOT NULL  DEFAULT 0,
   contrato_min_consumidos int NOT NULL  DEFAULT 0
@@ -240,4 +253,5 @@ ALTER TABLE gerente_registra_plan ADD CONSTRAINT nueva_restricción_fclave_geren
 -- 
 ALTER TABLE gerente_registra_plan ADD CONSTRAINT nueva_restricción_fclave__gerente_registra_cliente FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON UPDATE NO ACTION ON DELETE NO ACTION;
 
+INSERT INTO usuario (id_usuario, usuario_tipo, usuario_login, usuario_password, usuario_nombre, usuario_apellidos, usuario_cc, usuario_telefono, usuario_estado) VALUES (default, 1, 'admin', 'admin', 'juan', 'mejia', '0123456789', '4881551', 1);
 

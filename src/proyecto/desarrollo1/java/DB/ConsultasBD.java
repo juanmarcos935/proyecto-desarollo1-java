@@ -144,6 +144,7 @@ public class ConsultasBD {
         String consulta_sql_login = "SELECT * FROM usuario WHERE usuario_login='" + login + "'" + ";";
         Statement st = connec.createStatement();
         ResultSet rs = st.executeQuery(consulta_sql_login);
+        rs.next();
         Usuario miUsuario; 
         miUsuario = new Usuario(rs.getInt(1),rs.getInt(2),rs.getString(3),
                                 rs.getString(4),rs.getString(5),rs.getString(6),

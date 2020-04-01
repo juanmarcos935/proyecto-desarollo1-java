@@ -284,3 +284,13 @@ ALTER TABLE gerente_registra_plan ADD CONSTRAINT nueva_restricción_fclave__gere
 
 INSERT INTO usuario (id_usuario, usuario_tipo, usuario_login, usuario_password, usuario_nombre, usuario_apellidos, usuario_cc, usuario_telefono, usuario_estado) VALUES (default, 1, 'admin', 'admin', 'juan', 'mejia', '0123456789', '4881551', 1);
 
+INSERT INTO usuario (id_usuario, usuario_tipo, usuario_login, usuario_password, usuario_nombre, usuario_apellidos, usuario_cc, usuario_telefono, usuario_estado) VALUES (default, 1, 'admin2', 'admin2', 'david', 'ospina', '7788332122', '3212121', 0);
+
+INSERT INTO usuario (id_usuario, usuario_tipo, usuario_login, usuario_password, usuario_nombre, usuario_apellidos, usuario_cc, usuario_telefono, usuario_estado) VALUES (default, 2, 'gerente', 'gerente', 'james', 'rodriguez', '9876543210', '3991516', 1);
+
+INSERT INTO usuario (id_usuario, usuario_tipo, usuario_login, usuario_password, usuario_nombre, usuario_apellidos, usuario_cc, usuario_telefono, usuario_estado) VALUES (default, 2, 'gerente2', 'gerente2', 'santiago', 'arias', '7788280192', '3455679', 0);
+
+INSERT INTO usuario (id_usuario, usuario_tipo, usuario_login, usuario_password, usuario_nombre, usuario_apellidos, usuario_cc, usuario_telefono, usuario_estado) VALUES (default, 3, 'operador', 'operador', 'juan', 'cuadrado', '1112223334', '3789001', 1);
+
+INSERT INTO usuario (id_usuario, usuario_tipo, usuario_login, usuario_password, usuario_nombre, usuario_apellidos, usuario_cc, usuario_telefono, usuario_estado) VALUES (default, 3, 'operador2', 'operador2', 'juan', 'quintero', '9911990120', '3556189', 0);
+

@@ -6,6 +6,8 @@
 package proyecto.desarrollo1.java.Control;
 
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import proyecto.desarrollo1.java.DB.ConsultasBD;
 import proyecto.desarrollo1.java.Modelo.Cliente;
 
@@ -33,4 +35,30 @@ public class DAOCliente {
         return response;
     }
     
+    public int clienteIdConCedula(String cedula) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int response = consultorBD.clienteIdConCedula(cedula);
+        consultorBD.cerrarConexion();
+        return response;
+    }
+    
+    public int planIdConNombre(String plan_nombre) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int response = consultorBD.planIdConNombre(plan_nombre);
+        consultorBD.cerrarConexion();
+        return response;
+    }
+    
+    public void registrarPlan(int id_plan, int id_cliente, String telefono)
+    {
+        try {
+            consultorBD.empezarConexion();
+            consultorBD.registrarPlan(id_plan, id_cliente, telefono);
+            consultorBD.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -5,15 +5,17 @@
  */
 package proyecto.desarrollo1.java.DB;
 
+
 import proyecto.desarrollo1.java.Modelo.Cliente;
 import proyecto.desarrollo1.java.Modelo.Usuario;
-
 import proyecto.desarrollo1.java.Vista.JFramePrincipal;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.*;
+import java.sql.*;
 
 /**
  *
@@ -276,5 +278,58 @@ public class ConsultasBD {
         }
         
     }
+    
+    public int clienteIdConCedula(String cedula) throws SQLException
+    {
+        int idCliente = 0;
+        String consulta_sql_cliente_cedula = "SELECT * FROM cliente WHERE cliente_cc = '" + cedula + "';";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_cliente_cedula);
+        if(rs.next())
+        {
+            idCliente = rs.getInt(1);
+            return idCliente;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
+    public int planIdConNombre(String plan_nombre) throws SQLException
+    {
+        int idPlan = 0;
+        String consulta_sql_planid_nombre = "SELECT * FROM plan WHERE plan_nombre = '" + plan_nombre + "';";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            idPlan = rs.getInt(1);
+            return idPlan;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
+    public void registrarPlan(int id_plan, int id_cliente, String telefono) throws SQLException
+    {
+        int operacion;
+        LocalDateTime localdatetime = LocalDateTime.now();
+        String consulta_sql_registrar_plan;
+        consulta_sql_registrar_plan = "INSERT INTO cliente_contrata_plan (id_contrato, id_cliente, id_plan, cliente_telefono, contrato_fecha, contrato_mensajes_consumidos, contrato_datos_consumidos, contrato_min_consumidos) VALUES (default, " + id_cliente + "," + id_plan + ", '" + telefono + "', '" + java.sql.Timestamp.valueOf(localdatetime) + "', default, default, default);";
+        try
+        {
+            Statement st = connec.createStatement();
+            operacion = st.executeUpdate(consulta_sql_registrar_plan);
+            System.out.println("Registro de plan exitoso");
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
     
 }

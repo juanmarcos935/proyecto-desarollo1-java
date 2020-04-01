@@ -316,8 +316,18 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plan 1", "Plan 2", "Plan 3", "Plan 4", "Plan 5" }));
 
         jButton8.setText("Guardar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setText("Buscar");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -326,12 +336,11 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel16)
                             .addComponent(jLabel18)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel17)))
+                            .addComponent(jLabel17))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.LEADING, 0, 151, Short.MAX_VALUE)
@@ -751,6 +760,55 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_BclienteBuscarActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        try {
+            String cedulaCliente = jTextField10.getText();
+            
+            DAOCliente daocliente = new DAOCliente();
+            int idCliente = daocliente.clienteIdConCedula(cedulaCliente);
+            
+            if(idCliente == -1)
+            {
+                JOptionPane.showMessageDialog(this, "Cliente no encontrado en Base de Datos", "Cliente inexistente", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Cliente encontrado en Base de Datos", "Cliente existente", JOptionPane.INFORMATION_MESSAGE);
+                jComboBox3.repaint();
+                jComboBox3.setEnabled(true);
+                jTextField11.repaint();
+                jTextField11.setEnabled(true);
+                jButton8.repaint();
+                jButton8.setEnabled(true);
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(JFrameGerenteIntermedio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        try 
+        {
+            String cedulaCliente = jTextField10.getText();
+            DAOCliente daocliente = new DAOCliente();
+            int idCliente = daocliente.clienteIdConCedula(cedulaCliente);
+            
+            String plan_nombre = jComboBox3.getSelectedItem().toString();
+            int idPlan = daocliente.planIdConNombre(plan_nombre);
+            
+            String linea_telefonica = jTextField11.getText();
+            
+            daocliente.registrarPlan(idPlan, idCliente, linea_telefonica);
+            JOptionPane.showMessageDialog(this, "Registro de plan exitoso");
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(JFrameGerenteIntermedio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments

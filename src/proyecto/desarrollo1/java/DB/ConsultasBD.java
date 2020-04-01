@@ -157,6 +157,22 @@ public class ConsultasBD {
         }
     }
     
+    public void registrarCliente(Cliente client) throws SQLException
+    {
+        int operacion;
+        String consulta_sql_registrar_cliente = "INSERT INTO cliente (id_cliente, cliente_tipo, cliente_nombre, cliente_apellidos, cliente_direccion, cliente_ciudad, cliente_cc, cliente_estado) VALUES (default, " + client.getTipo() + ", '" + client.getNombre() + "', '" + client.getApellido() + "', '" + client.getDireccion() + "', '" + client.getCiudad() + "', '" + client.getCedula() + "', default);";
+        try
+        {
+            Statement st = connec.createStatement();
+            operacion = st.executeUpdate(consulta_sql_registrar_cliente);
+            System.out.println("Registro de cliente exitoso");
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
     public void cambiarEstado(String loginviejo, int activo)
     {
         int operacion;

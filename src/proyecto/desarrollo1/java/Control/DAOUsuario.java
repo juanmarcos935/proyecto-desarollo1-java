@@ -13,15 +13,13 @@ import proyecto.desarrollo1.java.Modelo.Usuario;
 public class DAOUsuario {
     
     private ConsultasBD consultorBD = new ConsultasBD();
-    private int autoincrement = 3;
     
     public void registrarUsuario(int tipo, String login, String password, String nombre, String apellido, String cedula, String telefono, int activo) throws SQLException
     {
-        Usuario user = new Usuario(autoincrement, tipo, login, password, nombre, apellido, cedula, telefono, activo);
+        Usuario user = new Usuario(1, tipo, login, password, nombre, apellido, cedula, telefono, activo);
         consultorBD.empezarConexion();
         consultorBD.registrarUsuario(user);
         consultorBD.cerrarConexion();
-        autoincrement++;
     }
     
     public int loginUsuarioTipo(String login, String password) throws SQLException

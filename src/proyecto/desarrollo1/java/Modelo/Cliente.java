@@ -14,19 +14,19 @@ public class Cliente {
     private int tipo;
     private String nombre;
     private String apellido;
-    private String telefono;
     private String direccion;
     private String ciudad;
+    private String cedula;
     private int estado; 
 
-    public Cliente(int id, int tipo, String nombre, String apellido, String telefono, String direccion, String ciudad, int estado) {
+    public Cliente(int id, int tipo, String nombre, String apellido, String direccion, String ciudad, String cedula, int estado) {
         this.id = id;
         this.tipo = tipo;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.telefono = telefono;
         this.direccion = direccion;
         this.ciudad = ciudad;
+        this.cedula = cedula;
         this.estado = estado;
     }
 
@@ -62,14 +62,6 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
     public String getDireccion() {
         return direccion;
     }
@@ -86,6 +78,14 @@ public class Cliente {
         this.ciudad = ciudad;
     }
 
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
     public int getEstado() {
         return estado;
     }
@@ -93,6 +93,7 @@ public class Cliente {
     public void setEstado(int estado) {
         this.estado = estado;
     }
+
     
     
 }

@@ -712,9 +712,9 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
         String password_1 = new String(jPasswordField1.getPassword());
         String password_2 = new String(jPasswordField2.getPassword());
         
-        if(jTextField1.getText().equals("") || password_1.equals("") || password_2.equals("") || jTextField3.getText().equals("") || jTextField4.getText().equals("") || jTextField5.getText().equals("") || jTextField7.getText().equals(""))
+        if(jTextField1.getText().equals("") && password_1.equals("") && password_2.equals("") && jTextField3.getText().equals("") && jTextField4.getText().equals("") && jTextField5.getText().equals("") && jTextField7.getText().equals(""))
         {
-            JOptionPane.showMessageDialog(this, "Uno o mas campos vacíos", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos del registro", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
         }
         else
         if(!password_1.equals(password_2))

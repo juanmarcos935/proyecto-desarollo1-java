@@ -745,7 +745,7 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
         }
         else
         {
-            String cedula = TFclienteCedula.getText();
+            String cedula = TFclienteCedula.getText().trim();
             DAOCliente daocliente = new DAOCliente();
             
 

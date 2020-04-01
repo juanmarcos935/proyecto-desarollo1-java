@@ -18,11 +18,15 @@ import proyecto.desarrollo1.java.Control.DAOUsuario;
  */
 public class JFrameOperadorIntermedio extends javax.swing.JFrame {
 
+    private final int id_usuario;
+
     /**
      * Creates new form JFrameAdminIntermedio
      */
-    public JFrameOperadorIntermedio() {
+    public JFrameOperadorIntermedio(int id_usuario_) {
         initComponents();
+        this.id_usuario = id_usuario_;
+        System.out.println("id de usuario (operador): " + id_usuario);
     }
 
     /**
@@ -205,7 +209,6 @@ public class JFrameOperadorIntermedio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameOperadorIntermedio().setVisible(true);
             }
         });
     }

@@ -71,6 +71,14 @@ public class DAOUsuario {
         return response;
     }
     
+    public int soloLoginId(String login) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int response = consultorBD.soloLoginId(login);
+        consultorBD.cerrarConexion();
+        return response;
+    }
+    
     public void modificarUsuario(String loginviejo, int tipo, String nombre, String apellido, String cedula, String telefono, String login, String contraseña) throws SQLException
     {
         consultorBD.empezarConexion();

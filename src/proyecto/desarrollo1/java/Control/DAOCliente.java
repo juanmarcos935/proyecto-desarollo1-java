@@ -51,14 +51,25 @@ public class DAOCliente {
         return response;
     }
     
-    public void registrarPlan(int id_plan, int id_cliente, String telefono)
+    public void registrarPlan(int id_plan, int id_cliente, String telefono) throws SQLException
     {
-        try {
-            consultorBD.empezarConexion();
-            consultorBD.registrarPlan(id_plan, id_cliente, telefono);
-            consultorBD.cerrarConexion();
-        } catch (SQLException ex) {
-            Logger.getLogger(DAOCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        consultorBD.empezarConexion();
+        consultorBD.registrarPlan(id_plan, id_cliente, telefono);
+        consultorBD.cerrarConexion();
+    }
+    
+    public int contratoIdConIdPlanIdClienteTelefono(int id_plan, int id_cliente, String telefono) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int response = consultorBD.contratoIdConIdPlanIdClienteTelefono(id_plan, id_cliente, telefono);
+        consultorBD.cerrarConexion();
+        return response;
+    }
+    
+    public void registrarGerentePlan(int id_contrato, int id_usuario) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        consultorBD.registrarGerentePlan(id_contrato, id_usuario);
+        consultorBD.cerrarConexion();
     }
 }

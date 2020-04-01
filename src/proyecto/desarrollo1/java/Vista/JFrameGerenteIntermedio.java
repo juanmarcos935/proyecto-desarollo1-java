@@ -17,11 +17,15 @@ import proyecto.desarrollo1.java.Control.DAOCliente;
  */
 public class JFrameGerenteIntermedio extends javax.swing.JFrame {
 
+    private final int id_usuario;
+
     /**
      * Creates new form JFrameAdminIntermedio
      */
-    public JFrameGerenteIntermedio() {
+    public JFrameGerenteIntermedio(int id_usuario_) {
         initComponents();
+        this.id_usuario = id_usuario_;
+        System.out.println("id de usuario (gerente): " + id_usuario);
     }
 
     /**
@@ -802,6 +806,11 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
             String linea_telefonica = jTextField11.getText();
             
             daocliente.registrarPlan(idPlan, idCliente, linea_telefonica);
+            
+            int idContrato = daocliente.contratoIdConIdPlanIdClienteTelefono(idPlan, idCliente, linea_telefonica);
+            
+            daocliente.registrarGerentePlan(idContrato, id_usuario);
+            
             JOptionPane.showMessageDialog(this, "Registro de plan exitoso");
         } 
         catch (SQLException ex) 
@@ -840,7 +849,6 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameGerenteIntermedio().setVisible(true);
             }
         });
     }

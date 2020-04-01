@@ -122,6 +122,23 @@ public class ConsultasBD {
         }
     }
     
+    public int soloLoginId(String login) throws SQLException
+    {
+        String consulta_sql_login = "SELECT * FROM usuario WHERE usuario_login='" + login + "'" + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_login);
+        if(rs.next())
+        {   
+            int id = 0;
+            id = rs.getInt(1);
+            return id;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
     public int loginActivo(String login, String password) throws SQLException
     {
         String consulta_sql_login = "SELECT * FROM usuario WHERE usuario_login='" + login + "' AND usuario_password='" + password + "';";
@@ -324,6 +341,40 @@ public class ConsultasBD {
             Statement st = connec.createStatement();
             operacion = st.executeUpdate(consulta_sql_registrar_plan);
             System.out.println("Registro de plan exitoso");
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public int contratoIdConIdPlanIdClienteTelefono(int id_plan, int id_cliente, String telefono) throws SQLException
+    {
+        int idContrato = 0;
+        String consulta_sql_contratoid = "SELECT * FROM cliente_contrata_plan WHERE id_cliente = " + id_cliente + " AND id_plan = " + id_plan + " AND cliente_telefono = '" + telefono + "';";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_contratoid);
+        if(rs.next())
+        {
+            idContrato = rs.getInt(1);
+            return idContrato;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
+    public void registrarGerentePlan(int id_contrato, int id_usuario) throws SQLException
+    {
+        int operacion;
+        String consulta_sql_registrar_gerente_plan;
+        consulta_sql_registrar_gerente_plan = "INSERT INTO gerente_registra_plan (id_usuario, id_contrato) VALUES (" + id_usuario + "," + id_contrato + ");";
+        try
+        {
+            Statement st = connec.createStatement();
+            operacion = st.executeUpdate(consulta_sql_registrar_gerente_plan);
+            System.out.println("Registro de gerente plan exitoso");
         }
         catch(SQLException e)
         {

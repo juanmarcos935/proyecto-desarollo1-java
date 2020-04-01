@@ -22,8 +22,12 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
      * Creates new form JFrameAdminIntermedio
      */
     int activo_inicial;
-    public JFrameAdminIntermedio() {
+    private final int id_usuario;
+    
+    public JFrameAdminIntermedio(int id_usuario_) {
         initComponents();
+        this.id_usuario = id_usuario_;
+        System.out.println("id de usuario (administrador): " + id_usuario);
     }
 
     /**
@@ -1061,7 +1065,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameAdminIntermedio().setVisible(true);
+                
             }
         });
     }

@@ -172,59 +172,71 @@ public class JFramePrincipal extends javax.swing.JFrame {
         else
         {
             
-            int response = 0, response2 = 0;
-
-            DAOUsuario daousuario = new DAOUsuario();
-            
-            
                 try {
-                    response = daousuario.loginUsuarioActivo(login, password);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    response2 = daousuario.soloLoginTipo(login);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-                System.out.println("response: " + response);
-                System.out.println("response2: " + response2);
-                
-            switch (response) {
-                case -1:
-                    JOptionPane.showMessageDialog(this, "Login y/o contraseña incorrectos", "Error en credenciales", JOptionPane.ERROR_MESSAGE);
-                    break;
-                case 0:
-                    JOptionPane.showMessageDialog(this, "Su usuario se encuentra desactivado, por favor contacte al administrador del sistema", "Usuario desactivado", JOptionPane.ERROR_MESSAGE);
-                    break;
-                case 1:
-                    switch (response2) {
+                    
+                    int response = 0, response2 = 0, response3 = 0;
+                    
+                    DAOUsuario daousuario = new DAOUsuario();
+                    
+                    
+                    try {
+                        response = daousuario.loginUsuarioActivo(login, password);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {
+                        response2 = daousuario.soloLoginTipo(login);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    System.out.println("response: " + response);
+                    System.out.println("response2: " + response2);
+                    
+                    switch (response) {
+                        case -1:
+                            JOptionPane.showMessageDialog(this, "Login y/o contraseña incorrectos", "Error en credenciales", JOptionPane.ERROR_MESSAGE);
+                            break;
+                        case 0:
+                            JOptionPane.showMessageDialog(this, "Su usuario se encuentra desactivado, por favor contacte al administrador del sistema", "Usuario desactivado", JOptionPane.ERROR_MESSAGE);
+                            break;
                         case 1:
-                            JOptionPane.showMessageDialog(this, "Inicio Sesión Exitoso como Administrador", "Entrando a Celusoft como Administrador", JOptionPane.INFORMATION_MESSAGE);
-                            JFrameAdminIntermedio jframeadmin = new JFrameAdminIntermedio();
-                            jframeadmin.setTitle("Celusoft como Administrador");
-                            jframeadmin.setVisible(true);
-                            break;
-                        case 2:
-                            JOptionPane.showMessageDialog(this, "Inicio Sesión Exitoso como Gerente", "Entrando a Celusoft como Gerente", JOptionPane.INFORMATION_MESSAGE);
-                            JFrameGerenteIntermedio jframegerente = new JFrameGerenteIntermedio();
-                            jframegerente.setTitle("Celusoft como Gerente");
-                            jframegerente.setVisible(true);
-                            break;
-                        case 3:
-                            JOptionPane.showMessageDialog(this, "Inicio Sesión Exitoso como Operador", "Entrando a Celusoft como Operador", JOptionPane.INFORMATION_MESSAGE);
-                            JFrameOperadorIntermedio jframeoperador = new JFrameOperadorIntermedio();
-                            jframeoperador.setTitle("Celusoft como Operador");
-                            jframeoperador.setVisible(true);
+                            switch (response2) {
+                                case 1:
+                                    JOptionPane.showMessageDialog(this, "Inicio Sesión Exitoso como Administrador", "Entrando a Celusoft como Administrador", JOptionPane.INFORMATION_MESSAGE);
+                                    response3 = daousuario.soloLoginId(login);
+                                    JFrameAdminIntermedio jframeadmin = new JFrameAdminIntermedio(response3);
+                                    jframeadmin.setTitle("Celusoft como Administrador");
+                                    jframeadmin.setVisible(true);
+                                    break;
+                                case 2:
+                                    JOptionPane.showMessageDialog(this, "Inicio Sesión Exitoso como Gerente", "Entrando a Celusoft como Gerente", JOptionPane.INFORMATION_MESSAGE);
+                                    response3 = daousuario.soloLoginId(login);
+                                    JFrameGerenteIntermedio jframegerente = new JFrameGerenteIntermedio(response3);
+                                    jframegerente.setTitle("Celusoft como Gerente");
+                                    jframegerente.setVisible(true);
+                                    break;
+                                case 3:
+                                    JOptionPane.showMessageDialog(this, "Inicio Sesión Exitoso como Operador", "Entrando a Celusoft como Operador", JOptionPane.INFORMATION_MESSAGE);
+                                    response3 = daousuario.soloLoginId(login);
+                                    JFrameOperadorIntermedio jframeoperador = new JFrameOperadorIntermedio(response3);
+                                    jframeoperador.setTitle("Celusoft como Operador");
+                                    jframeoperador.setVisible(true);
+                                    break;
+                                default:
+                                    break;
+                            }
                             break;
                         default:
                             break;
                     }
-                    break;
-                default:
-                    break;
-            }
+                    
+                    
+                    
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
                 
 

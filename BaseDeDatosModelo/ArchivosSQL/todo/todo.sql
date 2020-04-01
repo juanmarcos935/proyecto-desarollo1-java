@@ -66,6 +66,8 @@ ALTER TABLE cliente ALTER COLUMN cliente_estado SET DEFAULT 1;
 ALTER TABLE cliente ADD CONSTRAINT nueva_restricción_única_cliente PRIMARY KEY (id_cliente);
 ALTER TABLE cliente ADD CONSTRAINT nueva_restricción_documento_unico_cliente UNIQUE (cliente_CC);
 
+INSERT INTO cliente (id_cliente, cliente_tipo, cliente_nombre, cliente_apellidos, cliente_direccion, cliente_ciudad, cliente_cc, cliente_estado) VALUES (default, 1, 'cristian', 'pascumal', 'Calle 9D #26-34', 'El Placer', '1144982379', default);
+
 -- 
  
 --
@@ -208,7 +210,7 @@ CREATE TABLE cliente_contrata_plan (
   id_cliente int NOT NULL ,
   id_plan int NOT NULL ,
   cliente_telefono varchar(60) NOT NULL,
-  contrato_fecha date NOT NULL ,
+  contrato_fecha timestamp NOT NULL ,
   contrato_mensajes_consumidos int NOT NULL  DEFAULT 0,
   contrato_datos_consumidos int NOT NULL  DEFAULT 0,
   contrato_min_consumidos int NOT NULL  DEFAULT 0

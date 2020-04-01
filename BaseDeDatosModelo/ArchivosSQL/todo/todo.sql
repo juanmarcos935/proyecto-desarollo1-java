@@ -138,23 +138,11 @@ CREATE SEQUENCE plan_plan_codigo_seq START 1 INCREMENT 1 ;
 ALTER TABLE plan ALTER COLUMN id_plan SET DEFAULT nextval('plan_plan_codigo_seq');
 ALTER TABLE plan ADD CONSTRAINT nueva_restricción_única_plan PRIMARY KEY (id_plan);
 
-
---
--- TABLE: cliente_planes
--- 
---  
-
-CREATE TABLE cliente_planes (
-  id_cliente int NOT NULL ,
-  cliente_telefono varchar(60) NOT NULL,
-  id_plan int NOT NULL 
-);
-
-ALTER TABLE cliente_planes ADD CONSTRAINT nueva_restriccion_unica_cliente_planes UNIQUE (cliente_telefono);
-
-ALTER TABLE cliente_planes ADD CONSTRAINT nueva_restricción_fclave_cliente_planes_id_cliente FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-ALTER TABLE cliente_planes ADD CONSTRAINT nueva_restricción_fclave_cliente_planes_id_plan FOREIGN KEY (id_plan) REFERENCES plan(id_plan) ON UPDATE NO ACTION ON DELETE NO ACTION;
+INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes) VALUES (default, 'Plan 1', 30900, 250, 1, 100);
+INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes) VALUES (default, 'Plan 2', 39900, 150, 4.5, 100);
+INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes) VALUES (default, 'Plan 3', 49900, 300, 8.5, 100);
+INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes) VALUES (default, 'Plan 4', 65000, 1000, 20, 9999999);
+INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes) VALUES (default, 'Plan 5', 100000, 9999999, 30, 9999999);
 
 --
 -- TABLE: voz
@@ -219,6 +207,7 @@ CREATE TABLE cliente_contrata_plan (
   id_contrato int NOT NULL ,
   id_cliente int NOT NULL ,
   id_plan int NOT NULL ,
+  cliente_telefono varchar(60) NOT NULL,
   contrato_fecha_corte date NOT NULL ,
   contrato_costo int NOT NULL ,
   contrato_mensajes_consumidos int NOT NULL  DEFAULT 0,
@@ -226,6 +215,8 @@ CREATE TABLE cliente_contrata_plan (
   contrato_min_consumidos int NOT NULL  DEFAULT 0
 );
 CREATE SEQUENCE cliente_contrata_plan_contrato_codigo_seq START 1 INCREMENT 1 ;
+
+ALTER TABLE cliente_contrata_plan ADD CONSTRAINT nueva_restriccion_unica_telefono_cliente_planes UNIQUE (cliente_telefono);
 
 ALTER TABLE cliente_contrata_plan ALTER COLUMN id_contrato SET DEFAULT nextval('cliente_contrata_plan_contrato_codigo_seq');
 

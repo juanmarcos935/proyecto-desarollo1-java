@@ -450,7 +450,7 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton7)
                             .addComponent(jButton6))))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -500,7 +500,7 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
 
         jLabel8.setText("Ingresa la cedula del cliente");
 
-        jLabel9.setText("Estado");
+        jLabel9.setText("Cambiar estado");
 
         CBclienteEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activar", "Suspender" }));
 
@@ -523,7 +523,7 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(250, Short.MAX_VALUE)
+                .addContainerGap(262, Short.MAX_VALUE)
                 .addComponent(jButton13)
                 .addGap(243, 243, 243))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
@@ -769,7 +769,8 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
                     
                 break;
                 default:
-                    JOptionPane.showMessageDialog(this, "El cliente que ha consultado no existe", "Usuario inexistente", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "El cliente que ha consultado no existe", "Cliente inexistente", JOptionPane.ERROR_MESSAGE);
+                    TFclienteCedula.setText(" ");
                 break;
             }
         }

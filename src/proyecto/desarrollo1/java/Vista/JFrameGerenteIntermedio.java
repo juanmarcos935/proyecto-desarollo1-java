@@ -22,6 +22,7 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
     /**
      * Creates new form JFrameAdminIntermedio
      */
+    int estado_inicial;
     public JFrameGerenteIntermedio(int id_usuario_) {
         initComponents();
         this.id_usuario = id_usuario_;
@@ -184,7 +185,7 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(158, 158, 158)
                         .addComponent(jLabel2)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,7 +351,7 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
                             .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.LEADING, 0, 151, Short.MAX_VALUE)
                             .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton9))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(142, 142, 142)
@@ -511,6 +512,11 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
         });
 
         BclienteGuardar.setText("Guardar");
+        BclienteGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BclienteGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -725,17 +731,17 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
     private void BclienteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BclienteBuscarActionPerformed
         if(TFclienteCedula.getText().equals(""))
         {
-            JOptionPane.showMessageDialog(this, "Campo de cedula vacío", "Campo de cedula Vacio", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Campo de cedula vacío ", "Campo de cedula Vacio", JOptionPane.WARNING_MESSAGE);
         }
         else
         {
             String cedula = TFclienteCedula.getText();
             DAOCliente daocliente = new DAOCliente();
-            int estado_inicial = 0;
+            
 
             try 
             {
-                estado_inicial = daocliente.loginClienteEstado(cedula);
+                 estado_inicial = daocliente.loginClienteEstado(cedula);
             } 
             catch (SQLException ex) 
             {
@@ -750,6 +756,7 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
                     CBclienteEstado.setEnabled(true);
                     BclienteGuardar.repaint();
                     BclienteGuardar.setEnabled(true);
+                    
                 break;
                 case 0:
                     JOptionPane.showMessageDialog(this, "El cliente que ha consultado actualmente está suspendido", "cliente suspendido", JOptionPane.INFORMATION_MESSAGE);
@@ -757,6 +764,7 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
                     CBclienteEstado.setEnabled(true);
                     BclienteGuardar.repaint();
                     BclienteGuardar.setEnabled(true);
+                    
                 break;
                 default:
                     JOptionPane.showMessageDialog(this, "El cliente que ha consultado no existe", "Usuario inexistente", JOptionPane.ERROR_MESSAGE);
@@ -818,6 +826,52 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
             Logger.getLogger(JFrameGerenteIntermedio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void BclienteGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BclienteGuardarActionPerformed
+        // TODO add your handling code here:
+        String cedula = TFclienteCedula.getText();
+        DAOCliente daocliente = new DAOCliente();
+        int estado_nuevo;
+
+        try
+        {
+            String opcion = CBclienteEstado.getSelectedItem().toString();
+
+            if(opcion.equals("Activar") && estado_inicial == 1)
+            {
+                
+                JOptionPane.showMessageDialog(this, "El cliente ya está habilitado en el sistema", "Cliente habilitado", JOptionPane.ERROR_MESSAGE);
+                TFclienteCedula.setText(" ");
+            }
+            else 
+            if(opcion.equals("Suspender") && estado_inicial == 0)
+            {
+                JOptionPane.showMessageDialog(this, "El cliente ya está suspendido en el sistema", "Cliente suspendido", JOptionPane.ERROR_MESSAGE);
+                TFclienteCedula.setText(" ");
+            }
+            else
+            if(opcion.equals("Activar") && estado_inicial == 0)
+            {
+                estado_nuevo = 1;
+                daocliente.cambiarEstado(cedula, estado_nuevo);
+                JOptionPane.showMessageDialog(this, "Cliente activado con exito", "Cliente activado", JOptionPane.INFORMATION_MESSAGE);
+                TFclienteCedula.setText(" ");
+            }
+            else
+            if(opcion.equals("Suspender") && estado_inicial == 1)
+            {
+               estado_nuevo = 0;
+                daocliente.cambiarEstado(cedula, estado_nuevo);
+                JOptionPane.showMessageDialog(this, "Cliente suspendido con exito", "Cliente suspendido ", JOptionPane.INFORMATION_MESSAGE);
+                TFclienteCedula.setText(" ");
+            }
+        }
+        catch (SQLException ex)
+        {
+            //Logger.getLogger(JFrameAdminEstado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_BclienteGuardarActionPerformed
 
     /**
      * @param args the command line arguments

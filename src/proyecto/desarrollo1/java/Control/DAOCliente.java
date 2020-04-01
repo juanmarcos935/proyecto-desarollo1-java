@@ -72,4 +72,11 @@ public class DAOCliente {
         consultorBD.registrarGerentePlan(id_contrato, id_usuario);
         consultorBD.cerrarConexion();
     }
+    
+        public void cambiarEstado(String cedula, int nuevo) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        consultorBD.cambiarEstadoCliente(cedula, nuevo);
+        consultorBD.cerrarConexion();
+    }
 }

@@ -139,6 +139,22 @@ public class ConsultasBD {
         }
     }
     
+    public Usuario consultaUsuario(String login) throws SQLException
+    {
+        String consulta_sql_login = "SELECT * FROM usuario WHERE usuario_login='" + login + "'" + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_login);
+        rs.next();
+        Usuario miUsuario; 
+        miUsuario = new Usuario(rs.getInt(1),rs.getInt(2),rs.getString(3),
+                                rs.getString(4),rs.getString(5),rs.getString(6),
+                                rs.getString(7),rs.getString(8),rs.getInt(9));
+           
+            return miUsuario;
+        
+        
+    }
+    
     public int loginActivo(String login, String password) throws SQLException
     {
         String consulta_sql_login = "SELECT * FROM usuario WHERE usuario_login='" + login + "' AND usuario_password='" + password + "';";
@@ -309,6 +325,28 @@ public class ConsultasBD {
         {
             return -1;
         }
+        
+    }
+    
+    public Cliente clienteObjeto (String cedula) throws SQLException
+    {
+        Cliente miCliente;
+        String consulta_sql_estado = "SELECT * FROM cliente WHERE cliente_CC=" + cedula + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_estado);
+       
+         
+           miCliente = new Cliente(rs.getInt(0),
+                                   rs.getInt(1),
+                                   rs.getString(2),
+                                    rs.getString(3),
+                                    rs.getString(4),
+                                    rs.getString(5),
+                                    rs.getString(6),
+                                    rs.getInt(7));
+            return miCliente;
+        
+        
         
     }
     

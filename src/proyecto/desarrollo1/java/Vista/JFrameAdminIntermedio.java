@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyecto.desarrollo1.java.Control.DAOUsuario;
+import proyecto.desarrollo1.java.Modelo.Usuario;
 
 /**
  *
@@ -317,7 +318,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
                             .addComponent(jComboBox2, 0, 229, Short.MAX_VALUE)
                             .addComponent(jPasswordField1)
                             .addComponent(jPasswordField2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)))
                 .addComponent(jLabel29)
                 .addContainerGap())
         );
@@ -469,7 +470,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addGap(29, 29, 29)
-                                .addComponent(jComboBox3, 0, 397, Short.MAX_VALUE)
+                                .addComponent(jComboBox3, 0, 387, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
@@ -609,9 +610,9 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField14)
                             .addComponent(jComboBox4, 0, 279, Short.MAX_VALUE))
-                        .addGap(0, 29, Short.MAX_VALUE)))
+                        .addGap(0, 23, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -646,6 +647,12 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
 
         jLabel27.setText("Ingrese el login del Usuario a consultar:");
 
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
         jButton15.setText("Buscar");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -654,6 +661,12 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
         });
 
         jButton16.setText("Mostrar información");
+        jButton16.setEnabled(false);
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         jLabel28.setText("Nombre:");
 
@@ -703,7 +716,7 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
                             .addComponent(jTextField17)
                             .addComponent(jTextField18)
                             .addComponent(jTextField19, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1144,11 +1157,70 @@ public class JFrameAdminIntermedio extends javax.swing.JFrame {
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // Si tienes exito encontrando al usuario habilitas el boton
-        jButton16.repaint();
+        String loginUser = jTextField2.getText();
+        DAOUsuario daousuario = new DAOUsuario();
+        int existe = -1;
+        try {
+            existe = daousuario.loginUsuarioActivo3(loginUser);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JFrameAdminIntermedio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (existe == -1){
+                           JOptionPane.showMessageDialog(this, "No se encuentra el usuario", "Consulta", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+        else{
+                        JOptionPane.showMessageDialog(this, "Usuario encontrado", "Consulta", JOptionPane.INFORMATION_MESSAGE);
+
         jButton16.setEnabled(true);
-        
+        jButton16.repaint();
+        }
         // Luego consultas la info y la muestras en cada text field pero sin dejar que el usuario lo modifique el contenido del textfield
     }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+        String loginUser = jTextField2.getText();
+        DAOUsuario daousuario = new DAOUsuario();
+        Usuario miUsuario;
+        try {
+            miUsuario= daousuario.consultaUsuario(loginUser);
+            jTextField13.setText(miUsuario.getNombre());
+            jTextField15.setText(miUsuario.getApellido());
+            jTextField16.setText(miUsuario.getCedula());
+            jTextField17.setText(miUsuario.getTelefono());
+            int tipo = miUsuario.getTipo();
+            switch (tipo){
+                case 1:
+                    jTextField18.setText("Administrador");
+                break;
+                case 2:
+                    jTextField18.setText("Gerente");
+                break;
+                case 3:
+                    jTextField18.setText("Operador");
+                    
+                    
+            }
+            // es el jTextField18
+            int estado = miUsuario.getActivo();
+            if(estado == 1){
+                jTextField19.setText("Habilitado");
+            }
+            else{
+               jTextField19.setText("Deshabilitado");
+            }
+            jPanel4.repaint();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFrameAdminIntermedio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton16ActionPerformed
 
 
     /**

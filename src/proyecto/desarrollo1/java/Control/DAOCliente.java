@@ -74,6 +74,7 @@ public class DAOCliente {
         consultorBD.cerrarConexion();
     }
     
+
     public void modificarCliente(String documento_cliente, int tipo, String nombre, String apellido , String direccion,String ciudad) throws SQLException
     {
         consultorBD.empezarConexion();
@@ -97,4 +98,11 @@ public class DAOCliente {
         return response;
     }
     
+
+        public void cambiarEstado(String cedula, int nuevo) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        consultorBD.cambiarEstadoCliente(cedula, nuevo);
+        consultorBD.cerrarConexion();
+    }
 }

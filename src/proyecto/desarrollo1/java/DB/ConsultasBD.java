@@ -208,6 +208,22 @@ public class ConsultasBD {
         }
     }
     
+        public void cambiarEstadoCliente(String cedula, int nuevo)
+    {
+        int operacion;
+        String consulta = "UPDATE cliente SET cliente_estado = " + nuevo + " WHERE cliente_CC = '" + cedula + "';";
+        try
+        {
+            Statement st = connec.createStatement();
+            operacion = st.executeUpdate(consulta);
+            System.out.println("Modificacion de estado de cliente exitosa");
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
     public void modificarUsuario(String loginviejo, int tipo, String nombre, String apellido, String cedula, String telefono, String login, String contraseña) throws SQLException
     {
         int operacion;
@@ -281,12 +297,12 @@ public class ConsultasBD {
     public int clienteEstado (String cedula) throws SQLException
     {
         int estado=0;
-        String consulta_sql_estado = "SELECT * FROM cliente WHERE cliente_CC=" + cedula + ";";
+        String consulta_sql_estado = "SELECT * FROM cliente WHERE cliente_CC='" + cedula + "';";
         Statement st = connec.createStatement();
         ResultSet rs = st.executeQuery(consulta_sql_estado);
         if(rs.next())
         {   
-           estado = rs.getInt(7);
+           estado = rs.getInt(8);
             return estado;
         }
         else

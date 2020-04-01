@@ -259,5 +259,22 @@ public class ConsultasBD {
     }
     
     
+    public int clienteEstado (String cedula) throws SQLException
+    {
+        int estado=0;
+        String consulta_sql_estado = "SELECT * FROM cliente WHERE cliente_CC=" + cedula + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_estado);
+        if(rs.next())
+        {   
+           estado = rs.getInt(7);
+            return estado;
+        }
+        else
+        {
+            return -1;
+        }
+        
+    }
     
 }

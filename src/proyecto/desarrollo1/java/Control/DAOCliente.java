@@ -25,4 +25,12 @@ public class DAOCliente {
         consultorBD.cerrarConexion();
     }
     
+    public int loginClienteEstado(String cedula) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int response = consultorBD.clienteEstado(cedula);
+        consultorBD.cerrarConexion();
+        return response;
+    }
+    
 }

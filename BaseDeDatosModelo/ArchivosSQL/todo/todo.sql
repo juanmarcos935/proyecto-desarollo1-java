@@ -208,8 +208,7 @@ CREATE TABLE cliente_contrata_plan (
   id_cliente int NOT NULL ,
   id_plan int NOT NULL ,
   cliente_telefono varchar(60) NOT NULL,
-  contrato_fecha_corte date NOT NULL ,
-  contrato_costo int NOT NULL ,
+  contrato_fecha date NOT NULL ,
   contrato_mensajes_consumidos int NOT NULL  DEFAULT 0,
   contrato_datos_consumidos int NOT NULL  DEFAULT 0,
   contrato_min_consumidos int NOT NULL  DEFAULT 0

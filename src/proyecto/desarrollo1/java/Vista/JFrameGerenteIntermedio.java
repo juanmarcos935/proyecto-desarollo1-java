@@ -754,6 +754,7 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "El cliente que ha consultado actualmente está activo", "cliente activo", JOptionPane.INFORMATION_MESSAGE);
                     CBclienteEstado.repaint();
                     CBclienteEstado.setEnabled(true);
+                    CBclienteEstado.setSelectedItem("Suspender");
                     BclienteGuardar.repaint();
                     BclienteGuardar.setEnabled(true);
                     
@@ -762,6 +763,7 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "El cliente que ha consultado actualmente está suspendido", "cliente suspendido", JOptionPane.INFORMATION_MESSAGE);
                     CBclienteEstado.repaint();
                     CBclienteEstado.setEnabled(true);
+                    CBclienteEstado.setSelectedItem("Activar");
                     BclienteGuardar.repaint();
                     BclienteGuardar.setEnabled(true);
                     

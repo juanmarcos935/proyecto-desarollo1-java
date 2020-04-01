@@ -35,6 +35,14 @@ public class DAOCliente {
         return response;
     }
     
+    public Cliente clienteObjeto(String cedula) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        Cliente response = consultorBD.clienteObjeto(cedula);
+        consultorBD.cerrarConexion();
+        return response;
+    }
+    
     
     public int clienteIdConCedula(String cedula) throws SQLException
     {

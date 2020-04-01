@@ -35,6 +35,7 @@ public class DAOCliente {
         return response;
     }
     
+    
     public int clienteIdConCedula(String cedula) throws SQLException
     {
         consultorBD.empezarConexion();
@@ -72,4 +73,28 @@ public class DAOCliente {
         consultorBD.registrarGerentePlan(id_contrato, id_usuario);
         consultorBD.cerrarConexion();
     }
+    
+    public void modificarCliente(String documento_cliente, int tipo, String nombre, String apellido , String direccion,String ciudad) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        consultorBD.modificarCliente(documento_cliente, tipo, nombre, apellido, direccion, ciudad);
+        consultorBD.cerrarConexion();
+    }
+    
+    public int soloID_Cliente(String id_cliente) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int response = consultorBD.consultaID_Cliente(id_cliente);
+        consultorBD.cerrarConexion();
+        return response;
+    }
+    
+    public int soloLoginTipo_Cliente(String login) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int response = consultorBD.soloLoginTipo_Cliente(login);
+        consultorBD.cerrarConexion();
+        return response;
+    }
+    
 }

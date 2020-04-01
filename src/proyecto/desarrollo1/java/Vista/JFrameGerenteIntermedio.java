@@ -410,8 +410,18 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
         jLabel15.setText("Ciudad");
 
         jButton6.setText("Buscar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Guardar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -818,6 +828,100 @@ public class JFrameGerenteIntermedio extends javax.swing.JFrame {
             Logger.getLogger(JFrameGerenteIntermedio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+           if(jTextField9.getText().equals(""))
+           {
+               JOptionPane.showMessageDialog(this, "Campo de login vacío", "Campo de Login Vacio", JOptionPane.WARNING_MESSAGE);
+           }
+           else
+           {
+               String Identificacion_Cliente = jTextField9.getText();
+               DAOCliente daocliente = new DAOCliente();
+               int response;
+
+               try
+               {
+                   response = daocliente.soloID_Cliente(Identificacion_Cliente);
+                   if(response == 1)
+                   {
+                       JOptionPane.showMessageDialog(this, "Usuario encontrado exitosamente", "Usuario válido en Base de Datos", JOptionPane.INFORMATION_MESSAGE);
+                       jComboBox2.enable();
+                       jComboBox2.repaint();
+                       jTextField5.enable();
+                       jTextField5.repaint();
+                       jTextField6.enable();
+                       jTextField6.repaint();
+                       jTextField7.enable();
+                       jTextField7.repaint();
+                       jTextField8.enable();
+                       jTextField8.repaint();
+                       jButton7.setEnabled(true);
+                       jButton7.repaint();
+                   }
+                   else
+                   {
+                       JOptionPane.showMessageDialog(this, "No existe tal cliente con el documento indicado", "Error: usuario no encontrado", JOptionPane.ERROR_MESSAGE);
+                   }
+               }
+               catch (SQLException ex)
+               {
+                   //Logger.getLogger(JFrameAdminModificar.class.getName()).log(Level.SEVERE, null, ex);
+               }
+           }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        String loginviejo = (jTextField9.getText()).trim();
+        
+        
+        
+        DAOCliente daocliente = new DAOCliente();
+        int tipo_inicial = 0;
+
+        try {
+            tipo_inicial = daocliente.soloLoginTipo_Cliente(loginviejo);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFrameAdminIntermedio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        int tipo = 0;
+
+        String string1 = jComboBox2.getSelectedItem().toString();
+        if(string1.equals("Natural"))
+        {
+            tipo = 1;
+        }
+        else if(string1.equals("Corporativo"))
+        {
+            tipo = 2;
+        }
+
+        if(tipo_inicial == tipo && jTextField5.getText().equals("") && jTextField6.getText().equals("") && jTextField7.getText().equals("") && jTextField8.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "No registró ningún cambio", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        {
+            String nombreNuevo = jTextField5.getText();
+            String apellidoNuevo = jTextField6.getText();
+            String DireccionNuevo= jTextField7.getText();
+            String ciudadNuevo = jTextField8.getText();
+
+            try
+            {
+                //JOptionPane.showMessageDialog(this,"tipo_cliente : " + tipo);
+                daocliente.modificarCliente(loginviejo, tipo, nombreNuevo, apellidoNuevo, DireccionNuevo, ciudadNuevo);
+                //
+                JOptionPane.showMessageDialog(this, "Modificación de cliente exitosa");
+            }
+            catch (SQLException ex)
+            {
+                //Logger.getLogger(JFrameAdminModificar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -382,5 +382,92 @@ public class ConsultasBD {
         }
     }
     
+    public void modificarCliente(String documento_cliente, int tipo, String nombre, String apellido , String direccion,String ciudad) throws SQLException
+    {
+        System.out.println("TIPO :" + tipo);
+        int operacion;
+        String string1 = "";
+        String string2 = "";
+        String string3 = "";
+        String string4 = "";
+        String string5 = "";
+        switch (tipo) {
+            case 1:
+                string1 = "cliente_tipo = 1";
+                break;
+            case 2:
+                string1 = "cliente_tipo = 2";
+                break;
+            default:
+                break;
+        }
+        
+        if(!nombre.equals(""))
+        {
+            string2 = ", cliente_nombre = '" + nombre + "'";
+        }
+        
+        if(!apellido.equals(""))
+        {
+            string3 = ", cliente_apellidos = '" + apellido + "'";
+        }
+        if(!direccion.equals(""))
+        {
+            string4 = ", cliente_direccion = '" + direccion + "'";
+        }
+        if(!ciudad.equals(""))
+        {
+            string5 = ", cliente_ciudad = '" + ciudad + "'";
+        }
+        
+        
+        String consulta_sql_modificar_cliente;
+        consulta_sql_modificar_cliente= "UPDATE cliente SET " + string1 + string2 + string3 + string4 + string5 + " WHERE cliente_cc='" + documento_cliente + "';";
+        System.out.println(string1);
+        try
+        {
+            Statement st = connec.createStatement();
+            operacion = st.executeUpdate(consulta_sql_modificar_cliente);
+            System.out.println("Modificacion de cliente exitosa");
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public int soloLoginTipo_Cliente(String id) throws SQLException
+    {
+        String consulta_sql_login = "SELECT * FROM cliente WHERE cliente_cc='" + id + "'" + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_login);
+        if(rs.next())
+        {   
+            int tipo = 0;
+            tipo = rs.getInt(2);
+            return tipo;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
+    public int consultaID_Cliente(String id_cliente) throws SQLException
+    {
+        String consulta_sql_cliente = "SELECT * FROM cliente WHERE cliente_cc='" + id_cliente + "';";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_cliente);
+        if(rs.next())
+        {   
+            System.out.println("Si hay cliente valido");
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
     
 }

@@ -161,9 +161,9 @@ CREATE SEQUENCE voz_codigo_seq START 1 INCREMENT 1 ;
 ALTER TABLE voz ALTER COLUMN id_voz SET DEFAULT nextval('voz_codigo_seq');
 ALTER TABLE voz ADD CONSTRAINT nueva_restricción_única_voz PRIMARY KEY (id_voz);
 
-INSERT INTO voz (id_voz, voz_nombre, voz_minutos) VALUES (default, "EEUU", 9999999);
-INSERT INTO voz (id_voz, voz_nombre, voz_minutos) VALUES (default, "Canada", 9999999);
-INSERT INTO voz (id_voz, voz_nombre, voz_minutos) VALUES (default, "Puerto Rico", 9999999);
+INSERT INTO voz (id_voz, voz_nombre, voz_minutos) VALUES (default, 'EEUU', 9999999);
+INSERT INTO voz (id_voz, voz_nombre, voz_minutos) VALUES (default, 'Canada', 9999999);
+INSERT INTO voz (id_voz, voz_nombre, voz_minutos) VALUES (default, 'Puerto Rico', 9999999);
 
 --
 -- TABLE: planes_voz
@@ -175,15 +175,15 @@ CREATE TABLE planes_voz (
   id_voz int NOT NULL,
   id_plan int NOT NULL
 );
-CREATE SEQUENCE voz_codigo_plan_voz START 1 INCREMENT 1 ;
-ALTER TABLE voz ALTER COLUMN id_planes_voz SET DEFAULT nextval('voz_codigo_plan_voz');
+CREATE SEQUENCE voz_codigo_plan_voz START 1 INCREMENT 1;
+ALTER TABLE planes_voz ALTER COLUMN id_planes_voz SET DEFAULT nextval('voz_codigo_plan_voz');
 ALTER TABLE planes_voz ADD CONSTRAINT nueva_restricción_fclave_voz_planes_voz FOREIGN KEY (id_voz) REFERENCES voz(id_voz) ON UPDATE NO ACTION ON DELETE NO ACTION;
 ALTER TABLE planes_voz ADD CONSTRAINT nueva_restricción_fclave_plan_planes_voz FOREIGN KEY (id_plan) REFERENCES plan(id_plan) ON UPDATE NO ACTION ON DELETE NO ACTION;
 ALTER TABLE planes_voz ADD CONSTRAINT nueva_restricción_única_plan_voz PRIMARY KEY (id_planes_voz);
 
-INSERT INTO planes_voz (default, 1, 5);
-INSERT INTO planes_voz (default, 1, 5);
-INSERT INTO planes_voz (default, 1, 5);
+INSERT INTO planes_voz (id_planes_voz, id_voz, id_plan) VALUES (default, 1, 5);
+INSERT INTO planes_voz (id_planes_voz, id_voz, id_plan) VALUES (default, 1, 5);
+INSERT INTO planes_voz (id_planes_voz, id_voz, id_plan) VALUES (default, 1, 5);
 
 --
 -- TABLE: aplicaciones

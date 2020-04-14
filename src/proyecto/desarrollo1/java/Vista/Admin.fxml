@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="413.0" prefWidth="618.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto.desarrollo1.java.ControladoresVista.AdminController">
+   <children>
+      <JFXHamburger fx:id="hamburger" layoutX="561.0" layoutY="19.0" styleClass="jfx-hamburger" stylesheets="@hamburger.css" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="150.0" layoutY="41.0" prefHeight="298.0" prefWidth="113.0" style="-fx-background-color: black;" />
+      <JFXButton id="BotonCerrarSesion" fx:id="botonCerrarSesion" layoutX="365.0" layoutY="374.0" onAction="#botonCerrarSesionAction" style="-fx-text-fill: white; -fx-background-color: black; -fx-border-color: white;" text="Cerrar sesión y volver al Login" />
+      <Label fx:id="registroUsuarioLabel" layoutX="305.0" layoutY="4.0" style="-fx-text-fill: white;" text="Registro de Usuarios" visible="false">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <JFXToggleButton fx:id="activoToggle" layoutX="315.0" layoutY="327.0" prefHeight="60.0" prefWidth="166.0" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" text="Usuario activo" visible="false" />
+      <JFXComboBox fx:id="rolesComboBox" layoutX="307.0" layoutY="34.0" prefHeight="25.0" prefWidth="186.0" promptText="Rol a asignar" style="-jfx-focus-color: white; -jfx-unfocus-color: grey; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="loginRegistroTF" layoutX="305.0" layoutY="65.0" prefHeight="25.0" prefWidth="186.0" promptText="Login" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXPasswordField fx:id="passwordRegistroTF" layoutX="305.0" layoutY="100.0" prefHeight="25.0" prefWidth="186.0" promptText="Contraseña" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXPasswordField fx:id="passwordConfRegistroTF" layoutX="305.0" layoutY="145.0" prefHeight="25.0" prefWidth="186.0" promptText="Confirmar contraseña" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="nombreRegistroTF" layoutX="307.0" layoutY="184.0" prefHeight="25.0" prefWidth="186.0" promptText="Nombre" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="apellidoRegistroTF" layoutX="307.0" layoutY="226.0" prefHeight="25.0" prefWidth="186.0" promptText="Apellido" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="cedulaRegistroTF" layoutX="305.0" layoutY="262.0" prefHeight="25.0" prefWidth="186.0" promptText="Cedula" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="telefonoRegistroTF" layoutX="305.0" layoutY="302.0" prefHeight="25.0" prefWidth="186.0" promptText="Telefono" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXButton fx:id="botonRegistroUsuario" layoutX="220.0" layoutY="374.0" onAction="#botonRegistroUsuarioAction" style="-fx-text-fill: white; -fx-background-color: black; -fx-border-color: white;" text="Registrar Usuario" visible="false" />
+      <Label fx:id="modificacionUsuarioLabel" layoutX="287.0" layoutY="14.0" style="-fx-text-fill: white;" text="Modificación de Usuarios" visible="false">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="loginUsuarioModificarTF" layoutX="306.0" layoutY="40.0" prefHeight="25.0" prefWidth="189.0" promptText="Login de usuario a modificar" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" visible="false" />
+      <JFXButton fx:id="botonBuscarLoginModificar" layoutX="369.0" layoutY="75.0" onAction="#botonBuscarLoginModificarAction" style="-fx-text-fill: white; -fx-background-color: black; -fx-border-color: white;" text="Buscar" visible="false" />
+      <JFXTextField fx:id="nombreUsuarioModificarTF" disable="true" layoutX="300.0" layoutY="147.0" prefHeight="25.0" prefWidth="186.0" promptText="Nombre nuevo" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="apellidoUsuarioModificarTF" disable="true" layoutX="300.0" layoutY="178.0" prefHeight="25.0" prefWidth="186.0" promptText="Apellido nuevo" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="cedulaUsuarioModificarTF" disable="true" layoutX="300.0" layoutY="210.0" prefHeight="25.0" prefWidth="186.0" promptText="Cedula nueva" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="telefonoUsuarioModificarTF" disable="true" layoutX="300.0" layoutY="244.0" prefHeight="25.0" prefWidth="186.0" promptText="Telefono nuevo" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="loginNuevoUsuarioModificarTF" disable="true" layoutX="300.0" layoutY="276.0" prefHeight="25.0" prefWidth="186.0" promptText="Nuevo Login" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" visible="false" />
+      <JFXPasswordField fx:id="contraseñaUsuarioModificarTF" disable="true" layoutX="300.0" layoutY="308.0" prefHeight="25.0" prefWidth="186.0" promptText="Nueva contraseña" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" visible="false" />
+      <JFXPasswordField fx:id="contraseñaConfUsuarioModificarTF" disable="true" layoutX="300.0" layoutY="339.0" prefHeight="25.0" prefWidth="186.0" promptText="Confirmar nueva contraseña" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" visible="false" />
+      <JFXButton fx:id="botonModificarUsuario" disable="true" layoutX="220.0" layoutY="374.0" onAction="#botonModificarUsuarioAction" style="-fx-text-fill: white; -fx-background-color: black; -fx-border-color: white;" text="Modificar Usuario" visible="false" />
+      <Label fx:id="activarInactivarUsuarioLabel" layoutX="284.0" layoutY="14.0" style="-fx-text-fill: white;" text="Activar/inactivar Usuarios" visible="false">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="loginBuscarActivarInactivarTF" layoutX="284.0" layoutY="53.0" prefHeight="25.0" prefWidth="234.0" promptText="Login de usuario a activar/inactivar" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" visible="false" />
+      <JFXComboBox fx:id="comboBoxActivarInactivar" disable="true" layoutX="291.0" layoutY="146.0" promptText="Activar o inactivar usuario" style="-fx-prompt-text-fill: white;" visible="false" />
+      <JFXButton fx:id="botonGuardarCambiosActivarInactivar" disable="true" layoutX="333.0" layoutY="197.0" onAction="#botonGuardarCambiosActivarInactivarAction" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white;" text="Guardar cambios" visible="false" />
+      <JFXButton fx:id="botonBuscarActivarInactivar" layoutX="367.0" layoutY="100.0" onAction="#botonBuscarActivarInactivarAction" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white;" text="Buscar" visible="false" />
+      <Label fx:id="consultarUsuariosLabel" layoutX="312.0" layoutY="14.0" style="-fx-text-fill: white;" text="Consultar Usuarios" visible="false">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="loginConsultaUsuarioTF" layoutX="308.0" layoutY="53.0" prefHeight="25.0" prefWidth="186.0" promptText="Login de usuario a consultar" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXButton fx:id="botonBuscarConsultaUsuario" layoutX="291.0" layoutY="100.0" onAction="#botonBuscarConsultaUsuarioAction" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white;" text="Buscar" visible="false" />
+      <JFXButton fx:id="mostrarInfoBotonConsultaUsuario" disable="true" layoutX="388.0" layoutY="100.0" onAction="#mostrarInfoBotonConsultaUsuarioAction" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white;" text="Mostrar información" visible="false" />
+      <JFXTextField fx:id="muestraNombreTF" disable="true" layoutX="351.0" layoutY="134.0" prefHeight="25.0" prefWidth="186.0" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="muestraApellidoTF" disable="true" layoutX="351.0" layoutY="159.0" prefHeight="25.0" prefWidth="186.0" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="muestraCedulaTF" disable="true" layoutX="351.0" layoutY="185.0" prefHeight="25.0" prefWidth="186.0" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="muestraTelefonoTF" disable="true" layoutX="351.0" layoutY="210.0" prefHeight="25.0" prefWidth="186.0" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="muestraRolTF" disable="true" layoutX="351.0" layoutY="239.0" prefHeight="25.0" prefWidth="186.0" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="muestraEstadoTF" disable="true" layoutX="351.0" layoutY="263.0" prefHeight="25.0" prefWidth="186.0" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <Label fx:id="muestraNombreLabel" layoutX="287.0" layoutY="150.0" style="-fx-text-fill: white;" text="Nombre:" visible="false" />
+      <Label fx:id="muestraApellidoLabel" layoutX="287.0" layoutY="175.0" style="-fx-text-fill: white;" text="Apellido:" visible="false" />
+      <Label fx:id="muestraCedulaLabel" layoutX="290.0" layoutY="199.0" style="-fx-text-fill: white;" text="Cedula:" visible="false" />
+      <Label fx:id="muestraTelefonoLabel" layoutX="278.0" layoutY="225.0" style="-fx-text-fill: white;" text="Telefono:" visible="false" />
+      <Label fx:id="muestraRolLabel" layoutX="310.0" layoutY="256.0" style="-fx-text-fill: white;" text="Rol:" visible="false" />
+      <Label fx:id="muestraEstadoLabel" layoutX="288.0" layoutY="280.0" style="-fx-text-fill: white;" text="Estado:" visible="false" />
+      <Label fx:id="borrarUsuariosLabel" layoutX="322.0" layoutY="24.0" style="-fx-text-fill: white;" text="Borrar Usuarios" visible="false">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="loginUsuarioABorrarTF" layoutX="310.0" layoutY="75.0" prefHeight="25.0" prefWidth="166.0" promptText="Login de usuario a borrar" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXButton fx:id="botonBuscarUsuarioBorrar" layoutX="302.0" layoutY="122.0" onAction="#botonBuscarUsuarioBorrarAction" style="-fx-text-fill: white; -fx-background-color: black; -fx-border-color: white;" text="Buscar" visible="false" />
+      <JFXButton fx:id="botonBorrarUsuario" disable="true" layoutX="401.0" layoutY="122.0" onAction="#botonBorrarUsuarioAction" style="-fx-text-fill: white; -fx-background-color: black; -fx-border-color: white;" text="Borrar Usuario" visible="false" />
+      <JFXComboBox fx:id="cambiarTipoDeUsuarioComboBox" disable="true" layoutX="296.0" layoutY="115.0" prefHeight="25.0" prefWidth="189.0" promptText="Cambiar tipo de Usuario" visible="false" />
+   </children>
+</AnchorPane>

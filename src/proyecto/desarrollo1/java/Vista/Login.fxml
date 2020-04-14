@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPaneLogin" onKeyPressed="#iniciarSesionKey" prefHeight="437.0" prefWidth="412.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto.desarrollo1.java.ControladoresVista.LoginController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <Label layoutX="153.0" layoutY="14.0" style="-fx-text-fill: white;" text="CeluSoft">
+         <font>
+            <Font name="LobsterTwo" size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="9.0" layoutY="49.0" prefHeight="58.0" prefWidth="399.0" style="-fx-text-fill: white;" text="Bienvenido al Sistema Celusoft, Sistema Gestor de" textAlignment="JUSTIFY" textOverrun="CLIP">
+         <font>
+            <Font name="Ubuntu" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="86.0" layoutY="78.0" prefHeight="58.0" prefWidth="257.0" style="-fx-text-fill: white;" text="Información de Telefonía Celular" textAlignment="JUSTIFY" textOverrun="CLIP">
+         <font>
+            <Font name="Ubuntu" size="17.0" />
+         </font>
+      </Label>
+      <JFXPasswordField fx:id="passwordField" focusColor="WHITE" labelFloat="true" layoutX="128.0" layoutY="219.0" prefHeight="25.0" prefWidth="175.0" promptText="Contraseña" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="GREY" />
+      <JFXButton fx:id="iniciarSesionJFXButton" layoutX="64.0" layoutY="286.0" onAction="#iniciarSesionAction" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white;" text="Iniciar Sesión" />
+      <JFXTextField fx:id="loginTextField" focusColor="WHITE" labelFloat="true" layoutX="127.0" layoutY="148.0" prefHeight="25.0" prefWidth="175.0" promptText="Login" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="GREY" />
+      <JFXButton fx:id="cerrarProgramaJFXButton" layoutX="239.0" layoutY="286.0" onAction="#cerrarProgramaAction" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white;" text="Cerrar Programa" />
+    </children>
+</AnchorPane>

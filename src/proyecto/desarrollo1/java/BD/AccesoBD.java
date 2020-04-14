@@ -1,11 +1,9 @@
-
-package proyecto.desarrollo1.java.DB;
+package proyecto.desarrollo1.java.BD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import java.sql.*;
 
 public class AccesoBD {
     

@@ -24,21 +24,6 @@ ALTER TABLE usuario ADD CONSTRAINT nueva_restricción_única_usuario PRIMARY KEY
 ALTER TABLE usuario ADD CONSTRAINT nueva_restricción_única_usuariologin UNIQUE (usuario_login);
 ALTER TABLE usuario ADD CONSTRAINT nueva_restricción_única_usuarioCC UNIQUE (usuario_CC);
 
-
---
--- TABLE: banco
--- 
---  
-
-CREATE TABLE banco (
-  id_banco int NOT NULL ,
-  banco_nombre varchar(60) NOT NULL
- 
-);
-
--- 
-ALTER TABLE banco ADD CONSTRAINT nueva_restricción_única_banco PRIMARY KEY (id_banco);
-
 -- 
 
 
@@ -67,61 +52,6 @@ ALTER TABLE cliente ADD CONSTRAINT nueva_restricción_única_cliente PRIMARY KEY
 ALTER TABLE cliente ADD CONSTRAINT nueva_restricción_documento_unico_cliente UNIQUE (cliente_CC);
 
 INSERT INTO cliente (id_cliente, cliente_tipo, cliente_nombre, cliente_apellidos, cliente_direccion, cliente_ciudad, cliente_cc, cliente_estado) VALUES (default, 1, 'cristian', 'pascumal', 'Calle 9D #26-34', 'El Placer', '1144982379', default);
-
--- 
- 
---
--- TABLE: pago
--- 
---  
-
-CREATE TABLE pago (
-  id_pago int NOT NULL,
-  id_usuario int,
-  id_banco int,
-  id_cliente int NOT NULL 
-);
-CREATE SEQUENCE pago_pago_codigo_seq START 1 INCREMENT 1 ;
-
-ALTER TABLE pago ALTER COLUMN id_pago SET DEFAULT nextval('pago_pago_codigo_seq');
-
--- 
-ALTER TABLE pago ADD CONSTRAINT nueva_restricción_única_pago PRIMARY KEY (id_pago);
-
--- 
-
-
--- 
-ALTER TABLE pago ADD CONSTRAINT nueva_restricción_fclave_pago_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON UPDATE NO ACTION ON DELETE NO ACTION;
-
--- 
-ALTER TABLE pago ADD CONSTRAINT nueva_restricción_fclave_pago_cliente FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON UPDATE NO ACTION ON DELETE NO ACTION;
-
--- 
-ALTER TABLE pago ADD CONSTRAINT nueva_restricción_fclave_pago_banco FOREIGN KEY (id_banco) REFERENCES banco(id_banco) ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-
---
--- TABLE: banco_reporta_pago
--- 
---  
-
-CREATE TABLE banco_reporta_pago (
-  id_registro int NOT NULL ,
-  id_banco int NOT NULL ,
-  id_cliente int NOT NULL
- 
-);
-
-
--- 
-ALTER TABLE banco_reporta_pago ADD CONSTRAINT nueva_restricción_única_banco_reporta_pago PRIMARY KEY (id_registro);
-
--- 
-
-
--- 
-ALTER TABLE banco_reporta_pago ADD CONSTRAINT nueva_restricción_fclave_banco_reporta_banco FOREIGN KEY (id_banco) REFERENCES banco(id_banco) ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 --
 -- TABLE: plan
@@ -257,41 +187,7 @@ ALTER TABLE cliente_contrata_plan ADD CONSTRAINT nueva_restricción_fclave_contr
 -- 
 ALTER TABLE cliente_contrata_plan ADD CONSTRAINT nueva_restricción_fclave_contrata_plan_clienten FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON UPDATE NO ACTION ON DELETE NO ACTION;
 
--- 
---
--- TABLE: consumo_adicionales
--- 
---  
-
-CREATE TABLE consumo_adiconales (
-  id_contrato int NOT NULL ,
-  min_whatsapp_restantes int NOT NULL ,
-  chat_whatsapp_restantes int NOT NULL ,
-  chat_facebook_restantes int NOT NULL ,
-  gigas_compartidas_restantes int NOT NULL  DEFAULT 0
-);
-
--- 
-ALTER TABLE consumo_adiconales ADD CONSTRAINT nueva_restricción_fclave_consumoa_cliente FOREIGN KEY (id_contrato) REFERENCES cliente_contrata_plan(id_contrato) ON UPDATE NO ACTION ON DELETE NO ACTION;
-
-
---
--- TABLE: gerente_registra_plan
--- 
---  
-
-CREATE TABLE gerente_registra_plan (
-  id_usuario int NOT NULL ,
-  id_contrato int NOT NULL
-);
-
-
-
--- 
-ALTER TABLE gerente_registra_plan ADD CONSTRAINT nueva_restricción_fclave_gerente_registra_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON UPDATE NO ACTION ON DELETE NO ACTION;
-
--- 
-ALTER TABLE gerente_registra_plan ADD CONSTRAINT nueva_restricción_fclave_gerente_registra_contrato FOREIGN KEY (id_contrato) REFERENCES cliente_contrata_plan(id_contrato) ON UPDATE NO ACTION ON DELETE NO ACTION;
+-- Inserts Tuplas de Prueba
 
 INSERT INTO usuario (id_usuario, usuario_tipo, usuario_login, usuario_password, usuario_nombre, usuario_apellidos, usuario_cc, usuario_telefono, usuario_estado) VALUES (default, 1, 'admin', 'admin', 'juan', 'mejia', '0123456789', '4881551', 1);
 

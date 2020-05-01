@@ -163,11 +163,9 @@ CREATE TABLE cliente_contrata_plan (
   id_contrato int NOT NULL ,
   id_cliente int NOT NULL ,
   id_plan int NOT NULL ,
-  cliente_telefono varchar(60) NOT NULL,
+  linea varchar(60) NOT NULL,
   contrato_fecha timestamp NOT NULL ,
-  contrato_mensajes_consumidos int NOT NULL  DEFAULT 0,
-  contrato_datos_consumidos int NOT NULL  DEFAULT 0,
-  contrato_min_consumidos int NOT NULL  DEFAULT 0
+  opcion_renovacion int NOT NULL
 );
 CREATE SEQUENCE cliente_contrata_plan_contrato_codigo_seq START 1 INCREMENT 1 ;
 

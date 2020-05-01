@@ -169,7 +169,7 @@ CREATE TABLE cliente_contrata_plan (
 );
 CREATE SEQUENCE cliente_contrata_plan_contrato_codigo_seq START 1 INCREMENT 1 ;
 
-ALTER TABLE cliente_contrata_plan ADD CONSTRAINT nueva_restriccion_unica_telefono_cliente_planes UNIQUE (cliente_telefono);
+ALTER TABLE cliente_contrata_plan ADD CONSTRAINT nueva_restriccion_unica_telefono_cliente_planes UNIQUE (linea);
 
 ALTER TABLE cliente_contrata_plan ALTER COLUMN id_contrato SET DEFAULT nextval('cliente_contrata_plan_contrato_codigo_seq');
 

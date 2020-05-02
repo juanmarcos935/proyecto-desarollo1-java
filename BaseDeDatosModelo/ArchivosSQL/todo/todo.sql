@@ -63,96 +63,27 @@ CREATE TABLE plan (
   plan_costo int NOT NULL ,
   plan_minutos int NOT NULL ,
   plan_datos float NOT NULL ,
-  plan_mensajes int NOT NULL
+  plan_mensajes int NOT NULL , 
+  plan_minutos_whatsapp int NOT NULL ,
+  plan_chat_whatsapp int NOT NULL ,
+  plan_facebook int NOT NULL , 
+  plan_waze int NOT NULL , 
+  plan_minutos_llamada_eeuu int NOT NULL ,
+  plan_minutos_llamada_canada int NOT NULL ,
+  plan_minutos_llamada_puertorico int NOT NULL ,
+  plan_equipo_nuevo_asegurado int NOT NULL ,
+  plan_datos_compartir_otros float NOT NULL
 );
 
 CREATE SEQUENCE plan_plan_codigo_seq START 1 INCREMENT 1 ;
 ALTER TABLE plan ALTER COLUMN id_plan SET DEFAULT nextval('plan_plan_codigo_seq');
 ALTER TABLE plan ADD CONSTRAINT nueva_restricción_única_plan PRIMARY KEY (id_plan);
 
-INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes) VALUES (default, 'Plan 1', 30900, 250, 1, 100);
-INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes) VALUES (default, 'Plan 2', 39900, 150, 4.5, 100);
-INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes) VALUES (default, 'Plan 3', 49900, 300, 8.5, 100);
-INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes) VALUES (default, 'Plan 4', 65000, 1000, 20, 9999999);
-INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes) VALUES (default, 'Plan 5', 100000, 9999999, 30, 9999999);
-
---
--- TABLE: voz
---
---
-
-CREATE TABLE voz (
-  id_voz int NOT NULL ,
-  voz_nombre varchar(60) NOT NULL ,
-  voz_minutos int NOT NULL
-);
-
-CREATE SEQUENCE voz_codigo_seq START 1 INCREMENT 1 ;
-ALTER TABLE voz ALTER COLUMN id_voz SET DEFAULT nextval('voz_codigo_seq');
-ALTER TABLE voz ADD CONSTRAINT nueva_restricción_única_voz PRIMARY KEY (id_voz);
-
-INSERT INTO voz (id_voz, voz_nombre, voz_minutos) VALUES (default, 'EEUU', 9999999);
-INSERT INTO voz (id_voz, voz_nombre, voz_minutos) VALUES (default, 'Canada', 9999999);
-INSERT INTO voz (id_voz, voz_nombre, voz_minutos) VALUES (default, 'Puerto Rico', 9999999);
-
---
--- TABLE: planes_voz
---
---
-
-CREATE TABLE planes_voz (
-  id_planes_voz int NOT NULL,
-  id_voz int NOT NULL,
-  id_plan int NOT NULL
-);
-CREATE SEQUENCE voz_codigo_plan_voz START 1 INCREMENT 1;
-ALTER TABLE planes_voz ALTER COLUMN id_planes_voz SET DEFAULT nextval('voz_codigo_plan_voz');
-ALTER TABLE planes_voz ADD CONSTRAINT nueva_restricción_fclave_voz_planes_voz FOREIGN KEY (id_voz) REFERENCES voz(id_voz) ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE planes_voz ADD CONSTRAINT nueva_restricción_fclave_plan_planes_voz FOREIGN KEY (id_plan) REFERENCES plan(id_plan) ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE planes_voz ADD CONSTRAINT nueva_restricción_única_plan_voz PRIMARY KEY (id_planes_voz);
-
-INSERT INTO planes_voz (id_planes_voz, id_voz, id_plan) VALUES (default, 1, 5);
-INSERT INTO planes_voz (id_planes_voz, id_voz, id_plan) VALUES (default, 1, 5);
-INSERT INTO planes_voz (id_planes_voz, id_voz, id_plan) VALUES (default, 1, 5);
-
---
--- TABLE: aplicaciones
---
---
-
-CREATE TABLE aplicaciones (
-  id_aplicaciones int NOT NULL ,
-  aplicaciones_nombre varchar(60) NOT NULL ,
-  aplicaciones_megabytes int NOT NULL
-);
-
-CREATE SEQUENCE aplicaciones_codigo_seq START 1 INCREMENT 1 ;
-ALTER TABLE aplicaciones ALTER COLUMN id_aplicaciones SET DEFAULT nextval('aplicaciones_codigo_seq');
-ALTER TABLE aplicaciones ADD CONSTRAINT nueva_restricción_única_aplicaciones PRIMARY KEY (id_aplicaciones);
-
-INSERT INTO aplicaciones (id_aplicaciones, aplicaciones_nombre, aplicaciones_megabytes) VALUES (default, 'Whatsapp', 250);
-INSERT INTO aplicaciones (id_aplicaciones, aplicaciones_nombre, aplicaciones_megabytes) VALUES (default, 'Facebook', 250);
-INSERT INTO aplicaciones (id_aplicaciones, aplicaciones_nombre, aplicaciones_megabytes) VALUES (default, 'Whatsapp', 500);
-INSERT INTO aplicaciones (id_aplicaciones, aplicaciones_nombre, aplicaciones_megabytes) VALUES (default, 'Facebook', 500);
-INSERT INTO aplicaciones (id_aplicaciones, aplicaciones_nombre, aplicaciones_megabytes) VALUES (default, 'Whatsapp', 9999999);
-INSERT INTO aplicaciones (id_aplicaciones, aplicaciones_nombre, aplicaciones_megabytes) VALUES (default, 'Facebook', 9999999);
-INSERT INTO aplicaciones (id_aplicaciones, aplicaciones_nombre, aplicaciones_megabytes) VALUES (default, 'Waze', 9999999);
-
---
--- TABLE: planes_aplicaciones
---
---
-
-CREATE TABLE planes_aplicaciones (
-  id_planes_aplicacion int NOT NULL,
-  id_aplicaciones int NOT NULL,
-  id_plan int NOT NULL
-);
-CREATE SEQUENCE codigo_plan_app START 1 INCREMENT 1 ;
-ALTER TABLE planes_aplicaciones ALTER COLUMN id_planes_aplicacion SET DEFAULT nextval('codigo_plan_app');
-ALTER TABLE planes_aplicaciones ADD CONSTRAINT nueva_restricción_fclave_aplicaciones_planes_plan FOREIGN KEY (id_aplicaciones) REFERENCES aplicaciones(id_aplicaciones) ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE planes_aplicaciones ADD CONSTRAINT nueva_restricción_fclave_plan_planes_plan FOREIGN KEY (id_plan) REFERENCES plan(id_plan) ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE planes_aplicaciones ADD CONSTRAINT nueva_restricción_única_plan_aplicacion PRIMARY KEY (id_planes_aplicacion);
+INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes, plan_minutos_whatsapp, plan_chat_whatsapp, plan_facebook, plan_waze, plan_minutos_llamada_eeuu, plan_minutos_llamada_canada, plan_minutos_llamada_puertorico, plan_equipo_nuevo_asegurado, plan_datos_compartir_otros) VALUES (default, 'Plan 1', 30900, 250, 1, 100, 500, 250, 250, 0, 0, 0, 0, 0, 0);
+INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes, plan_minutos_whatsapp, plan_chat_whatsapp, plan_facebook, plan_waze, plan_minutos_llamada_eeuu, plan_minutos_llamada_canada, plan_minutos_llamada_puertorico, plan_equipo_nuevo_asegurado, plan_datos_compartir_otros) VALUES (default, 'Plan 2', 39900, 150, 4.5, 100, 300, 250, 250, 0, 0, 0, 0, 0, 0);
+INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes, plan_minutos_whatsapp, plan_chat_whatsapp, plan_facebook, plan_waze, plan_minutos_llamada_eeuu, plan_minutos_llamada_canada, plan_minutos_llamada_puertorico, plan_equipo_nuevo_asegurado, plan_datos_compartir_otros) VALUES (default, 'Plan 3', 49900, 300, 8.5, 100, 600, 500, 500, 0, 0, 0, 0, 0, 0);
+INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes, plan_minutos_whatsapp, plan_chat_whatsapp, plan_facebook, plan_waze, plan_minutos_llamada_eeuu, plan_minutos_llamada_canada, plan_minutos_llamada_puertorico, plan_equipo_nuevo_asegurado, plan_datos_compartir_otros) VALUES (default, 'Plan 4', 65000, 1000, 20, 9999999, 9999999, 9999999, 9999999, 9999999, 0, 0, 0, 0, 0);
+INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, plan_mensajes, plan_minutos_whatsapp, plan_chat_whatsapp, plan_facebook, plan_waze, plan_minutos_llamada_eeuu, plan_minutos_llamada_canada, plan_minutos_llamada_puertorico, plan_equipo_nuevo_asegurado, plan_datos_compartir_otros) VALUES (default, 'Plan 5', 100000, 9999999, 30, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 1, 3);
 
 --
 -- TABLE: cliente_contrata_plan

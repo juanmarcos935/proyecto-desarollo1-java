@@ -86,10 +86,10 @@ public class DAOCliente {
         return respuesta;
     }
     
-    public void registrarPlan(int id_plan, int id_cliente, String telefono) throws SQLException
+    public void registrarPlan(int id_plan, int id_cliente, String linea, int opcion_renovacion) throws SQLException
     {
         consultorBD.empezarConexion();
-        consultorBD.registrarPlan(id_plan, id_cliente, telefono);
+        consultorBD.registrarPlan(id_plan, id_cliente, linea, opcion_renovacion);
         consultorBD.cerrarConexion();
     }
     

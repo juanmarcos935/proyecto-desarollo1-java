@@ -441,13 +441,13 @@ public class ConsultasBD {
         }
     }
     
-    public void registrarPlan(int id_plan, int id_cliente, String telefono) throws SQLException
+    public void registrarPlan(int id_plan, int id_cliente, String linea, int opcion_renovacion) throws SQLException
     {
         int operacion;
         LocalDateTime localdatetime = LocalDateTime.now();
         String consulta_sql_registrar_plan;
-        consulta_sql_registrar_plan = "INSERT INTO cliente_contrata_plan (id_contrato, id_cliente, id_plan, cliente_telefono, contrato_fecha, contrato_mensajes_consumidos, contrato_datos_consumidos, contrato_min_consumidos) VALUES (default, " + id_cliente + "," + id_plan + ", '" + telefono + "', '" + java.sql.Timestamp.valueOf(localdatetime) + "', default, default, default);";
-        try
+        consulta_sql_registrar_plan = "INSERT INTO cliente_contrata_plan (id_contrato, id_cliente, id_plan, linea, contrato_fecha, opcion_renovacion) VALUES (default, " + id_cliente + "," + id_plan + ", '" + linea + "', '" + java.sql.Timestamp.valueOf(localdatetime) + "', " + opcion_renovacion + ");";
+        try 
         {
             Statement st = connec.createStatement();
             operacion = st.executeUpdate(consulta_sql_registrar_plan);

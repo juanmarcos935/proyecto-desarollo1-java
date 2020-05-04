@@ -12,7 +12,7 @@
 <AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="413.0" prefWidth="618.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto.desarrollo1.java.ControladoresVista.GerenteController">
    <children>
       <JFXHamburger fx:id="hamburger" layoutX="561.0" layoutY="19.0" styleClass="jfx-hamburger" stylesheets="@hamburger.css" />
-      <JFXDrawer fx:id="drawer" defaultDrawerSize="150.0" layoutY="88.0" prefHeight="209.0" prefWidth="115.0" style="-fx-background-color: black;" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="150.0" layoutY="38.0" prefHeight="209.0" prefWidth="115.0" style="-fx-background-color: black;" />
       <JFXButton id="BotonCerrarSesion" fx:id="botonCerrarSesion" layoutX="365.0" layoutY="374.0" onAction="#botonCerrarSesionAction" style="-fx-text-fill: white; -fx-background-color: black; -fx-border-color: white;" text="Cerrar sesión y volver al Login" />
       <Label fx:id="registroClienteLabel" layoutX="305.0" layoutY="4.0" style="-fx-text-fill: white;" text="Registro de Clientes" visible="false">
          <font>
@@ -75,15 +75,17 @@
       <JFXButton fx:id="botonBuscarClienteBorrar" layoutX="302.0" layoutY="122.0" onAction="#botonBuscarClienteBorrarAction" style="-fx-text-fill: white; -fx-background-color: black; -fx-border-color: white;" text="Buscar" visible="false" />
       <JFXButton fx:id="botonBorrarCliente" disable="true" layoutX="401.0" layoutY="122.0" onAction="#botonBorrarClienteAction" style="-fx-text-fill: white; -fx-background-color: black; -fx-border-color: white;" text="Borrar Cliente" visible="false" />
       <JFXComboBox fx:id="tipoMODClienteComboBox" disable="true" layoutX="305.0" layoutY="101.0" prefHeight="25.0" prefWidth="186.0" promptText="Tipo" visible="false" />
-      <Label fx:id="asociarVentaPlanConCliente" layoutX="220.0" layoutY="27.0" style="-fx-text-fill: white;" text="Registrar venta de Plan y asociar a Cliente" visible="false">
+      <Label fx:id="asociarVentaPlanConCliente" layoutX="221.0" layoutY="16.0" style="-fx-text-fill: white;" text="Registrar venta de Plan y asociar a Cliente" visible="false">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="cedulaClientePlan" layoutX="258.0" layoutY="76.0" prefHeight="25.0" prefWidth="239.0" promptText="Cedula de Cliente que contrata Plan" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" visible="false" />
-      <JFXComboBox fx:id="comboBoxPlan" disable="true" layoutX="251.0" layoutY="180.0" prefHeight="25.0" prefWidth="278.0" promptText="Seleccione el Plan a Vender y asociar" style="-fx-prompt-text-fill: white;" visible="false" />
-      <JFXTextField fx:id="lineaTelefonicaPlan" disable="true" layoutX="255.0" layoutY="239.0" prefHeight="25.0" prefWidth="278.0" promptText="Digite la línea telefónica asociada al Plan" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" visible="false" />
-      <JFXButton fx:id="botonBuscarCedulaClientePlan" layoutX="347.0" layoutY="121.0" onAction="#botonBuscarCedulaClientePlanAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Buscar" visible="false" />
-      <JFXButton fx:id="botonAsociarPlanCliente" disable="true" layoutX="260.0" layoutY="295.0" onAction="#botonAsociarPlanClienteAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Vender y asociar Plan con Cliente" visible="false" />
+      <JFXTextField fx:id="cedulaClientePlan" layoutX="259.0" layoutY="47.0" prefHeight="25.0" prefWidth="239.0" promptText="Cedula de Cliente que contrata Plan" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" visible="false" />
+      <JFXComboBox fx:id="comboBoxPlan" disable="true" layoutX="249.0" layoutY="138.0" prefHeight="25.0" prefWidth="278.0" promptText="Seleccione el Plan a Vender y asociar" style="-fx-prompt-text-fill: white;" visible="false" />
+      <JFXTextField fx:id="lineaTelefonicaPlan" disable="true" layoutX="249.0" layoutY="180.0" prefHeight="25.0" prefWidth="278.0" promptText="Digite la línea telefónica asociada al Plan" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" visible="false" />
+      <JFXButton fx:id="botonBuscarCedulaClientePlan" layoutX="347.0" layoutY="88.0" onAction="#botonBuscarCedulaClientePlanAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Buscar" visible="false" />
+      <JFXButton fx:id="botonAsociarPlanCliente" disable="true" layoutX="260.0" layoutY="327.0" onAction="#botonAsociarPlanClienteAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Vender y asociar Plan con Cliente" visible="false" />
+      <JFXButton fx:id="botonInformacionRenovacion" disable="true" layoutX="286.0" layoutY="275.0" onAction="#botonInformacionRenovacionAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="¿Qué es la Opción de Renovación?" visible="false" />
+      <JFXComboBox fx:id="opcionRenovacionLineaComboBox" disable="true" layoutX="257.0" layoutY="227.0" promptText="Desea Opcion de Renovacion?" style="-fx-prompt-text-fill: white;" visible="false" />
    </children>
 </AnchorPane>

@@ -1,9 +1,10 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package proyecto.desarrollo1.java;
+
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,10 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author marcos
- */
+
 public class ProyectoDesarrollo1Java extends Application {
     
     @Override
@@ -29,6 +27,7 @@ public class ProyectoDesarrollo1Java extends Application {
         stage.setTitle("CeluSoft");
         stage.show();
         
+        
     }
 
     /**
@@ -36,6 +35,8 @@ public class ProyectoDesarrollo1Java extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+       
     }
+    
     
 }

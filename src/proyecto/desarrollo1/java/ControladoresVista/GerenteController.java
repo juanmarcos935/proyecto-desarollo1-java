@@ -192,6 +192,21 @@ public class GerenteController implements Initializable{
     private JFXButton botonAsociarPlanCliente;
     
     @FXML
+    private JFXComboBox<String> opcionRenovacionLineaComboBox;
+    
+    @FXML
+    private JFXButton botonInformacionRenovacion;
+    
+    @FXML
+    void botonInformacionRenovacionAction(ActionEvent event) {
+        Alert informacionRenovacion = new Alert(AlertType.INFORMATION);
+        informacionRenovacion.setTitle("Información sobre Renovación");
+        informacionRenovacion.setHeaderText("Cuando hayas consumido todos los datos, mensajes y servicios adicionales de \n tu Plan debes seleccionar lo que sucederá");
+        informacionRenovacion.setContentText("Selecciona Si si deseas que cuando se acaben, se te cobre el 50% del valor del \n plan para que se efectue una recarga igual de los servicios, de lo contrario selecciona No");
+        informacionRenovacion.showAndWait();
+    }
+    
+    @FXML
     void botonRegistroClienteAction(ActionEvent event) {
         
         if(nombreClienteRegistroTF.getText().equals("") && apellidoClienteRegistroTF.getText().equals("") && direccionClienteRegistroTF.getText().equals("") && ciudadClienteRegistroTF.getText().equals("") && cedulaClienteRegistroTF.getText().equals(""))
@@ -270,6 +285,8 @@ public class GerenteController implements Initializable{
                     comboBoxPlan.setDisable(false);
                     lineaTelefonicaPlan.setDisable(false);
                     botonAsociarPlanCliente.setDisable(false);
+                    opcionRenovacionLineaComboBox.setDisable(false);
+                    botonInformacionRenovacion.setDisable(false);
                 }
                 else
                 {
@@ -304,7 +321,22 @@ public class GerenteController implements Initializable{
             
             String linea_telefonica = lineaTelefonicaPlan.getText();
             
-            daocliente.registrarPlan(idPlan, idCliente, linea_telefonica);
+            String opcionRenovacionString = opcionRenovacionLineaComboBox.getValue();
+            
+            int opcion_renovacion = 0;
+            
+            if(opcionRenovacionString.equals("Si"))
+            {
+                opcion_renovacion = 1;
+            }
+            else if(opcionRenovacionString.equals("No"))
+            {
+                opcion_renovacion = 0;
+            }
+            
+            daocliente.registrarPlan(idPlan, idCliente, linea_telefonica, opcion_renovacion);
+            
+            
             
             Alert informationPlanRegistrado = new Alert(AlertType.INFORMATION);
             informationPlanRegistrado.setTitle("Plan Registrado con exito");
@@ -731,6 +763,8 @@ public class GerenteController implements Initializable{
         comboBoxPlan.getItems().add("Plan 4");
         comboBoxPlan.getItems().add("Plan 5");
         
+        opcionRenovacionLineaComboBox.getItems().add("Si");
+        opcionRenovacionLineaComboBox.getItems().add("No");
         
         
         try {
@@ -757,6 +791,10 @@ public class GerenteController implements Initializable{
                                 comboBoxPlan.setDisable(true);
                                 lineaTelefonicaPlan.setDisable(true);
                                 botonAsociarPlanCliente.setDisable(true);
+                                opcionRenovacionLineaComboBox.setVisible(false);
+                                botonInformacionRenovacion.setVisible(false);
+                                opcionRenovacionLineaComboBox.setDisable(true);
+                                botonInformacionRenovacion.setDisable(true);
                                 // Cerrar Borrar
                                 borrarClientesLabel.setVisible(false);
                                 cedulaClienteABorrarTF.setVisible(false);
@@ -832,6 +870,10 @@ public class GerenteController implements Initializable{
                                 comboBoxPlan.setDisable(true);
                                 lineaTelefonicaPlan.setDisable(true);
                                 botonAsociarPlanCliente.setDisable(true);
+                                opcionRenovacionLineaComboBox.setVisible(false);
+                                botonInformacionRenovacion.setVisible(false);
+                                opcionRenovacionLineaComboBox.setDisable(true);
+                                botonInformacionRenovacion.setDisable(true);
                                 // Cerrar Borrar
                                 borrarClientesLabel.setVisible(false);
                                 cedulaClienteABorrarTF.setVisible(false);
@@ -901,6 +943,10 @@ public class GerenteController implements Initializable{
                                 comboBoxPlan.setDisable(true);
                                 lineaTelefonicaPlan.setDisable(true);
                                 botonAsociarPlanCliente.setDisable(true);
+                                opcionRenovacionLineaComboBox.setVisible(false);
+                                botonInformacionRenovacion.setVisible(false);
+                                opcionRenovacionLineaComboBox.setDisable(true);
+                                botonInformacionRenovacion.setDisable(true);
                                 // Cerrar Borrar
                                 borrarClientesLabel.setVisible(false);
                                 cedulaClienteABorrarTF.setVisible(false);
@@ -1040,6 +1086,8 @@ public class GerenteController implements Initializable{
                                 comboBoxPlan.setVisible(true);
                                 lineaTelefonicaPlan.setVisible(true);
                                 botonAsociarPlanCliente.setVisible(true);
+                                opcionRenovacionLineaComboBox.setVisible(true);
+                                botonInformacionRenovacion.setVisible(true);
                                 break;
                             case "BotonConsultarClientes" :
                                 // Cerrar Registra Plan
@@ -1052,6 +1100,10 @@ public class GerenteController implements Initializable{
                                 comboBoxPlan.setDisable(true);
                                 lineaTelefonicaPlan.setDisable(true);
                                 botonAsociarPlanCliente.setDisable(true);
+                                opcionRenovacionLineaComboBox.setVisible(false);
+                                botonInformacionRenovacion.setVisible(false);
+                                opcionRenovacionLineaComboBox.setDisable(true);
+                                botonInformacionRenovacion.setDisable(true);
                                 // Cerrar Borrar
                                 borrarClientesLabel.setVisible(false);
                                 cedulaClienteABorrarTF.setVisible(false);
@@ -1120,6 +1172,10 @@ public class GerenteController implements Initializable{
                                 comboBoxPlan.setDisable(true);
                                 lineaTelefonicaPlan.setDisable(true);
                                 botonAsociarPlanCliente.setDisable(true);
+                                opcionRenovacionLineaComboBox.setVisible(false);
+                                botonInformacionRenovacion.setVisible(false);
+                                opcionRenovacionLineaComboBox.setDisable(true);
+                                botonInformacionRenovacion.setDisable(true);
                                 // Cerrar Consultar
                                 consultarClientesLabel.setVisible(false);
                                 cedulaConsultaClienteTF.setVisible(false);

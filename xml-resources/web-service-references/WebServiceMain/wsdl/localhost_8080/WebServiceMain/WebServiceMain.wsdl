@@ -4,21 +4,211 @@
 <xsd:import namespace="http://celusoft.me.org/" schemaLocation="http://localhost:8080/WebServiceMain/WebServiceMain?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="add">
-<part name="parameters" element="tns:add"/>
+<message name="obtenerConsumoMinutos">
+<part name="parameters" element="tns:obtenerConsumoMinutos"/>
 </message>
-<message name="addResponse">
-<part name="parameters" element="tns:addResponse"/>
+<message name="obtenerConsumoMinutosResponse">
+<part name="parameters" element="tns:obtenerConsumoMinutosResponse"/>
+</message>
+<message name="obtenerConsumoDatos">
+<part name="parameters" element="tns:obtenerConsumoDatos"/>
+</message>
+<message name="obtenerConsumoDatosResponse">
+<part name="parameters" element="tns:obtenerConsumoDatosResponse"/>
+</message>
+<message name="obtenerConsumoMensajes">
+<part name="parameters" element="tns:obtenerConsumoMensajes"/>
+</message>
+<message name="obtenerConsumoMensajesResponse">
+<part name="parameters" element="tns:obtenerConsumoMensajesResponse"/>
+</message>
+<message name="obtenerConsumoMinutosWhatsapp">
+<part name="parameters" element="tns:obtenerConsumoMinutosWhatsapp"/>
+</message>
+<message name="obtenerConsumoMinutosWhatsappResponse">
+<part name="parameters" element="tns:obtenerConsumoMinutosWhatsappResponse"/>
+</message>
+<message name="obtenerConsumoChatWhatsapp">
+<part name="parameters" element="tns:obtenerConsumoChatWhatsapp"/>
+</message>
+<message name="obtenerConsumoChatWhatsappResponse">
+<part name="parameters" element="tns:obtenerConsumoChatWhatsappResponse"/>
+</message>
+<message name="obtenerConsumoFacebook">
+<part name="parameters" element="tns:obtenerConsumoFacebook"/>
+</message>
+<message name="obtenerConsumoFacebookResponse">
+<part name="parameters" element="tns:obtenerConsumoFacebookResponse"/>
+</message>
+<message name="obtenerConsumoWaze">
+<part name="parameters" element="tns:obtenerConsumoWaze"/>
+</message>
+<message name="obtenerConsumoWazeResponse">
+<part name="parameters" element="tns:obtenerConsumoWazeResponse"/>
+</message>
+<message name="obtenerConsumoLlamadaEEUU">
+<part name="parameters" element="tns:obtenerConsumoLlamadaEEUU"/>
+</message>
+<message name="obtenerConsumoLlamadaEEUUResponse">
+<part name="parameters" element="tns:obtenerConsumoLlamadaEEUUResponse"/>
+</message>
+<message name="obtenerConsumoLlamadaCanada">
+<part name="parameters" element="tns:obtenerConsumoLlamadaCanada"/>
+</message>
+<message name="obtenerConsumoLlamadaCanadaResponse">
+<part name="parameters" element="tns:obtenerConsumoLlamadaCanadaResponse"/>
+</message>
+<message name="obtenerConsumoLlamadaPuertoRico">
+<part name="parameters" element="tns:obtenerConsumoLlamadaPuertoRico"/>
+</message>
+<message name="obtenerConsumoLlamadaPuertoRicoResponse">
+<part name="parameters" element="tns:obtenerConsumoLlamadaPuertoRicoResponse"/>
+</message>
+<message name="obtenerConsumoDatosCompartir">
+<part name="parameters" element="tns:obtenerConsumoDatosCompartir"/>
+</message>
+<message name="obtenerConsumoDatosCompartirResponse">
+<part name="parameters" element="tns:obtenerConsumoDatosCompartirResponse"/>
 </message>
 <portType name="WebServiceMain">
-<operation name="add">
-<input wsam:Action="http://celusoft.me.org/WebServiceMain/addRequest" message="tns:add"/>
-<output wsam:Action="http://celusoft.me.org/WebServiceMain/addResponse" message="tns:addResponse"/>
+<operation name="obtenerConsumoMinutos">
+<input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoMinutosRequest" message="tns:obtenerConsumoMinutos"/>
+<output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoMinutosResponse" message="tns:obtenerConsumoMinutosResponse"/>
+</operation>
+<operation name="obtenerConsumoDatos">
+<input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoDatosRequest" message="tns:obtenerConsumoDatos"/>
+<output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoDatosResponse" message="tns:obtenerConsumoDatosResponse"/>
+</operation>
+<operation name="obtenerConsumoMensajes">
+<input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoMensajesRequest" message="tns:obtenerConsumoMensajes"/>
+<output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoMensajesResponse" message="tns:obtenerConsumoMensajesResponse"/>
+</operation>
+<operation name="obtenerConsumoMinutosWhatsapp">
+<input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoMinutosWhatsappRequest" message="tns:obtenerConsumoMinutosWhatsapp"/>
+<output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoMinutosWhatsappResponse" message="tns:obtenerConsumoMinutosWhatsappResponse"/>
+</operation>
+<operation name="obtenerConsumoChatWhatsapp">
+<input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoChatWhatsappRequest" message="tns:obtenerConsumoChatWhatsapp"/>
+<output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoChatWhatsappResponse" message="tns:obtenerConsumoChatWhatsappResponse"/>
+</operation>
+<operation name="obtenerConsumoFacebook">
+<input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoFacebookRequest" message="tns:obtenerConsumoFacebook"/>
+<output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoFacebookResponse" message="tns:obtenerConsumoFacebookResponse"/>
+</operation>
+<operation name="obtenerConsumoWaze">
+<input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoWazeRequest" message="tns:obtenerConsumoWaze"/>
+<output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoWazeResponse" message="tns:obtenerConsumoWazeResponse"/>
+</operation>
+<operation name="obtenerConsumoLlamadaEEUU">
+<input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoLlamadaEEUURequest" message="tns:obtenerConsumoLlamadaEEUU"/>
+<output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoLlamadaEEUUResponse" message="tns:obtenerConsumoLlamadaEEUUResponse"/>
+</operation>
+<operation name="obtenerConsumoLlamadaCanada">
+<input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoLlamadaCanadaRequest" message="tns:obtenerConsumoLlamadaCanada"/>
+<output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoLlamadaCanadaResponse" message="tns:obtenerConsumoLlamadaCanadaResponse"/>
+</operation>
+<operation name="obtenerConsumoLlamadaPuertoRico">
+<input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoLlamadaPuertoRicoRequest" message="tns:obtenerConsumoLlamadaPuertoRico"/>
+<output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoLlamadaPuertoRicoResponse" message="tns:obtenerConsumoLlamadaPuertoRicoResponse"/>
+</operation>
+<operation name="obtenerConsumoDatosCompartir">
+<input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoDatosCompartirRequest" message="tns:obtenerConsumoDatosCompartir"/>
+<output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoDatosCompartirResponse" message="tns:obtenerConsumoDatosCompartirResponse"/>
 </operation>
 </portType>
 <binding name="WebServiceMainPortBinding" type="tns:WebServiceMain">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="add">
+<operation name="obtenerConsumoMinutos">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerConsumoDatos">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerConsumoMensajes">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerConsumoMinutosWhatsapp">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerConsumoChatWhatsapp">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerConsumoFacebook">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerConsumoWaze">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerConsumoLlamadaEEUU">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerConsumoLlamadaCanada">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerConsumoLlamadaPuertoRico">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerConsumoDatosCompartir">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

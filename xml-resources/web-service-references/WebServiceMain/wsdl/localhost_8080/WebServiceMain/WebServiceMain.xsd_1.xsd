@@ -1,17 +1,186 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://celusoft.me.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://celusoft.me.org/">
 
-<xs:element name="add" type="tns:add"/>
+<xs:element name="obtenerConsumoChatWhatsapp" type="tns:obtenerConsumoChatWhatsapp"/>
 
-<xs:element name="addResponse" type="tns:addResponse"/>
+<xs:element name="obtenerConsumoChatWhatsappResponse" type="tns:obtenerConsumoChatWhatsappResponse"/>
 
-<xs:complexType name="add">
+<xs:element name="obtenerConsumoDatos" type="tns:obtenerConsumoDatos"/>
+
+<xs:element name="obtenerConsumoDatosCompartir" type="tns:obtenerConsumoDatosCompartir"/>
+
+<xs:element name="obtenerConsumoDatosCompartirResponse" type="tns:obtenerConsumoDatosCompartirResponse"/>
+
+<xs:element name="obtenerConsumoDatosResponse" type="tns:obtenerConsumoDatosResponse"/>
+
+<xs:element name="obtenerConsumoFacebook" type="tns:obtenerConsumoFacebook"/>
+
+<xs:element name="obtenerConsumoFacebookResponse" type="tns:obtenerConsumoFacebookResponse"/>
+
+<xs:element name="obtenerConsumoLlamadaCanada" type="tns:obtenerConsumoLlamadaCanada"/>
+
+<xs:element name="obtenerConsumoLlamadaCanadaResponse" type="tns:obtenerConsumoLlamadaCanadaResponse"/>
+
+<xs:element name="obtenerConsumoLlamadaEEUU" type="tns:obtenerConsumoLlamadaEEUU"/>
+
+<xs:element name="obtenerConsumoLlamadaEEUUResponse" type="tns:obtenerConsumoLlamadaEEUUResponse"/>
+
+<xs:element name="obtenerConsumoLlamadaPuertoRico" type="tns:obtenerConsumoLlamadaPuertoRico"/>
+
+<xs:element name="obtenerConsumoLlamadaPuertoRicoResponse" type="tns:obtenerConsumoLlamadaPuertoRicoResponse"/>
+
+<xs:element name="obtenerConsumoMensajes" type="tns:obtenerConsumoMensajes"/>
+
+<xs:element name="obtenerConsumoMensajesResponse" type="tns:obtenerConsumoMensajesResponse"/>
+
+<xs:element name="obtenerConsumoMinutos" type="tns:obtenerConsumoMinutos"/>
+
+<xs:element name="obtenerConsumoMinutosResponse" type="tns:obtenerConsumoMinutosResponse"/>
+
+<xs:element name="obtenerConsumoMinutosWhatsapp" type="tns:obtenerConsumoMinutosWhatsapp"/>
+
+<xs:element name="obtenerConsumoMinutosWhatsappResponse" type="tns:obtenerConsumoMinutosWhatsappResponse"/>
+
+<xs:element name="obtenerConsumoWaze" type="tns:obtenerConsumoWaze"/>
+
+<xs:element name="obtenerConsumoWazeResponse" type="tns:obtenerConsumoWazeResponse"/>
+
+<xs:complexType name="obtenerConsumoDatos">
 <xs:sequence>
-<xs:element name="i" type="xs:int"/>
-<xs:element name="j" type="xs:int"/>
+<xs:element name="datos_plan" type="xs:double"/>
+<xs:element name="renovacion_plan" type="xs:boolean"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="addResponse">
+<xs:complexType name="obtenerConsumoDatosResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoLlamadaCanada">
+<xs:sequence>
+<xs:element name="llamada_canada_plan" type="xs:int"/>
+<xs:element name="renovacion_plan" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoLlamadaCanadaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoChatWhatsapp">
+<xs:sequence>
+<xs:element name="chat_whatsapp_plan" type="xs:int"/>
+<xs:element name="renovacion_plan" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoChatWhatsappResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoLlamadaEEUU">
+<xs:sequence>
+<xs:element name="llamada_eeuu_plan" type="xs:int"/>
+<xs:element name="renovacion_plan" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoLlamadaEEUUResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoDatosCompartir">
+<xs:sequence>
+<xs:element name="datos_compartir_plan" type="xs:double"/>
+<xs:element name="renovacion_plan" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoDatosCompartirResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoFacebook">
+<xs:sequence>
+<xs:element name="facebook_plan" type="xs:int"/>
+<xs:element name="renovacion_plan" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoFacebookResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoWaze">
+<xs:sequence>
+<xs:element name="waze_plan" type="xs:int"/>
+<xs:element name="renovacion_plan" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoWazeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoMensajes">
+<xs:sequence>
+<xs:element name="mensajes_plan" type="xs:int"/>
+<xs:element name="renovacion_plan" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoMensajesResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoMinutosWhatsapp">
+<xs:sequence>
+<xs:element name="minutos_whatsapp_plan" type="xs:int"/>
+<xs:element name="renovacion_plan" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoMinutosWhatsappResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoMinutos">
+<xs:sequence>
+<xs:element name="minutos_plan" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoMinutosResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoLlamadaPuertoRico">
+<xs:sequence>
+<xs:element name="llamada_puertorico_plan" type="xs:int"/>
+<xs:element name="renovacion_plan" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerConsumoLlamadaPuertoRicoResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:int"/>
 </xs:sequence>

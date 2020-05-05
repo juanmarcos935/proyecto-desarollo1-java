@@ -424,6 +424,78 @@ public class ConsultasBD {
         }
     }
     
+    public String obtenerCedulaClienteconID(int id_cliente) throws SQLException
+    {
+        String consulta_sql_login = "SELECT * FROM cliente WHERE id_cliente=" + id_cliente + "" + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_login);
+        if(rs.next())
+        {   
+            String cc = "";
+            cc = rs.getString(7);
+            return cc;
+        }
+        else
+        {
+            return "";
+        }
+    }
+    
+    public String obtenerNombreCompletoClienteconID(int id_cliente) throws SQLException
+    {
+        String consulta_sql_login = "SELECT * FROM cliente WHERE id_cliente=" + id_cliente + "" + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_login);
+        if(rs.next())
+        {   
+            String nombre = "";
+            nombre = rs.getString(3) + " " + rs.getString(4);
+            return nombre;
+        }
+        else
+        {
+            return "";
+        }
+    }
+    
+    public String obtenerDireccionClienteconID(int id_cliente) throws SQLException
+    {
+        String consulta_sql_login = "SELECT * FROM cliente WHERE id_cliente=" + id_cliente + "" + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_login);
+        if(rs.next())
+        {   
+            String direccion = "";
+            direccion = rs.getString(5);
+            return direccion;
+        }
+        else
+        {
+            return "";
+        }
+    }
+    
+    public String obtenerCiudadClienteconID(int id_cliente) throws SQLException
+    {
+        String consulta_sql_login = "SELECT * FROM cliente WHERE id_cliente=" + id_cliente + "" + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_login);
+        if(rs.next())
+        {   
+            String ciudad = "";
+            ciudad = rs.getString(6);
+            return ciudad;
+        }
+        else
+        {
+            return "";
+        }
+    }
+    
+    // Fin Consultas Cliente
+    
+    // Inicio Consultas Plan
+    
     public int obtenerIDPlanConNombre(String plan_nombre) throws SQLException
     {
         int idPlan = 0;
@@ -458,6 +530,102 @@ public class ConsultasBD {
             System.out.println(e.getMessage());
         }
     }
+    
+    // Fin Consultas Plan
+    
+    // Inicio Consultas Factura
+    
+    public int existePlanConLinea(String linea) throws SQLException
+    {
+        String consulta_sql_planid_nombre = "SELECT * FROM cliente_contrata_plan WHERE linea = '" + linea + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    
+    public String obtenerNombrePlanConID(int id_plan) throws SQLException
+    {
+        String consulta_sql_planid_nombre = "SELECT * FROM plan WHERE id_plan = " + id_plan + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            String plan_nombre = "";
+            plan_nombre = rs.getString(2);
+            return plan_nombre;
+        }
+        else
+        {
+            return "";
+        }
+    }
+    
+    public int obtenerIDContratoConLinea(String linea) throws SQLException
+    {
+        String consulta_sql_planid_nombre = "SELECT * FROM cliente_contrata_plan WHERE linea = '" + linea + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            int id_contrato = 0;
+            id_contrato = rs.getInt(1);
+            return id_contrato;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    public int obtenerIDClienteConLinea(String linea) throws SQLException
+    {
+        String consulta_sql_planid_nombre = "SELECT * FROM cliente_contrata_plan WHERE linea = '" + linea + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            int id_cliente = 0;
+            id_cliente = rs.getInt(2);
+            return id_cliente;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    public int obtenerIDPlanConLinea(String linea) throws SQLException
+    {
+        String consulta_sql_planid_nombre = "SELECT * FROM cliente_contrata_plan WHERE linea = '" + linea + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            int id_plan = 0;
+            id_plan = rs.getInt(3);
+            return id_plan;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    
+    
+    // Fin Consultas Factura
+    
+    
+    
+    
     
     
 }

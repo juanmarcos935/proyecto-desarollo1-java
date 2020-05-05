@@ -198,6 +198,28 @@ public class GerenteController implements Initializable{
     private JFXButton botonInformacionRenovacion;
     
     @FXML
+    private Label facturacionLabel;
+    
+    @FXML
+    private JFXTextField lineaFacturaTF;
+    
+    @FXML
+    private JFXButton botonBuscarFactura;
+    
+    @FXML
+    private JFXButton botonGenerarFactura;
+    
+    @FXML
+    void botonBuscarFacturaAction(ActionEvent event) {
+        
+    }
+    
+    @FXML
+    void botonGenerarFacturaActione(ActionEvent event) {
+        
+    }
+    
+    @FXML
     void botonInformacionRenovacionAction(ActionEvent event) {
         Alert informacionRenovacion = new Alert(AlertType.INFORMATION);
         informacionRenovacion.setTitle("Información sobre Renovación");
@@ -781,6 +803,12 @@ public class GerenteController implements Initializable{
                         switch(node.getId())
                         {
                             case "BotonRegistrarClientes" : 
+                                // Cerramos Facturacion
+                                facturacionLabel.setVisible(false);
+                                lineaFacturaTF.setVisible(false);
+                                botonBuscarFactura.setVisible(false);
+                                botonGenerarFactura.setVisible(false);
+                                botonGenerarFactura.setDisable(true);
                                 // Cerrar Registra Plan
                                 asociarVentaPlanConCliente.setVisible(false);
                                 cedulaClientePlan.setVisible(false);
@@ -860,6 +888,12 @@ public class GerenteController implements Initializable{
                                 botonRegistroCliente.setVisible(true);
                                 break;
                             case "BotonModificarClientes" : 
+                                // Cerramos Facturacion
+                                facturacionLabel.setVisible(false);
+                                lineaFacturaTF.setVisible(false);
+                                botonBuscarFactura.setVisible(false);
+                                botonGenerarFactura.setVisible(false);
+                                botonGenerarFactura.setDisable(true);
                                 // Cerrar Registra Plan
                                 asociarVentaPlanConCliente.setVisible(false);
                                 cedulaClientePlan.setVisible(false);
@@ -933,6 +967,12 @@ public class GerenteController implements Initializable{
                                 tipoMODClienteComboBox.setVisible(true);
                                 break;
                             case "BotonActivarInactivarClientes" :
+                                // Cerramos Facturacion
+                                facturacionLabel.setVisible(false);
+                                lineaFacturaTF.setVisible(false);
+                                botonBuscarFactura.setVisible(false);
+                                botonGenerarFactura.setVisible(false);
+                                botonGenerarFactura.setDisable(true);
                                 // Cerrar Registra Plan
                                 asociarVentaPlanConCliente.setVisible(false);
                                 cedulaClientePlan.setVisible(false);
@@ -1016,6 +1056,12 @@ public class GerenteController implements Initializable{
                                 botonBuscarActivarInactivarCliente.setVisible(true);
                                 break;
                             case "BotonRegistraVentaPlan" : 
+                                // Cerramos Facturacion
+                                facturacionLabel.setVisible(false);
+                                lineaFacturaTF.setVisible(false);
+                                botonBuscarFactura.setVisible(false);
+                                botonGenerarFactura.setVisible(false);
+                                botonGenerarFactura.setDisable(true);
                                 // Cerrar Borrar
                                 borrarClientesLabel.setVisible(false);
                                 cedulaClienteABorrarTF.setVisible(false);
@@ -1090,6 +1136,12 @@ public class GerenteController implements Initializable{
                                 botonInformacionRenovacion.setVisible(true);
                                 break;
                             case "BotonConsultarClientes" :
+                                // Cerramos Facturacion
+                                facturacionLabel.setVisible(false);
+                                lineaFacturaTF.setVisible(false);
+                                botonBuscarFactura.setVisible(false);
+                                botonGenerarFactura.setVisible(false);
+                                botonGenerarFactura.setDisable(true);
                                 // Cerrar Registra Plan
                                 asociarVentaPlanConCliente.setVisible(false);
                                 cedulaClientePlan.setVisible(false);
@@ -1162,6 +1214,12 @@ public class GerenteController implements Initializable{
                                 muestraEstadoLabelCliente.setVisible(true);
                                 break;
                             case "BotonBorrarClientes": 
+                                // Cerramos Facturacion
+                                facturacionLabel.setVisible(false);
+                                lineaFacturaTF.setVisible(false);
+                                botonBuscarFactura.setVisible(false);
+                                botonGenerarFactura.setVisible(false);
+                                botonGenerarFactura.setDisable(true);
                                 // Cerrar Registra Plan
                                 asociarVentaPlanConCliente.setVisible(false);
                                 cedulaClientePlan.setVisible(false);
@@ -1238,6 +1296,84 @@ public class GerenteController implements Initializable{
                                 cedulaClienteABorrarTF.setVisible(true);
                                 botonBuscarClienteBorrar.setVisible(true);
                                 botonBorrarCliente.setVisible(true);
+                                break;
+                            case "BotonFacturacion":
+                                // Cerrar Registra Plan
+                                asociarVentaPlanConCliente.setVisible(false);
+                                cedulaClientePlan.setVisible(false);
+                                botonBuscarCedulaClientePlan.setVisible(false);
+                                comboBoxPlan.setVisible(false);
+                                lineaTelefonicaPlan.setVisible(false);
+                                botonAsociarPlanCliente.setVisible(false);
+                                comboBoxPlan.setDisable(true);
+                                lineaTelefonicaPlan.setDisable(true);
+                                botonAsociarPlanCliente.setDisable(true);
+                                opcionRenovacionLineaComboBox.setVisible(false);
+                                botonInformacionRenovacion.setVisible(false);
+                                opcionRenovacionLineaComboBox.setDisable(true);
+                                botonInformacionRenovacion.setDisable(true);
+                                // Cerrar Consultar
+                                consultarClientesLabel.setVisible(false);
+                                cedulaConsultaClienteTF.setVisible(false);
+                                botonBuscarConsultaCliente.setVisible(false);
+                                mostrarInfoBotonConsultaCliente.setVisible(false);
+                                muestraNombreTFCliente.setVisible(false);
+                                muestraApellidoTFCliente.setVisible(false);
+                                muestraDireccionTFCliente.setVisible(false);
+                                muestraCiudadTFCliente.setVisible(false);
+                                muestraTipoTFCliente.setVisible(false);
+                                muestraEstadoTFCliente.setVisible(false);
+                                muestraNombreLabelCliente.setVisible(false);
+                                muestraApellidoLabelCliente.setVisible(false);
+                                muestraDireccionLabelCliente.setVisible(false);
+                                muestraCiudadLabelCliente.setVisible(false);
+                                muestraTipoLabelCliente.setVisible(false);
+                                muestraEstadoLabelCliente.setVisible(false);
+                                mostrarInfoBotonConsultaCliente.setDisable(true);
+                                muestraNombreTFCliente.setText("");
+                                muestraApellidoTFCliente.setText("");
+                                muestraDireccionTFCliente.setText("");
+                                muestraCiudadTFCliente.setText("");
+                                muestraTipoTFCliente.setText("");
+                                muestraEstadoTFCliente.setText("");
+                                // Cerrar Activar Inactivar
+                                activarInactivarClienteLabel.setVisible(false);
+                                cedulaBuscarActivarInactivarClienteTF.setVisible(false);
+                                comboBoxActivarInactivarCliente.setVisible(false);
+                                botonGuardarCambiosActivarInactivarCliente.setVisible(false);
+                                botonBuscarActivarInactivarCliente.setVisible(false);
+                                comboBoxActivarInactivarCliente.setDisable(true);
+                                botonGuardarCambiosActivarInactivarCliente.setDisable(true);
+                                // Cerrar Modificar
+                                modificacionClienteLabel.setVisible(false);
+                                cedulaClienteMODRegistroTF.setVisible(false);
+                                botonBuscarCedulaModificar.setVisible(false);
+                                nombreClienteMODRegistroTF.setVisible(false);
+                                apellidoClienteMODRegistroTF.setVisible(false);
+                                direccionClienteMODRegistroTF.setVisible(false);
+                                ciudadClienteMODRegistroTF.setVisible(false);
+                                botonModificarCliente.setVisible(false);
+                                tipoMODClienteComboBox.setVisible(false);
+                                nombreClienteMODRegistroTF.setDisable(true);
+                                apellidoClienteMODRegistroTF.setDisable(true);
+                                direccionClienteMODRegistroTF.setDisable(true);
+                                ciudadClienteMODRegistroTF.setDisable(true);
+                                botonModificarCliente.setDisable(true);
+                                tipoMODClienteComboBox.setDisable(true);
+                                // Cerrar Registro
+                                registroClienteLabel.setVisible(false);
+                                tipoClienteComboBox.setVisible(false);
+                                nombreClienteRegistroTF.setVisible(false);
+                                apellidoClienteRegistroTF.setVisible(false);
+                                direccionClienteRegistroTF.setVisible(false);
+                                ciudadClienteRegistroTF.setVisible(false);
+                                cedulaClienteRegistroTF.setVisible(false);
+                                botonRegistroCliente.setVisible(false);
+                                // Abrimos Facturacion
+                                facturacionLabel.setVisible(true);
+                                lineaFacturaTF.setVisible(true);
+                                botonBuscarFactura.setVisible(true);
+                                botonGenerarFactura.setVisible(true);
                                 break;
                         }
                         

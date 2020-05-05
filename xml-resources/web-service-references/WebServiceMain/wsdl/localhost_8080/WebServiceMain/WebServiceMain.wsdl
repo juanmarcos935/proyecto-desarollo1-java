@@ -4,12 +4,6 @@
 <xsd:import namespace="http://celusoft.me.org/" schemaLocation="http://localhost:8080/WebServiceMain/WebServiceMain?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="obtenerConsumoMinutos">
-<part name="parameters" element="tns:obtenerConsumoMinutos"/>
-</message>
-<message name="obtenerConsumoMinutosResponse">
-<part name="parameters" element="tns:obtenerConsumoMinutosResponse"/>
-</message>
 <message name="obtenerConsumoDatos">
 <part name="parameters" element="tns:obtenerConsumoDatos"/>
 </message>
@@ -33,6 +27,12 @@
 </message>
 <message name="obtenerConsumoChatWhatsappResponse">
 <part name="parameters" element="tns:obtenerConsumoChatWhatsappResponse"/>
+</message>
+<message name="obtenerConsumoMinutos">
+<part name="parameters" element="tns:obtenerConsumoMinutos"/>
+</message>
+<message name="obtenerConsumoMinutosResponse">
+<part name="parameters" element="tns:obtenerConsumoMinutosResponse"/>
 </message>
 <message name="obtenerConsumoFacebook">
 <part name="parameters" element="tns:obtenerConsumoFacebook"/>
@@ -71,10 +71,6 @@
 <part name="parameters" element="tns:obtenerConsumoDatosCompartirResponse"/>
 </message>
 <portType name="WebServiceMain">
-<operation name="obtenerConsumoMinutos">
-<input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoMinutosRequest" message="tns:obtenerConsumoMinutos"/>
-<output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoMinutosResponse" message="tns:obtenerConsumoMinutosResponse"/>
-</operation>
 <operation name="obtenerConsumoDatos">
 <input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoDatosRequest" message="tns:obtenerConsumoDatos"/>
 <output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoDatosResponse" message="tns:obtenerConsumoDatosResponse"/>
@@ -90,6 +86,10 @@
 <operation name="obtenerConsumoChatWhatsapp">
 <input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoChatWhatsappRequest" message="tns:obtenerConsumoChatWhatsapp"/>
 <output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoChatWhatsappResponse" message="tns:obtenerConsumoChatWhatsappResponse"/>
+</operation>
+<operation name="obtenerConsumoMinutos">
+<input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoMinutosRequest" message="tns:obtenerConsumoMinutos"/>
+<output wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoMinutosResponse" message="tns:obtenerConsumoMinutosResponse"/>
 </operation>
 <operation name="obtenerConsumoFacebook">
 <input wsam:Action="http://celusoft.me.org/WebServiceMain/obtenerConsumoFacebookRequest" message="tns:obtenerConsumoFacebook"/>
@@ -118,15 +118,6 @@
 </portType>
 <binding name="WebServiceMainPortBinding" type="tns:WebServiceMain">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="obtenerConsumoMinutos">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="obtenerConsumoDatos">
 <soap:operation soapAction=""/>
 <input>
@@ -155,6 +146,15 @@
 </output>
 </operation>
 <operation name="obtenerConsumoChatWhatsapp">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerConsumoMinutos">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

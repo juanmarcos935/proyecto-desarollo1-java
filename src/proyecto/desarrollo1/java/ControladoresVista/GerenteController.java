@@ -31,6 +31,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import proyecto.desarrollo1.java.DAOs.DAOCliente;
 import proyecto.desarrollo1.java.Modelo.Cliente;
+import proyecto.desarrollo1.java.DAOs.DAOFactura;
 
 
 public class GerenteController implements Initializable{
@@ -210,14 +211,195 @@ public class GerenteController implements Initializable{
     private JFXButton botonGenerarFactura;
     
     @FXML
-    void botonBuscarFacturaAction(ActionEvent event) {
-        
+    void botonGenerarFacturaAction(ActionEvent event) {
+        try {
+            
+            String linea = lineaFacturaTF.getText();
+            
+            DAOFactura daofactura = new DAOFactura();
+            
+            int opc_renov = daofactura.obtenerOpcionRenovacionConLinea(linea);
+            boolean opcion_renovacion = false;
+            
+            if(opc_renov == 0)
+            {
+                opcion_renovacion = false;
+            }
+            else if(opc_renov == 1)
+            {
+                opcion_renovacion = true;
+            }
+            
+            int id_contrato = daofactura.obtenerIDContratoConLinea(linea);
+            int id_cliente = daofactura.obtenerIDClienteConLinea(linea);
+            int id_plan = daofactura.obtenerIDPlanConLinea(linea);
+            
+            String cc_cliente = daofactura.obtenerCedulaClienteconID(id_cliente);
+            String nombre_cliente = daofactura.obtenerNombreCompletoClienteconID(id_cliente);
+            String direccion_cliente = daofactura.obtenerDireccionClienteconID(id_cliente);
+            String ciudad_cliente = daofactura.obtenerCiudadClienteconID(id_cliente);
+            
+            String nombre_plan = daofactura.obtenerNombrePlanConID(id_plan);
+
+            
+            
+            int consumo_minutos = 0;
+            double consumo_datos = 0;
+            int consumo_mensajes = 0;
+            int consumo_minutos_whatsapp = 0;
+            int consumo_chat_whatsapp = 0;
+            int consumo_facebook = 0;
+            
+            int consumo_waze = 0;
+            int consumo_llamada_eeuu = 0;
+            int consumo_llamada_canada = 0;
+            int consumo_llamada_puertorico = 0;
+            double consumo_datos_compartir = 0;
+            
+            switch(id_plan)
+            {
+                case 1:
+                    consumo_minutos = obtenerConsumoMinutos(daofactura.obtenerMinutosPlanConID(id_plan));
+                    consumo_datos = obtenerConsumoDatos(daofactura.obtenerDatosPlanConID(id_plan), opcion_renovacion);
+                    consumo_mensajes = obtenerConsumoMensajes(daofactura.obtenerMensajesPlanConID(id_plan), opcion_renovacion);
+                    consumo_minutos_whatsapp = obtenerConsumoMinutosWhatsapp(daofactura.obtenerMinutosWhatsappPlanConID(id_plan), opcion_renovacion);
+                    consumo_chat_whatsapp = obtenerConsumoChatWhatsapp(daofactura.obtenerChatWhatsappPlanConID(id_plan), opcion_renovacion);
+                    consumo_facebook = obtenerConsumoFacebook(daofactura.obtenerFacebookPlanConID(id_plan), opcion_renovacion);
+
+                    consumo_waze = 0;
+                    consumo_llamada_eeuu = 0;
+                    consumo_llamada_canada = 0;
+                    consumo_llamada_puertorico = 0;
+                    consumo_datos_compartir = 0;
+                    break;
+                case 2:
+                    consumo_minutos = obtenerConsumoMinutos(daofactura.obtenerMinutosPlanConID(id_plan));
+                    consumo_datos = obtenerConsumoDatos(daofactura.obtenerDatosPlanConID(id_plan), opcion_renovacion);
+                    consumo_mensajes = obtenerConsumoMensajes(daofactura.obtenerMensajesPlanConID(id_plan), opcion_renovacion);
+                    consumo_minutos_whatsapp = obtenerConsumoMinutosWhatsapp(daofactura.obtenerMinutosWhatsappPlanConID(id_plan), opcion_renovacion);
+                    consumo_chat_whatsapp = obtenerConsumoChatWhatsapp(daofactura.obtenerChatWhatsappPlanConID(id_plan), opcion_renovacion);
+                    consumo_facebook = obtenerConsumoFacebook(daofactura.obtenerFacebookPlanConID(id_plan), opcion_renovacion);
+
+                    consumo_waze = 0;
+                    consumo_llamada_eeuu = 0;
+                    consumo_llamada_canada = 0;
+                    consumo_llamada_puertorico = 0;
+                    consumo_datos_compartir = 0;
+                    break;
+                case 3:
+                    consumo_minutos = obtenerConsumoMinutos(daofactura.obtenerMinutosPlanConID(id_plan));
+                    consumo_datos = obtenerConsumoDatos(daofactura.obtenerDatosPlanConID(id_plan), opcion_renovacion);
+                    consumo_mensajes = obtenerConsumoMensajes(daofactura.obtenerMensajesPlanConID(id_plan), opcion_renovacion);
+                    consumo_minutos_whatsapp = obtenerConsumoMinutosWhatsapp(daofactura.obtenerMinutosWhatsappPlanConID(id_plan), opcion_renovacion);
+                    consumo_chat_whatsapp = obtenerConsumoChatWhatsapp(daofactura.obtenerChatWhatsappPlanConID(id_plan), opcion_renovacion);
+                    consumo_facebook = obtenerConsumoFacebook(daofactura.obtenerFacebookPlanConID(id_plan), opcion_renovacion);
+
+                    consumo_waze = 0;
+                    consumo_llamada_eeuu = 0;
+                    consumo_llamada_canada = 0;
+                    consumo_llamada_puertorico = 0;
+                    consumo_datos_compartir = 0;
+                    break;
+                case 4:
+                    consumo_minutos = obtenerConsumoMinutos(daofactura.obtenerMinutosPlanConID(id_plan));
+                    consumo_datos = obtenerConsumoDatos(daofactura.obtenerDatosPlanConID(id_plan), opcion_renovacion);
+                    consumo_mensajes = obtenerConsumoMensajes(200, opcion_renovacion);
+                    consumo_minutos_whatsapp = obtenerConsumoMinutosWhatsapp(700, opcion_renovacion);
+                    consumo_chat_whatsapp = obtenerConsumoChatWhatsapp(600, opcion_renovacion);
+                    consumo_facebook = obtenerConsumoFacebook(600, opcion_renovacion);
+
+                    consumo_waze = obtenerConsumoWaze(600, opcion_renovacion);
+                    consumo_llamada_eeuu = 0;
+                    consumo_llamada_canada = 0;
+                    consumo_llamada_puertorico = 0;
+                    consumo_datos_compartir = 0;
+                    break;
+                case 5:
+                    consumo_minutos = obtenerConsumoMinutos(daofactura.obtenerMinutosPlanConID(id_plan));
+                    consumo_datos = obtenerConsumoDatos(daofactura.obtenerDatosPlanConID(id_plan), opcion_renovacion);
+                    consumo_mensajes = obtenerConsumoMensajes(200, opcion_renovacion);
+                    consumo_minutos_whatsapp = obtenerConsumoMinutosWhatsapp(700, opcion_renovacion);
+                    consumo_chat_whatsapp = obtenerConsumoChatWhatsapp(600, opcion_renovacion);
+                    consumo_facebook = obtenerConsumoFacebook(600, opcion_renovacion);
+
+                    consumo_waze = obtenerConsumoWaze(600, opcion_renovacion);
+                    consumo_llamada_eeuu = obtenerConsumoLlamadaEEUU(500, opcion_renovacion);
+                    consumo_llamada_canada = obtenerConsumoLlamadaCanada(500, opcion_renovacion);
+                    consumo_llamada_puertorico = obtenerConsumoLlamadaPuertoRico(500, opcion_renovacion);
+                    consumo_datos_compartir = obtenerConsumoDatosCompartir(3, false);
+                    break;
+            }
+            
+            int cargo_basico = daofactura.obtenerCostoPlanConID(id_plan);
+            
+            double min_adicional = daofactura.obtenerCostoPlanConID(id_plan) / daofactura.obtenerMinutosPlanConID(id_plan);
+            int mins_adicionales = obtenerConsumoMinutos(daofactura.obtenerMinutosPlanConID(id_plan)) - daofactura.obtenerMinutosPlanConID(id_plan);
+            
+            double cargo_min_adicionales = Math.abs(min_adicional * mins_adicionales);
+            
+            int cargo_renovaciones = 0;
+            
+            if(consumo_datos > daofactura.obtenerDatosPlanConID(id_plan) || consumo_mensajes > daofactura.obtenerMensajesPlanConID(id_plan) || consumo_minutos_whatsapp > daofactura.obtenerMinutosWhatsappPlanConID(id_plan) || consumo_chat_whatsapp > daofactura.obtenerChatWhatsappPlanConID(id_plan) || consumo_facebook > daofactura.obtenerFacebookPlanConID(id_plan))
+            {
+                cargo_renovaciones = daofactura.obtenerCostoPlanConID(id_plan) / 2;
+            }
+            
+            int ajuste_peso = (int) Math.round(cargo_min_adicionales);
+            
+            int total_pago = cargo_basico + ajuste_peso + cargo_renovaciones;
+            
+            System.out.println(cargo_min_adicionales);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @FXML
-    void botonGenerarFacturaActione(ActionEvent event) {
-        
+    void botonBuscarFacturaAction(ActionEvent event) {
+        if(lineaFacturaTF.getText().equals(""))
+        {
+            Alert warningBuscarLineaVacio = new Alert(AlertType.WARNING);
+            warningBuscarLineaVacio.setTitle("Campo de Línea a Buscar Vacío");
+            warningBuscarLineaVacio.setHeaderText("El campo de la línea a buscar esta vacío");
+            warningBuscarLineaVacio.showAndWait();
+        }
+        else
+        {
+            try {
+                String lineaABuscar = lineaFacturaTF.getText();
+                
+                DAOFactura daofactura = new DAOFactura();
+                
+                int respuesta_existe;
+                
+                respuesta_existe = daofactura.existePlanConLinea(lineaABuscar);
+                
+                if(respuesta_existe == 1)
+                {
+                    Alert lineaEncontrada = new Alert(AlertType.INFORMATION);
+                    lineaEncontrada.setTitle("Linea encontrada");
+                    lineaEncontrada.setHeaderText("La linea existe");
+                    lineaEncontrada.setContentText("La linea " + lineaABuscar + " se encuentra en la Base \n de Datos");
+                    lineaEncontrada.showAndWait();
+                    botonGenerarFactura.setDisable(false);
+                }
+                else
+                if(respuesta_existe == 0)
+                {
+                    Alert errorNoExisteLinea = new Alert(AlertType.ERROR);
+                    errorNoExisteLinea.setTitle("Línea inexistente");
+                    errorNoExisteLinea.setHeaderText("Dicha línea no existe");
+                    errorNoExisteLinea.setContentText("La línea introducida no existe y no \n está asociada a ningún plan ni cliente");
+                    errorNoExisteLinea.showAndWait();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
+    
+    
     
     @FXML
     void botonInformacionRenovacionAction(ActionEvent event) {
@@ -1298,6 +1480,12 @@ public class GerenteController implements Initializable{
                                 botonBorrarCliente.setVisible(true);
                                 break;
                             case "BotonFacturacion":
+                                // Cerrar Borrar
+                                borrarClientesLabel.setVisible(false);
+                                cedulaClienteABorrarTF.setVisible(false);
+                                botonBuscarClienteBorrar.setVisible(false);
+                                botonBorrarCliente.setVisible(false);
+                                botonBorrarCliente.setDisable(true);
                                 // Cerrar Registra Plan
                                 asociarVentaPlanConCliente.setVisible(false);
                                 cedulaClientePlan.setVisible(false);
@@ -1404,4 +1592,76 @@ public class GerenteController implements Initializable{
         }
         
     }
+
+    private static int obtenerConsumoChatWhatsapp(int chatWhatsappPlan, boolean renovacionPlan) {
+        org.me.celusoft.WebServiceMain_Service service = new org.me.celusoft.WebServiceMain_Service();
+        org.me.celusoft.WebServiceMain port = service.getWebServiceMainPort();
+        return port.obtenerConsumoChatWhatsapp(chatWhatsappPlan, renovacionPlan);
+    }
+
+    private static double obtenerConsumoDatos(double datosPlan, boolean renovacionPlan) {
+        org.me.celusoft.WebServiceMain_Service service = new org.me.celusoft.WebServiceMain_Service();
+        org.me.celusoft.WebServiceMain port = service.getWebServiceMainPort();
+        return port.obtenerConsumoDatos(datosPlan, renovacionPlan);
+    }
+
+    private static double obtenerConsumoDatosCompartir(double datosCompartirPlan, boolean renovacionPlan) {
+        org.me.celusoft.WebServiceMain_Service service = new org.me.celusoft.WebServiceMain_Service();
+        org.me.celusoft.WebServiceMain port = service.getWebServiceMainPort();
+        return port.obtenerConsumoDatosCompartir(datosCompartirPlan, renovacionPlan);
+    }
+
+    private static int obtenerConsumoFacebook(int facebookPlan, boolean renovacionPlan) {
+        org.me.celusoft.WebServiceMain_Service service = new org.me.celusoft.WebServiceMain_Service();
+        org.me.celusoft.WebServiceMain port = service.getWebServiceMainPort();
+        return port.obtenerConsumoFacebook(facebookPlan, renovacionPlan);
+    }
+
+    private static int obtenerConsumoLlamadaCanada(int llamadaCanadaPlan, boolean renovacionPlan) {
+        org.me.celusoft.WebServiceMain_Service service = new org.me.celusoft.WebServiceMain_Service();
+        org.me.celusoft.WebServiceMain port = service.getWebServiceMainPort();
+        return port.obtenerConsumoLlamadaCanada(llamadaCanadaPlan, renovacionPlan);
+    }
+
+    private static int obtenerConsumoLlamadaEEUU(int llamadaEeuuPlan, boolean renovacionPlan) {
+        org.me.celusoft.WebServiceMain_Service service = new org.me.celusoft.WebServiceMain_Service();
+        org.me.celusoft.WebServiceMain port = service.getWebServiceMainPort();
+        return port.obtenerConsumoLlamadaEEUU(llamadaEeuuPlan, renovacionPlan);
+    }
+
+    private static int obtenerConsumoLlamadaPuertoRico(int llamadaPuertoricoPlan, boolean renovacionPlan) {
+        org.me.celusoft.WebServiceMain_Service service = new org.me.celusoft.WebServiceMain_Service();
+        org.me.celusoft.WebServiceMain port = service.getWebServiceMainPort();
+        return port.obtenerConsumoLlamadaPuertoRico(llamadaPuertoricoPlan, renovacionPlan);
+    }
+
+    private static int obtenerConsumoMensajes(int mensajesPlan, boolean renovacionPlan) {
+        org.me.celusoft.WebServiceMain_Service service = new org.me.celusoft.WebServiceMain_Service();
+        org.me.celusoft.WebServiceMain port = service.getWebServiceMainPort();
+        return port.obtenerConsumoMensajes(mensajesPlan, renovacionPlan);
+    }
+
+    private static int obtenerConsumoMinutos(int minutosPlan) {
+        org.me.celusoft.WebServiceMain_Service service = new org.me.celusoft.WebServiceMain_Service();
+        org.me.celusoft.WebServiceMain port = service.getWebServiceMainPort();
+        return port.obtenerConsumoMinutos(minutosPlan);
+    }
+
+    private static int obtenerConsumoMinutosWhatsapp(int minutosWhatsappPlan, boolean renovacionPlan) {
+        org.me.celusoft.WebServiceMain_Service service = new org.me.celusoft.WebServiceMain_Service();
+        org.me.celusoft.WebServiceMain port = service.getWebServiceMainPort();
+        return port.obtenerConsumoMinutosWhatsapp(minutosWhatsappPlan, renovacionPlan);
+    }
+
+    private static int obtenerConsumoWaze(int wazePlan, boolean renovacionPlan) {
+        org.me.celusoft.WebServiceMain_Service service = new org.me.celusoft.WebServiceMain_Service();
+        org.me.celusoft.WebServiceMain port = service.getWebServiceMainPort();
+        return port.obtenerConsumoWaze(wazePlan, renovacionPlan);
+    }
+
+    
+    
+    
+
+    
 }

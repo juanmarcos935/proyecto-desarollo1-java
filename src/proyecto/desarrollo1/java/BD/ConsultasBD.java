@@ -424,6 +424,134 @@ public class ConsultasBD {
         }
     }
     
+    
+    // Fin Consultas Cliente
+    
+    // Inicio Consultas Plan
+    
+    public int obtenerIDPlanConNombre(String plan_nombre) throws SQLException
+    {
+        int idPlan = 0;
+        String consulta_sql_planid_nombre = "SELECT * FROM plan WHERE plan_nombre = '" + plan_nombre + "';";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            idPlan = rs.getInt(1);
+            return idPlan;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
+    public void registrarPlan(int id_plan, int id_cliente, String linea, int opcion_renovacion) throws SQLException
+    {
+        int operacion;
+        LocalDateTime localdatetime = LocalDateTime.now();
+        String consulta_sql_registrar_plan;
+        consulta_sql_registrar_plan = "INSERT INTO cliente_contrata_plan (id_contrato, id_cliente, id_plan, linea, contrato_fecha, opcion_renovacion) VALUES (default, " + id_cliente + "," + id_plan + ", '" + linea + "', '" + java.sql.Timestamp.valueOf(localdatetime) + "', " + opcion_renovacion + ");";
+        try 
+        {
+            Statement st = connec.createStatement();
+            operacion = st.executeUpdate(consulta_sql_registrar_plan);
+            System.out.println("Registro de plan exitoso");
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    // Fin Consultas Plan
+    
+    // Inicio Consultas Factura
+    
+    public int existePlanConLinea(String linea) throws SQLException
+    {
+        String consulta_sql_planid_nombre = "SELECT * FROM cliente_contrata_plan WHERE linea = '" + linea + "';";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    
+    public String obtenerNombrePlanConID(int id_plan) throws SQLException
+    {
+        String consulta_sql_planid_nombre = "SELECT * FROM plan WHERE id_plan = " + id_plan + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            String plan_nombre = "";
+            plan_nombre = rs.getString(2);
+            return plan_nombre;
+        }
+        else
+        {
+            return "";
+        }
+    }
+    
+    public int obtenerIDContratoConLinea(String linea) throws SQLException
+    {
+        String consulta_sql_planid_nombre = "SELECT * FROM cliente_contrata_plan WHERE linea = '" + linea + "';";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            int id_contrato = 0;
+            id_contrato = rs.getInt(1);
+            return id_contrato;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    public int obtenerIDClienteConLinea(String linea) throws SQLException
+    {
+        String consulta_sql_planid_nombre = "SELECT * FROM cliente_contrata_plan WHERE linea = '" + linea + "';";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            int id_cliente = 0;
+            id_cliente = rs.getInt(2);
+            return id_cliente;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    public int obtenerIDPlanConLinea(String linea) throws SQLException
+    {
+        String consulta_sql_planid_nombre = "SELECT * FROM cliente_contrata_plan WHERE linea = '" + linea + "';";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            int id_plan = 0;
+            id_plan = rs.getInt(3);
+            return id_plan;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
     public String obtenerCedulaClienteconID(int id_cliente) throws SQLException
     {
         String consulta_sql_login = "SELECT * FROM cliente WHERE id_cliente=" + id_cliente + "" + ";";
@@ -492,20 +620,17 @@ public class ConsultasBD {
         }
     }
     
-    // Fin Consultas Cliente
     
-    // Inicio Consultas Plan
-    
-    public int obtenerIDPlanConNombre(String plan_nombre) throws SQLException
+    public int obtenerOpcionRenovacionConLinea(String linea) throws SQLException
     {
-        int idPlan = 0;
-        String consulta_sql_planid_nombre = "SELECT * FROM plan WHERE plan_nombre = '" + plan_nombre + "';";
+        String consulta_sql_planid_nombre = "SELECT * FROM cliente_contrata_plan WHERE linea = '" + linea + "';";
         Statement st = connec.createStatement();
         ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
         if(rs.next())
         {
-            idPlan = rs.getInt(1);
-            return idPlan;
+            int opcion_renovacion = -1;
+            opcion_renovacion = rs.getInt(6);
+            return opcion_renovacion;
         }
         else
         {
@@ -513,113 +638,124 @@ public class ConsultasBD {
         }
     }
     
-    public void registrarPlan(int id_plan, int id_cliente, String linea, int opcion_renovacion) throws SQLException
-    {
-        int operacion;
-        LocalDateTime localdatetime = LocalDateTime.now();
-        String consulta_sql_registrar_plan;
-        consulta_sql_registrar_plan = "INSERT INTO cliente_contrata_plan (id_contrato, id_cliente, id_plan, linea, contrato_fecha, opcion_renovacion) VALUES (default, " + id_cliente + "," + id_plan + ", '" + linea + "', '" + java.sql.Timestamp.valueOf(localdatetime) + "', " + opcion_renovacion + ");";
-        try 
-        {
-            Statement st = connec.createStatement();
-            operacion = st.executeUpdate(consulta_sql_registrar_plan);
-            System.out.println("Registro de plan exitoso");
-        }
-        catch(SQLException e)
-        {
-            System.out.println(e.getMessage());
-        }
-    }
-    
-    // Fin Consultas Plan
-    
-    // Inicio Consultas Factura
-    
-    public int existePlanConLinea(String linea) throws SQLException
-    {
-        String consulta_sql_planid_nombre = "SELECT * FROM cliente_contrata_plan WHERE linea = '" + linea + ";";
-        Statement st = connec.createStatement();
-        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
-        if(rs.next())
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-    
-    
-    public String obtenerNombrePlanConID(int id_plan) throws SQLException
+    public int obtenerCostoPlanConID(int id_plan) throws SQLException
     {
         String consulta_sql_planid_nombre = "SELECT * FROM plan WHERE id_plan = " + id_plan + ";";
         Statement st = connec.createStatement();
         ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
         if(rs.next())
         {
-            String plan_nombre = "";
-            plan_nombre = rs.getString(2);
-            return plan_nombre;
+            int response = -1;
+            response = rs.getInt(3);
+            return response;
         }
         else
         {
-            return "";
+            return -1;
         }
     }
     
-    public int obtenerIDContratoConLinea(String linea) throws SQLException
+    public int obtenerMinutosPlanConID(int id_plan) throws SQLException
     {
-        String consulta_sql_planid_nombre = "SELECT * FROM cliente_contrata_plan WHERE linea = '" + linea + ";";
+        String consulta_sql_planid_nombre = "SELECT * FROM plan WHERE id_plan = " + id_plan + ";";
         Statement st = connec.createStatement();
         ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
         if(rs.next())
         {
-            int id_contrato = 0;
-            id_contrato = rs.getInt(1);
-            return id_contrato;
+            int response = -1;
+            response = rs.getInt(4);
+            return response;
         }
         else
         {
-            return 0;
+            return -1;
         }
     }
     
-    public int obtenerIDClienteConLinea(String linea) throws SQLException
+    public double obtenerDatosPlanConID(int id_plan) throws SQLException
     {
-        String consulta_sql_planid_nombre = "SELECT * FROM cliente_contrata_plan WHERE linea = '" + linea + ";";
+        String consulta_sql_planid_nombre = "SELECT * FROM plan WHERE id_plan = " + id_plan + ";";
         Statement st = connec.createStatement();
         ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
         if(rs.next())
         {
-            int id_cliente = 0;
-            id_cliente = rs.getInt(2);
-            return id_cliente;
+            double response = -1;
+            response = rs.getDouble(5);
+            return response;
         }
         else
         {
-            return 0;
+            return -1;
         }
     }
     
-    public int obtenerIDPlanConLinea(String linea) throws SQLException
+    public int obtenerMensajesPlanConID(int id_plan) throws SQLException
     {
-        String consulta_sql_planid_nombre = "SELECT * FROM cliente_contrata_plan WHERE linea = '" + linea + ";";
+        String consulta_sql_planid_nombre = "SELECT * FROM plan WHERE id_plan = " + id_plan + ";";
         Statement st = connec.createStatement();
         ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
         if(rs.next())
         {
-            int id_plan = 0;
-            id_plan = rs.getInt(3);
-            return id_plan;
+            int response = -1;
+            response = rs.getInt(6);
+            return response;
         }
         else
         {
-            return 0;
+            return -1;
         }
     }
     
+    public int obtenerMinutosWhatsappPlanConID(int id_plan) throws SQLException
+    {
+        String consulta_sql_planid_nombre = "SELECT * FROM plan WHERE id_plan = " + id_plan + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            int response = -1;
+            response = rs.getInt(7);
+            return response;
+        }
+        else
+        {
+            return -1;
+        }
+    }
     
+    public int obtenerChatWhatsappPlanConID(int id_plan) throws SQLException
+    {
+        String consulta_sql_planid_nombre = "SELECT * FROM plan WHERE id_plan = " + id_plan + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            int response = -1;
+            response = rs.getInt(8);
+            return response;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
+    public int obtenerFacebookPlanConID(int id_plan) throws SQLException
+    {
+        String consulta_sql_planid_nombre = "SELECT * FROM plan WHERE id_plan = " + id_plan + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql_planid_nombre);
+        if(rs.next())
+        {
+            int response = -1;
+            response = rs.getInt(9);
+            return response;
+        }
+        else
+        {
+            return -1;
+        }
+    }
     
     // Fin Consultas Factura
     

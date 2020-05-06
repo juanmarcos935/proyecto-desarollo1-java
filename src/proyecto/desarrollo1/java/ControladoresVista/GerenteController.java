@@ -412,6 +412,13 @@ public class GerenteController implements Initializable{
 
             pdfFile.close();
             
+            Alert facturaGenerada = new Alert(AlertType.INFORMATION);
+            facturaGenerada.setWidth(900);
+            facturaGenerada.setTitle("Facturación realizada");
+            facturaGenerada.setHeaderText("La factura ha sido guardada en la Base de Datos");
+            facturaGenerada.setContentText("La factura en PDF ha sido generada en la ruta: \n" + PDF_FILE);
+            facturaGenerada.showAndWait();
+            
         } catch (SQLException ex) {
             Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
         }

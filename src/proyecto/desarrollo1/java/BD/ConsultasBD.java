@@ -10,7 +10,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.*;
+import java.util.Date;
 
 public class ConsultasBD {
     
@@ -450,9 +452,11 @@ public class ConsultasBD {
     public void registrarPlan(int id_plan, int id_cliente, String linea, int opcion_renovacion) throws SQLException
     {
         int operacion;
-        LocalDateTime localdatetime = LocalDateTime.now();
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dateF = dateFormat.format(date);
         String consulta_sql_registrar_plan;
-        consulta_sql_registrar_plan = "INSERT INTO cliente_contrata_plan (id_contrato, id_cliente, id_plan, linea, contrato_fecha, opcion_renovacion) VALUES (default, " + id_cliente + "," + id_plan + ", '" + linea + "', '" + java.sql.Timestamp.valueOf(localdatetime) + "', " + opcion_renovacion + ");";
+        consulta_sql_registrar_plan = "INSERT INTO cliente_contrata_plan (id_contrato, id_cliente, id_plan, linea, contrato_fecha, opcion_renovacion) VALUES (default, " + id_cliente + "," + id_plan + ", '" + linea + "', '" + dateF + "', " + opcion_renovacion + ");";
         try 
         {
             Statement st = connec.createStatement();

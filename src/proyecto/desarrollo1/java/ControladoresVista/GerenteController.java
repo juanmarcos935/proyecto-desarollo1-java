@@ -586,7 +586,7 @@ public class GerenteController implements Initializable{
             
             DAOCliente daocliente = new DAOCliente();
             
-            int idCliente = daocliente.obtenerEstadoClienteConCedula(cedulaDeBusqueda);
+            int idCliente = daocliente.obtenerIDClienteConCedula(cedulaDeBusqueda);
             
             String planNombre = comboBoxPlan.getValue();
             

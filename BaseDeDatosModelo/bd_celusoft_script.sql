@@ -84,7 +84,7 @@ CREATE TABLE cliente_contrata_plan (
   id_cliente int NOT NULL ,
   id_plan int NOT NULL ,
   linea varchar(60) NOT NULL,
-  contrato_fecha timestamp NOT NULL ,
+  contrato_fecha date NOT NULL ,
   opcion_renovacion int NOT NULL
 );
 CREATE SEQUENCE cliente_contrata_plan_contrato_codigo_seq START 1 INCREMENT 1 ;
@@ -155,7 +155,12 @@ INSERT INTO usuario (id_usuario, usuario_tipo, usuario_login, usuario_password, 
 
 -- Clientes
 
-INSERT INTO cliente (id_cliente, cliente_tipo, cliente_nombre, cliente_apellidos, cliente_direccion, cliente_ciudad, cliente_cc, cliente_estado) VALUES (default, 1, 'cristian', 'pascumal', 'Calle 9D #26-34', 'El Placer', '1144982379', default);
+INSERT INTO cliente (id_cliente, cliente_tipo, cliente_nombre, cliente_apellidos, cliente_direccion, cliente_ciudad, cliente_cc, cliente_estado) VALUES (default, 1, 'Cristian', 'Pascumal', 'Calle 9D #26-34', 'El Placer', '1144982379', default);
+
+INSERT INTO cliente (id_cliente, cliente_tipo, cliente_nombre, cliente_apellidos, cliente_direccion, cliente_ciudad, cliente_cc, cliente_estado) VALUES (default, 1, 'Jonathan', 'Perez', 'Carrera 20A #73-10', 'Cali', '1110765332', default);
+
+INSERT INTO cliente (id_cliente, cliente_tipo, cliente_nombre, cliente_apellidos, cliente_direccion, cliente_ciudad, cliente_cc, cliente_estado) VALUES (default, 2, 'Santiago', 'Mejia', 'Calle 17 #20-24', 'Bogota', '1143170647', default);
+
 
 -- Planes
 
@@ -167,5 +172,5 @@ INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, pl
 
 -- Cliente Contrata Plan
 
-INSERT INTO cliente_contrata_plan (id_contrato, id_cliente, id_plan, linea, contrato_fecha, opcion_renovacion) VALUES (default, 1, 5, '3211234567', current_timestamp, 1);
+INSERT INTO cliente_contrata_plan (id_contrato, id_cliente, id_plan, linea, contrato_fecha, opcion_renovacion) VALUES (default, 1, 5, '3211234567', current_date, 1);
 

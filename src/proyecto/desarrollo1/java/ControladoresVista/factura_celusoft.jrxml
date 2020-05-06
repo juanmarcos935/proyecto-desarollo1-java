@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Cherry" pageWidth="605" pageHeight="880" whenNoDataType="AllSectionsNoDetail" columnWidth="565" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id_factura" class="java.lang.String"/>
+	<field name="id_contrato" class="java.lang.String"/>
+	<field name="cc_cliente" class="java.lang.String"/>
+	<field name="nombre_cliente" class="java.lang.String"/>
+	<field name="nombre_plan" class="java.lang.String"/>
+	<field name="linea" class="java.lang.String"/>
+	<field name="consumo_minutos" class="java.lang.String"/>
+	<field name="consumo_datos" class="java.lang.String"/>
+	<field name="consumo_mensajes" class="java.lang.String"/>
+	<field name="consumo_minutos_whatsapp" class="java.lang.String"/>
+	<field name="consumo_chat_whatsapp" class="java.lang.String"/>
+	<field name="consumo_facebook" class="java.lang.String"/>
+	<field name="consumo_waze" class="java.lang.String"/>
+	<field name="consumo_llamada_eeuu" class="java.lang.String"/>
+	<field name="consumo_llamada_canada" class="java.lang.String"/>
+	<field name="consumo_llamada_puertorico" class="java.lang.String"/>
+	<field name="consumo_datos_compartir" class="java.lang.String"/>
+	<field name="cargo_basico" class="java.lang.String"/>
+	<field name="cargo_min_adicionales" class="java.lang.String"/>
+	<field name="cargo_renovaciones" class="java.lang.String"/>
+	<field name="ajuste_peso" class="java.lang.String"/>
+	<field name="total_pago" class="java.lang.String"/>
+	<field name="fecha_expedicion" class="java.lang.String"/>
+	<field name="fecha_vencimiento" class="java.lang.String"/>
+	<field name="direccion_cliente" class="java.lang.String"/>
+	<field name="ciudad_cliente" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="31" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="2" width="555" height="28" forecolor="#000000" backcolor="#CC0000" uuid="c093bb28-3b37-4b17-a3d2-87677792e60b"/>
+				<staticText>
+					<reportElement x="257" y="4" width="69" height="19" forecolor="#FFFFFF" uuid="d261c411-bcb8-4969-a2a6-496b7bd34021"/>
+					<textElement>
+						<font fontName="Ubuntu" size="16" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
+					</textElement>
+					<text><![CDATA[CeluSoft]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="100" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<frame>
+				<reportElement mode="Opaque" x="-1" y="3" width="555" height="95" forecolor="#000000" backcolor="#FFFFFF" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<image>
+					<reportElement x="381" y="11" width="160" height="74" uuid="1972ca7e-c03c-4ee7-aaad-113761e7e018"/>
+					<imageExpression><![CDATA["celu.jpeg"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="9" y="5" width="110" height="18" uuid="01f5c366-92cc-4705-a310-eb84155d090f"/>
+					<textElement>
+						<font fontName="Ubuntu"/>
+					</textElement>
+					<text><![CDATA[Número de Factura:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="120" y="5" width="93" height="18" uuid="ff4b46df-79b5-4e02-ba72-fa1c99b6e438"/>
+					<textFieldExpression><![CDATA[$F{id_factura}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="9" y="24" width="110" height="18" uuid="55c74545-025d-4cb8-b47a-0a218863f717"/>
+					<textElement>
+						<font fontName="Ubuntu"/>
+					</textElement>
+					<text><![CDATA[Número de Contrato:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="9" y="44" width="50" height="18" uuid="5506605f-311d-4695-af1a-86a3c6d8f84b"/>
+					<text><![CDATA[Cliente:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="10" y="64" width="50" height="18" uuid="b019c9fc-a584-4c60-8fc6-18e8b7ca3c28"/>
+					<text><![CDATA[Cédula:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="220" y="8" width="40" height="18" uuid="b74fa8eb-8e17-4e2c-8b7f-ef0df576e10c"/>
+					<text><![CDATA[Linea:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="221" y="28" width="39" height="18" uuid="28c0c817-4cc6-4ce6-9371-2aa44455ee35"/>
+					<text><![CDATA[Plan:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="121" y="24" width="93" height="18" uuid="52b45544-de9e-492e-a6d9-712adae34336"/>
+					<textFieldExpression><![CDATA[$F{id_contrato}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="61" y="43" width="109" height="18" uuid="9e350fc7-bb26-48e1-8cec-d344555cf3b7"/>
+					<textFieldExpression><![CDATA[$F{nombre_cliente}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="62" y="62" width="93" height="18" uuid="2fb3b70e-3b04-46c4-a07e-5e53908c1e3f"/>
+					<textFieldExpression><![CDATA[$F{cc_cliente}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="261" y="8" width="89" height="18" uuid="b43ac7af-7251-423f-99c2-dd97b90f179e"/>
+					<textFieldExpression><![CDATA[$F{linea}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="260" y="29" width="93" height="18" uuid="0f7199ab-5f58-4b97-999b-82298b56f669"/>
+					<textFieldExpression><![CDATA[$F{nombre_plan}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="198" y="48" width="59" height="18" uuid="edcaba9a-c922-4990-b78f-19956dc215c3"/>
+					<text><![CDATA[Dirección:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="257" y="49" width="119" height="18" uuid="c2e1ab0c-aeb3-4fe6-a88d-c1c2e38bf781"/>
+					<textFieldExpression><![CDATA[$F{direccion_cliente}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="197" y="67" width="59" height="18" uuid="80e907a6-5035-4e70-a582-e599c22b1473"/>
+					<text><![CDATA[Ciudad:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="257" y="67" width="119" height="18" uuid="d4920b1c-7233-40d5-a678-cc918913f956"/>
+					<textFieldExpression><![CDATA[$F{ciudad_cliente}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="261" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<frame>
+				<reportElement x="-1" y="37" width="555" height="219" uuid="82c4a3fa-0121-4fcd-b36e-7b1ab1b8b82b"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<staticText>
+					<reportElement x="6" y="2" width="420" height="199" uuid="74a1e760-55e0-408d-8035-6e1864f0e3f7"/>
+					<textElement>
+						<font size="15"/>
+					</textElement>
+					<text><![CDATA[Consumo de Minutos:
+Consumo (en GB) de Datos:
+Consumo de Mensajes:
+Consumo de Minutos (Whatsapp):
+Consumo (en MB) de Whatsapp (Chat):
+Consumo (en MB) de Facebook:
+Consumo (en GB) de Waze:
+Consumo de Minutos llamadas a EEUU:
+Consumo de Minutos llamadas a Canada:
+Consumo de Minutos llamadas a Puerto Rico:
+Consumo (en GB) de Datos Compartidos:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="510" y="2" width="43" height="15" uuid="7b726275-ceb1-4a84-a4f8-2deae09da22c"/>
+					<textFieldExpression><![CDATA[$F{consumo_minutos}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="17" width="43" height="15" uuid="a752f761-288e-47eb-8ac2-9061e271f52d"/>
+					<textFieldExpression><![CDATA[$F{consumo_datos}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="34" width="43" height="15" uuid="5de13d35-7b4a-4b98-bd8e-e4acf8e3b2b7"/>
+					<textFieldExpression><![CDATA[$F{consumo_mensajes}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="51" width="43" height="15" uuid="25273308-9f53-469b-9e56-78030b691175"/>
+					<textFieldExpression><![CDATA[$F{consumo_minutos_whatsapp}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="74" width="43" height="15" uuid="fbe4ef48-4a74-4c9e-81cc-5d526cc1d5cf"/>
+					<textFieldExpression><![CDATA[$F{consumo_chat_whatsapp}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="95" width="43" height="15" uuid="1efb7a86-1cb2-48de-ac3b-e23044258cd3"/>
+					<textFieldExpression><![CDATA[$F{consumo_facebook}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="111" width="43" height="15" uuid="800995d9-5578-47e8-8c7d-69b6bfed3972"/>
+					<textFieldExpression><![CDATA[$F{consumo_waze}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="127" width="43" height="15" uuid="77883c73-04d3-410f-8af3-fcefb62d0c55"/>
+					<textFieldExpression><![CDATA[$F{consumo_llamada_eeuu}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="145" width="43" height="15" uuid="2b813616-25d7-4053-a2b5-269c02aa6b8f"/>
+					<textFieldExpression><![CDATA[$F{consumo_llamada_canada}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="164" width="43" height="15" uuid="1038406b-a19e-43bc-8162-1636180c2359"/>
+					<textFieldExpression><![CDATA[$F{consumo_llamada_puertorico}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="182" width="43" height="15" uuid="8882536a-307b-481f-9800-9134a9b041ca"/>
+					<textFieldExpression><![CDATA[$F{consumo_datos_compartir}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="4" width="555" height="32" forecolor="#000000" backcolor="#CC0000" uuid="e3c14156-5b51-4201-918b-97fdc012e5d4"/>
+				<staticText>
+					<reportElement x="165" y="7" width="240" height="19" forecolor="#FFFFFF" uuid="be89b22c-0cd4-447a-99c7-4ca6feef932b"/>
+					<textElement>
+						<font fontName="Ubuntu" size="16"/>
+					</textElement>
+					<text><![CDATA[Detalles de Consumo en el Mes]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="50" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="1133a906-5b71-476e-9f3e-bc97c97058c1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="4" width="554" height="32" forecolor="#000000" backcolor="#CC0000" uuid="928b96b1-c84d-45c3-8c39-56e11b9c07f1"/>
+				<staticText>
+					<reportElement x="237" y="6" width="123" height="19" forecolor="#FFFFFF" uuid="1e211f0b-ebba-491a-b62a-21a760627c39"/>
+					<textElement>
+						<font fontName="Ubuntu" size="16"/>
+					</textElement>
+					<text><![CDATA[Detalle de Cobro]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="395" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<frame>
+				<reportElement x="5" y="249" width="556" height="143" uuid="1a547b1f-8a99-4e95-8a06-ae854751386e"/>
+				<staticText>
+					<reportElement x="371" y="10" width="181" height="30" uuid="ae9229e5-ae4f-4aea-86b3-bc9ad1a06695"/>
+					<textElement>
+						<font fontName="Ubuntu" size="16"/>
+					</textElement>
+					<text><![CDATA[Total a Pagar:]]></text>
+				</staticText>
+				<componentElement>
+					<reportElement x="364" y="80" width="180" height="54" uuid="2011c0fb-1b8d-4443-86a7-f465820f8555">
+						<property name="com.jaspersoft.studio.unit.barWidth" value="px"/>
+					</reportElement>
+					<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Bookland" drawText="false" checksumRequired="false">
+						<jr:codeExpression><![CDATA["0123456789"]]></jr:codeExpression>
+					</jr:barbecue>
+				</componentElement>
+				<textField>
+					<reportElement x="399" y="50" width="152" height="18" uuid="dd0258ea-5c83-49d7-9fc8-46be77800653"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{total_pago}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="381" y="50" width="21" height="30" uuid="3b3a83a2-9296-4716-8160-d5c4cecdd595"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<text><![CDATA[$]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="18" y="10" width="152" height="30" uuid="05ffa65a-0b34-4852-95e4-e65af8e29e03"/>
+					<textElement>
+						<font fontName="Ubuntu" size="16"/>
+					</textElement>
+					<text><![CDATA[Fecha de Expedición:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="189" y="10" width="172" height="30" uuid="cd9d4a66-58e2-466c-a066-f8c04e658d58"/>
+					<textElement>
+						<font fontName="Ubuntu" size="16"/>
+					</textElement>
+					<text><![CDATA[Fecha de Vencimiento:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="19" y="50" width="164" height="18" uuid="0ea87707-d95f-4b34-a5fb-58b2b2e9f68f"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{fecha_expedicion}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="192" y="50" width="174" height="18" uuid="c7882b2e-e707-4925-8165-266780516874"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{fecha_vencimiento}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="20" y="90" width="333" height="44" uuid="b6a9f040-0e27-4f58-9caf-e25933a57ff9"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Recuerda que puedes pagar nuestras facturas directamente en la Empresa CeluSoft o en los bancos autorizados: Banco A y Banco B]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="5" y="156" width="554" height="90" forecolor="#000000" backcolor="#CC0000" uuid="c29516d1-382b-46b5-9463-d8871a813acc"/>
+				<staticText>
+					<reportElement x="16" y="10" width="519" height="70" forecolor="#FFFFFF" uuid="1e05b53a-a09b-43db-897d-4548c35f5344"/>
+					<textElement textAlignment="Center">
+						<font fontName="Ubuntu" size="13"/>
+					</textElement>
+					<text><![CDATA[Adquiere ya nuestro nuevo Plan #5, el mejor hasta la fecha, pues
+además de brindarte los beneficios de el Plan #4 (whatsapp, facebook y waze ilimitado) te brindamos llamadas ilimitadas a EEUU, Canadá y Puerto Rico, y además si compras un celular lo tienes asegurado, y tendrás 3 GB de Datos para compartir a otros dispositivos!]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="3" y="19" width="554" height="110" uuid="c5c9dd47-56c2-41cb-8d39-aa6f67a0a01f"/>
+				<staticText>
+					<reportElement x="1" y="5" width="340" height="97" uuid="ddd060fc-9c9b-48b0-be06-549b108f8fda"/>
+					<textElement>
+						<font size="16"/>
+					</textElement>
+					<text><![CDATA[Cargo Básico:
+Cargo por Minutos Adicionales:
+Cargo por Renovación de Plan:
+Ajuste al Peso:
+Total de Pago:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="510" y="5" width="43" height="15" uuid="25cd7e6f-9e7a-4936-9c16-5c2cbb7f40ea"/>
+					<textFieldExpression><![CDATA[$F{cargo_basico}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="30" width="43" height="15" uuid="da0cc1f5-2142-48ba-a982-d5b0911c61e3"/>
+					<textFieldExpression><![CDATA[$F{cargo_min_adicionales}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="51" width="43" height="15" uuid="958d7474-c1a0-4430-b846-591c6523fa0f"/>
+					<textFieldExpression><![CDATA[$F{cargo_renovaciones}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="71" width="43" height="15" uuid="9e6e60bc-0b7c-4e0a-b88e-2c69a27f0192"/>
+					<textFieldExpression><![CDATA[$F{ajuste_peso}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="90" width="43" height="15" uuid="8cc0f6ba-e573-4d23-af02-c32534ebc0ef"/>
+					<textFieldExpression><![CDATA[$F{total_pago}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

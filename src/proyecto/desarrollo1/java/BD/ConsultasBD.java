@@ -4,6 +4,7 @@ package proyecto.desarrollo1.java.BD;
 
 import proyecto.desarrollo1.java.Modelo.Cliente;
 import proyecto.desarrollo1.java.Modelo.Usuario;
+import proyecto.desarrollo1.java.Modelo.Factura;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -755,6 +756,33 @@ public class ConsultasBD {
         {
             return -1;
         }
+    }
+    
+    public void registrarFactura(int id_contrato, String cc_cliente, String nombre_cliente, String direccion_cliente, String ciudad_cliente, String nombre_plan, String linea, int consumo_minutos, double consumo_datos, int consumo_mensajes, int consumo_minutos_whatsapp, int consumo_chat_whatsapp, int consumo_facebook, int consumo_waze, int consumo_llamada_eeuu, int consumo_llamada_canada, int consumo_llamada_puertorico, double consumo_datos_compartir, int cargo_basico, double cargo_min_adicionales, int cargo_renovaciones, int ajuste_peso, int total_pago, String fecha_expedicion, String fecha_vencimiento) throws SQLException
+    {
+        int operacion;
+        String consulta_sql_registrar_factura = "INSERT INTO factura VALUES (default, " + id_contrato + ", '" + cc_cliente + "', '" + nombre_cliente + "', '" + direccion_cliente + "', '" + ciudad_cliente + "', '" + nombre_plan + "', '" + linea + "', " + consumo_minutos + ", " + consumo_datos + ", " + consumo_mensajes + ", " + consumo_minutos_whatsapp + ", " + consumo_chat_whatsapp + ", " + consumo_facebook + ", " + consumo_waze + ", " + consumo_llamada_eeuu + ", " + consumo_llamada_canada + ", " + consumo_llamada_puertorico + ", " + consumo_datos_compartir + ", " + cargo_basico + ", " + cargo_min_adicionales + ", " + cargo_renovaciones + ", " + ajuste_peso + ", " + total_pago + ",' " + fecha_expedicion + "', '" + fecha_vencimiento + "', default, default);";
+        try
+        {
+            Statement st = connec.createStatement();
+            operacion = st.executeUpdate(consulta_sql_registrar_factura);
+            System.out.println("Registro de factura exitoso");
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public Factura obtenerFacturaStringPDF(String linea, String fecha_expedicion) throws SQLException
+    {
+        Factura factura;
+        String consulta_sql = "SELECT * FROM factura WHERE linea = '" + linea + "' AND fecha_expedicion = '" + fecha_expedicion + "';";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql);
+        rs.next();
+        factura = new Factura(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),rs.getString(16),rs.getString(17),rs.getString(18),rs.getString(19),rs.getString(20),rs.getString(21),rs.getString(22),rs.getString(23),rs.getString(24),rs.getString(25),rs.getString(26));
+        return factura;
     }
     
     // Fin Consultas Factura

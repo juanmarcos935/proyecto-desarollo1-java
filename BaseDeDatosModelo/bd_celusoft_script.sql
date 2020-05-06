@@ -129,6 +129,7 @@ CREATE TABLE factura (
   fecha_pago date ,
   factura_pagada int NOT NULL
 );
+
 CREATE SEQUENCE factura_seq START 1 INCREMENT 1 ;
 ALTER TABLE factura ALTER COLUMN id_factura SET DEFAULT nextval('factura_seq');
 ALTER TABLE factura ALTER COLUMN fecha_pago SET DEFAULT NULL;
@@ -166,5 +167,5 @@ INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, pl
 
 -- Cliente Contrata Plan
 
-INSERT INTO cliente_contrata_plan (id_contrato, id_cliente, id_plan, linea, contrato_fecha, opcion_renovacion) VALUES (default, 1, 3, '3211234567', current_timestamp, 0);
+INSERT INTO cliente_contrata_plan (id_contrato, id_cliente, id_plan, linea, contrato_fecha, opcion_renovacion) VALUES (default, 1, 5, '3211234567', current_timestamp, 1);
 

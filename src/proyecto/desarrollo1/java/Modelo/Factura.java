@@ -7,6 +7,7 @@ public class Factura {
     private String cc_cliente;
     private String nombre_cliente;
     private String direccion_cliente;
+    private String ciudad_cliente;
     private String nombre_plan;
     private String linea;
     private String consumo_minutos;
@@ -28,12 +29,13 @@ public class Factura {
     private String fecha_expedicion;
     private String fecha_vencimiento;
 
-    public Factura(String id_factura, String id_contrato, String cc_cliente, String nombre_cliente, String direccion_cliente, String nombre_plan, String linea, String consumo_minutos, String consumo_datos, String consumo_mensajes, String consumo_minutos_whatsapp, String consumo_chat_whatsapp, String consumo_facebook, String consumo_waze, String consumo_llamada_eeuu, String consumo_llamada_canada, String consumo_llamada_puertorico, String consumo_datos_compartir, String cargo_basico, String cargo_min_adicionales, String cargo_renovaciones, String ajuste_peso, String total_pago, String fecha_expedicion, String fecha_vencimiento) {
+    public Factura(String id_factura, String id_contrato, String cc_cliente, String nombre_cliente, String direccion_cliente, String ciudad_cliente, String nombre_plan, String linea, String consumo_minutos, String consumo_datos, String consumo_mensajes, String consumo_minutos_whatsapp, String consumo_chat_whatsapp, String consumo_facebook, String consumo_waze, String consumo_llamada_eeuu, String consumo_llamada_canada, String consumo_llamada_puertorico, String consumo_datos_compartir, String cargo_basico, String cargo_min_adicionales, String cargo_renovaciones, String ajuste_peso, String total_pago, String fecha_expedicion, String fecha_vencimiento) {
         this.id_factura = id_factura;
         this.id_contrato = id_contrato;
         this.cc_cliente = cc_cliente;
         this.nombre_cliente = nombre_cliente;
         this.direccion_cliente = direccion_cliente;
+        this.ciudad_cliente = ciudad_cliente;
         this.nombre_plan = nombre_plan;
         this.linea = linea;
         this.consumo_minutos = consumo_minutos;
@@ -74,6 +76,10 @@ public class Factura {
 
     public String getDireccion_cliente() {
         return direccion_cliente;
+    }
+
+    public String getCiudad_cliente() {
+        return ciudad_cliente;
     }
 
     public String getNombre_plan() {
@@ -156,10 +162,6 @@ public class Factura {
         return fecha_vencimiento;
     }
 
-    
-    
-    
- 
     
     
 

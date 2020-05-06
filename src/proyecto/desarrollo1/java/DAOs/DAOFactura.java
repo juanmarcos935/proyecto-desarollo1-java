@@ -146,4 +146,19 @@ public class DAOFactura {
        return response; 
     }
     
+    public void registrarFactura(int id_contrato, String cc_cliente, String nombre_cliente, String direccion_cliente, String ciudad_cliente, String nombre_plan, String linea, int consumo_minutos, double consumo_datos, int consumo_mensajes, int consumo_minutos_whatsapp, int consumo_chat_whatsapp, int consumo_facebook, int consumo_waze, int consumo_llamada_eeuu, int consumo_llamada_canada, int consumo_llamada_puertorico, double consumo_datos_compartir, int cargo_basico, double cargo_min_adicionales, int cargo_renovaciones, int ajuste_peso, int total_pago, String fecha_expedicion, String fecha_vencimiento) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        consultorBD.registrarFactura(id_contrato, cc_cliente, nombre_cliente, direccion_cliente, ciudad_cliente, nombre_plan, linea, consumo_minutos, consumo_datos, consumo_mensajes, consumo_minutos_whatsapp, consumo_chat_whatsapp, consumo_facebook, consumo_waze, consumo_llamada_eeuu, consumo_llamada_canada, consumo_llamada_puertorico, consumo_datos_compartir, cargo_basico, cargo_min_adicionales, cargo_renovaciones, ajuste_peso, total_pago, fecha_expedicion, fecha_vencimiento);
+        consultorBD.cerrarConexion();
+    }
+    
+    public Factura obtenerFacturaStringPDF(String linea, String fecha_expedicion) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        Factura factura = consultorBD.obtenerFacturaStringPDF(linea, fecha_expedicion);
+        consultorBD.cerrarConexion();
+        return factura;
+    }
+    
 }

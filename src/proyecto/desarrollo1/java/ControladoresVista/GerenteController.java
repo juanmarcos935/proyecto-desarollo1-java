@@ -7,9 +7,22 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -29,10 +42,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.JRException;
 import proyecto.desarrollo1.java.DAOs.DAOCliente;
 import proyecto.desarrollo1.java.Modelo.Cliente;
 import proyecto.desarrollo1.java.DAOs.DAOFactura;
-
+import proyecto.desarrollo1.java.Modelo.Factura;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 public class GerenteController implements Initializable{
     
@@ -211,7 +231,7 @@ public class GerenteController implements Initializable{
     private JFXButton botonGenerarFactura;
     
     @FXML
-    void botonGenerarFacturaAction(ActionEvent event) {
+    void botonGenerarFacturaAction(ActionEvent event) throws JRException, FileNotFoundException, IOException {
         try {
             
             String linea = lineaFacturaTF.getText();
@@ -315,7 +335,7 @@ public class GerenteController implements Initializable{
                     consumo_datos_compartir = 0;
                     break;
                 case 5:
-                    consumo_minutos = obtenerConsumoMinutos(daofactura.obtenerMinutosPlanConID(id_plan));
+                    consumo_minutos = obtenerConsumoMinutos(1500);
                     consumo_datos = obtenerConsumoDatos(daofactura.obtenerDatosPlanConID(id_plan), opcion_renovacion);
                     consumo_mensajes = obtenerConsumoMensajes(200, opcion_renovacion);
                     consumo_minutos_whatsapp = obtenerConsumoMinutosWhatsapp(700, opcion_renovacion);
@@ -331,11 +351,15 @@ public class GerenteController implements Initializable{
             }
             
             int cargo_basico = daofactura.obtenerCostoPlanConID(id_plan);
+            double cargo_min_adicionales = 0;
             
-            double min_adicional = daofactura.obtenerCostoPlanConID(id_plan) / daofactura.obtenerMinutosPlanConID(id_plan);
-            int mins_adicionales = obtenerConsumoMinutos(daofactura.obtenerMinutosPlanConID(id_plan)) - daofactura.obtenerMinutosPlanConID(id_plan);
+            if(consumo_minutos > daofactura.obtenerMinutosPlanConID(id_plan))
+            {
+                double min_adicional = daofactura.obtenerCostoPlanConID(id_plan) / daofactura.obtenerMinutosPlanConID(id_plan);
+                int mins_adicionales = consumo_minutos - daofactura.obtenerMinutosPlanConID(id_plan);
+                cargo_min_adicionales = min_adicional * mins_adicionales;
+            }
             
-            double cargo_min_adicionales = Math.abs(min_adicional * mins_adicionales);
             
             int cargo_renovaciones = 0;
             
@@ -348,7 +372,45 @@ public class GerenteController implements Initializable{
             
             int total_pago = cargo_basico + ajuste_peso + cargo_renovaciones;
             
-            System.out.println(cargo_min_adicionales);
+            Date date = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String fecha_expedicion = dateFormat.format(date);
+
+            Date date2 = new Date();
+            Calendar c = Calendar.getInstance(); 
+            c.setTime(date2);
+            c.add(Calendar.DATE, 15);
+            date2 = c.getTime();
+            String fecha_vencimiento = dateFormat.format(date2);
+            
+            daofactura.registrarFactura(id_contrato, cc_cliente, nombre_cliente, direccion_cliente, ciudad_cliente, nombre_plan, linea, consumo_minutos, consumo_datos, consumo_mensajes, consumo_minutos_whatsapp, consumo_chat_whatsapp, consumo_facebook, consumo_waze, consumo_llamada_eeuu, consumo_llamada_canada, consumo_llamada_puertorico, consumo_datos_compartir, cargo_basico, cargo_min_adicionales, cargo_renovaciones, ajuste_peso, total_pago, fecha_expedicion, fecha_vencimiento);
+            
+            Map<String, Object> parameters = new HashMap<String, Object>();
+            
+            Factura factura = daofactura.obtenerFacturaStringPDF(linea, fecha_expedicion);
+            
+            List<Factura> facturas = Arrays.asList(factura);
+            
+            InputStream is = GerenteController.class.getResourceAsStream("factura_celusoft.jrxml");
+            JasperReport report = JasperCompileManager.compileReport(is);
+            
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(facturas);
+            
+            JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
+        
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+        
+            JasperExportManager.exportReportToPdfStream(print, output);
+            
+            final String PDF_FILE = "/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/factura_" +  linea + "_" + fecha_expedicion + ".pdf";
+        
+            OutputStream pdfFile = new FileOutputStream(new File(PDF_FILE));
+
+            pdfFile.write(output.toByteArray());
+
+            pdfFile.flush();
+
+            pdfFile.close();
             
         } catch (SQLException ex) {
             Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);

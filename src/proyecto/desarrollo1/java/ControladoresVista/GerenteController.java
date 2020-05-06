@@ -607,15 +607,29 @@ public class GerenteController implements Initializable{
                 opcion_renovacion = 0;
             }
             
-            daocliente.registrarPlan(idPlan, idCliente, linea_telefonica, opcion_renovacion);
+            int tipo_cliente = daocliente.obtenerTipoClienteConCedula(cedulaDeBusqueda);
+            int nro_lineas = daocliente.obtenerNumeroDeLineasConIDCliente(idCliente);
+            
+            if(tipo_cliente == 1 && nro_lineas == 3)
+            {
+                Alert errorNroLineasExcedido = new Alert(AlertType.ERROR);
+                errorNroLineasExcedido.setTitle("Número de líneas para su tipo de cliente excedido");
+                errorNroLineasExcedido.setHeaderText("Ha alcanzado el número de líneas limite para su tipo de cliente");
+                errorNroLineasExcedido.setContentText("Su tipo de cliente es Natural y tiene un máximo de 3 líneas que ya ha ocupado");
+                errorNroLineasExcedido.showAndWait();
+            }
+            else
+            {
+                daocliente.registrarPlan(idPlan, idCliente, linea_telefonica, opcion_renovacion);
+                Alert informationPlanRegistrado = new Alert(AlertType.INFORMATION);
+                informationPlanRegistrado.setTitle("Plan Registrado con exito");
+                informationPlanRegistrado.setHeaderText("Se ha registrado el plan " + planNombre + "al cliente con cedula " + cedulaDeBusqueda + " asociado al numero telefonico " + linea_telefonica);
+                informationPlanRegistrado.showAndWait();
+            }
+            
+                        
             
             
-            
-            Alert informationPlanRegistrado = new Alert(AlertType.INFORMATION);
-            informationPlanRegistrado.setTitle("Plan Registrado con exito");
-            informationPlanRegistrado.setHeaderText("Se ha registrado el plan " + planNombre + "al cliente con cedula " + cedulaDeBusqueda + " asociado al numero telefonico " + linea_telefonica);
-
-            informationPlanRegistrado.showAndWait();
         } catch (SQLException ex) {
             Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
         }

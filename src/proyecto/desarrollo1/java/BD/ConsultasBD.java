@@ -287,6 +287,23 @@ public class ConsultasBD {
         }
     }
     
+    public int obtenerNumeroDeLineasConIDCliente(int id_cliente) throws SQLException
+    {
+        String consulta_sql = "SELECT COUNT(*) FROM cliente_contrata_plan WHERE id_cliente = " + id_cliente + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta_sql);
+        if(rs.next())
+        {
+            int response = -1;
+            response = rs.getInt(1);
+            return response;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
     public Cliente consultaCliente(String cedula) throws SQLException
     {
         Cliente miCliente;
@@ -392,6 +409,7 @@ public class ConsultasBD {
             return -1;
         }
     }
+    
     
     
     public void borrarClienteConCedula(String cedula) throws SQLException

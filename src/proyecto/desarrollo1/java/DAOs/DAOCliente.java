@@ -93,4 +93,12 @@ public class DAOCliente {
         consultorBD.cerrarConexion();
     }
     
+    public int obtenerNumeroDeLineasConIDCliente(int id_cliente) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int respuesta = consultorBD.obtenerNumeroDeLineasConIDCliente(id_cliente);
+        consultorBD.cerrarConexion();
+        return respuesta;
+    }
+    
 }

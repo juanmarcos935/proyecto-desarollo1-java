@@ -157,8 +157,45 @@ public class DAOFactura {
     {
         consultorBD.empezarConexion();
         Factura factura = consultorBD.obtenerFacturaStringPDF(linea, fecha_expedicion);
-        consultorBD.cerrarConexion();
+        consultorBD.empezarConexion();
         return factura;
     }
     
+    public int existeFacturaConIDFactura(int id_factura) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int respuesta = consultorBD.existeFacturaConIDFactura(id_factura);
+        consultorBD.empezarConexion();
+        return respuesta;
+    }
+    
+    public void pagarFacturaConIDFactura(int id_factura) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        consultorBD.pagarFacturaConIDFactura(id_factura);
+        consultorBD.empezarConexion();
+    }
+    
+    public void fechaFacturaPagadaConIDFactura(int id_factura, String fecha_pago) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        consultorBD.fechaFacturaPagadaConIDFactura(id_factura, fecha_pago);
+        consultorBD.empezarConexion();
+    }
+    
+    public int existePagoEnBancoConIDFacturaEIDBanco(int id_factura, int id_banco) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int respuesta = consultorBD.existePagoEnBancoConIDFacturaEIDBanco(id_factura, id_banco);
+        consultorBD.empezarConexion();
+        return respuesta;
+    }
+    
+    public int obtenerPagoTotalConIDFactura(int id_factura) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int respuesta = consultorBD.obtenerPagoTotalConIDFactura(id_factura);
+        consultorBD.empezarConexion();
+        return respuesta;
+    }
 }

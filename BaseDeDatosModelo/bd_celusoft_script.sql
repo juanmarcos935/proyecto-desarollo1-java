@@ -137,6 +137,28 @@ ALTER TABLE factura ALTER COLUMN factura_pagada SET DEFAULT 0;
 ALTER TABLE factura ADD CONSTRAINT nueva_restricción_única_factura PRIMARY KEY (id_factura);
 ALTER TABLE factura ADD CONSTRAINT nueva_restricción_fclave_factura FOREIGN KEY (id_contrato) REFERENCES cliente_contrata_plan(id_contrato) ON UPDATE NO ACTION ON DELETE NO ACTION;
 
+CREATE TABLE banco (
+  id_banco int NOT NULL ,
+  nombre_banco varchar(60) NOT NULL
+);
+
+CREATE SEQUENCE banco_seq START 1 INCREMENT 1 ;
+ALTER TABLE banco ALTER COLUMN id_banco SET DEFAULT nextval('banco_seq');
+ALTER TABLE banco ADD CONSTRAINT nueva_restricción_única_banco PRIMARY KEY (id_banco);
+
+CREATE TABLE banco_pago_factura (
+  id_pago_banco int NOT NULL ,
+  id_banco int NOT NULL ,
+  id_factura int NOT NULL ,
+  fecha_pago_banco date NOT NULL
+);
+
+CREATE SEQUENCE banco_pago_seq START 1 INCREMENT 1 ;
+ALTER TABLE banco_pago_factura ALTER COLUMN id_pago_banco SET DEFAULT nextval('banco_pago_seq');
+ALTER TABLE banco_pago_factura ADD CONSTRAINT nueva_restricción_única_banco_pago_factura PRIMARY KEY (id_pago_banco);
+ALTER TABLE banco_pago_factura ADD CONSTRAINT nueva_restricción_fclave_banco FOREIGN KEY (id_banco) REFERENCES banco(id_banco) ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE banco_pago_factura ADD CONSTRAINT nueva_restricción_fclave_factura FOREIGN KEY (id_factura) REFERENCES factura(id_factura) ON UPDATE NO ACTION ON DELETE NO ACTION;
+
 -- Inserts Tuplas de Prueba
 
 -- Usuarios
@@ -173,4 +195,9 @@ INSERT INTO plan (id_plan, plan_nombre, plan_costo, plan_minutos, plan_datos, pl
 -- Cliente Contrata Plan
 
 INSERT INTO cliente_contrata_plan (id_contrato, id_cliente, id_plan, linea, contrato_fecha, opcion_renovacion) VALUES (default, 1, 5, '3211234567', current_date, 1);
+
+-- Bancos
+
+INSERT INTO banco VALUES (default, 'Banco A');
+INSERT INTO banco VALUES (default, 'Banco B');
 

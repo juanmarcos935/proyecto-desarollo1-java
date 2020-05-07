@@ -627,8 +627,7 @@ public class GerenteController implements Initializable{
                 informationPlanRegistrado.showAndWait();
             }
             
-                        
-            
+ 
             
         } catch (SQLException ex) {
             Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);

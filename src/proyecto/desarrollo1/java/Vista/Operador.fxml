@@ -9,9 +9,36 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="413.0" prefWidth="618.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto.desarrollo1.java.ControladoresVista.OperadorController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="413.0" prefWidth="618.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto.desarrollo1.java.ControladoresVista.OperadorController">
    <children>
-      <JFXHamburger fx:id="hamburger" layoutX="571.0" layoutY="14.0" style="-fx-fill-width: white;" />
-      <JFXDrawer fx:id="drawer" defaultDrawerSize="150.0" prefHeight="413.0" prefWidth="97.0" />
+      <JFXHamburger fx:id="hamburger" layoutX="561.0" layoutY="19.0" styleClass="jfx-hamburger" stylesheets="@hamburger.css" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="150.0" layoutY="105.0" prefHeight="165.0" prefWidth="113.0" style="-fx-background-color: black;" />
+      <JFXButton id="BotonCerrarSesion" fx:id="botonCerrarSesion" layoutX="365.0" layoutY="374.0" onAction="#botonCerrarSesionAction" style="-fx-text-fill: white; -fx-background-color: black; -fx-border-color: white;" text="Cerrar sesión y volver al Login" />
+      <Label fx:id="pagoDirectoLabel" layoutX="263.0" layoutY="23.0" text="Pago directo de Factura" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="pagoDirectoFacturaTF" layoutX="283.0" layoutY="80.0" prefHeight="25.0" prefWidth="218.0" promptText="Ingrese aquí ID Factura a pagar" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXButton fx:id="botonBuscarFacturaDirecto" layoutX="277.0" layoutY="143.0" onAction="#botonBuscarFacturaDirectoAction" style="-fx-border-color: white; -fx-text-fill: white;" text="Buscar" visible="false" />
+      <JFXButton fx:id="botonPagarFacturaDirecto" disable="true" layoutX="410.0" layoutY="143.0" onAction="#botonPagarFacturaDirectoAction" style="-fx-border-color: white; -fx-text-fill: white;" text="Pagar Factura" visible="false" />
+      <Label fx:id="pagoBancoLabel" layoutX="252.0" layoutY="23.0" text="Pago de Factura en Banco" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="pagoBancoFacturaTF" layoutX="294.0" layoutY="68.0" prefHeight="25.0" prefWidth="218.0" promptText="Ingrese aquí ID Factura a pagar" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXComboBox fx:id="seleccionBancoComboBox" disable="true" layoutX="240.0" layoutY="170.0" prefHeight="25.0" prefWidth="163.0" promptText="Seleccione el Banco" style="-fx-prompt-text-fill: white;" visible="false" />
+      <JFXButton fx:id="botonBuscarFacturaBanco" layoutX="371.0" layoutY="116.0" onAction="#botonBuscarFacturaBancoAction" style="-fx-border-color: white; -fx-text-fill: white;" text="Buscar" visible="false" />
+      <JFXButton fx:id="botonPagarFacturaBanco" disable="true" layoutX="436.0" layoutY="169.0" onAction="#botonPagarFacturaBancoAction" style="-fx-border-color: white; -fx-text-fill: white;" text="Pagar Factura" visible="false" />
+      <Label fx:id="verificarPagoBancoLabel" layoutX="264.0" layoutY="23.0" text="Verificar pago de Banco" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="verificarPagoBancoFactura" layoutX="249.0" layoutY="80.0" prefHeight="25.0" prefWidth="287.0" promptText="Ingrese aquí ID Factura que pagó en Banco" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" visible="false" />
+      <JFXComboBox fx:id="seleccionBancoComboBoxVerificar" layoutX="252.0" layoutY="130.0" prefHeight="25.0" prefWidth="280.0" promptText="Seleccione el Banco en el que pagó" style="-fx-prompt-text-fill: white;" visible="false" />
+      <JFXButton fx:id="botonBuscarFacturaPagadaEnBanco" layoutX="277.0" layoutY="193.0" onAction="#botonBuscarFacturaPagadaEnBancoAction" style="-fx-border-color: white; -fx-text-fill: white;" text="Buscar" visible="false" />
+      <JFXButton fx:id="botonRegistrarPagado" disable="true" layoutX="416.0" layoutY="193.0" onAction="#botonRegistrarPagadoAction" style="-fx-border-color: white; -fx-text-fill: white;" text="Registrar Pago" visible="false" />
    </children>
 </AnchorPane>

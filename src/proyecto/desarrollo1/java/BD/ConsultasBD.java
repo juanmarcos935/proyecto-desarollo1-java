@@ -807,6 +807,103 @@ public class ConsultasBD {
         return factura;
     }
     
+    public int existeFacturaConIDFactura(int id_factura) throws SQLException
+    {
+        String consulta = "SELECT * FROM factura WHERE id_factura = " + id_factura + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta);
+        if(rs.next())
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
+    public void pagarFacturaConIDFactura(int id_factura)
+    {
+        int operacion;
+        String consulta = "UPDATE factura SET factura_pagada =  1  WHERE id_factura = " + id_factura + ";";
+        try
+        {
+            Statement st = connec.createStatement();
+            operacion = st.executeUpdate(consulta);
+            System.out.println("Pago de factura hecho");
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void fechaFacturaPagadaConIDFactura(int id_factura, String fecha_pago)
+    {
+        int operacion;
+        String consulta = "UPDATE factura SET fecha_pago =  '" + fecha_pago + "'  WHERE id_factura = " + id_factura + ";";
+        try
+        {
+            Statement st = connec.createStatement();
+            operacion = st.executeUpdate(consulta);
+            System.out.println("Fecha de pago de factura grabado");
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public int existePagoEnBancoConIDFacturaEIDBanco(int id_factura, int id_banco) throws SQLException
+    {
+        String consulta = "SELECT * FROM banco_paga_factura WHERE id_factura = " + id_factura + " AND id_banco = " + id_banco + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta);
+        if(rs.next())
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
+    public int obtenerPagoTotalConIDFactura(int id_factura) throws SQLException
+    {
+        String consulta = "SELECT * FROM factura WHERE id_factura = " + id_factura + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta);
+        if(rs.next())
+        {
+            int total_pago = 0;
+            total_pago = rs.getInt(24);
+            return total_pago;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
+    public void registrarPagoDeFacturaEnBanco(int id_banco, int id_factura, String fecha_pago_banco) throws SQLException
+    {
+        int operacion;
+        String consulta_sql_registrar_factura = "INSERT INTO banco_pago_factura VALUES (default, " + id_banco + ", " + id_factura + ", '" + fecha_pago_banco + "');";
+        try
+        {
+            Statement st = connec.createStatement();
+            operacion = st.executeUpdate(consulta_sql_registrar_factura);
+            System.out.println("Registro de pago de factura en banco exitoso");
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    
+    
     // Fin Consultas Factura
     
     

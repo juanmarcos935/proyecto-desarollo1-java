@@ -46,7 +46,7 @@ public class OperadorController implements Initializable{
     private JFXButton botonPagarFacturaDirecto;
 
     @FXML
-    private JFXTextField verificarPagoBancoFactura;
+    private JFXTextField verificarPagoBancoFacturaTF;
 
     @FXML
     private JFXComboBox<String> seleccionBancoComboBox;
@@ -213,6 +213,7 @@ public class OperadorController implements Initializable{
                     facturaEncontrada.setContentText("La factura correspondiente al ID Factura proveido existe en la Base de Datos");
                     facturaEncontrada.showAndWait();
                     botonPagarFacturaBanco.setDisable(false);
+                    seleccionBancoComboBox.setDisable(false);
                 }
                 else
                 {
@@ -233,14 +234,66 @@ public class OperadorController implements Initializable{
     @FXML
     void botonPagarFacturaBancoAction(ActionEvent event) {
         
-        
+        try {
+            
+            
+            DAOFactura daofactura = new DAOFactura();
+            String idFacturaBuscar = pagoBancoFacturaTF.getText();
+            int id_factura = Integer.parseInt(idFacturaBuscar);
+            int total_pago = daofactura.obtenerPagoTotalConIDFactura(id_factura);
+            
+            String opcionBanco = seleccionBancoComboBox.getValue();
+            int id_banco = 0;
+                
+            if(opcionBanco.equals("Banco 1"))
+            {
+                id_banco = 1;
+            }
+            else if(opcionBanco.equals("Banco 2"))
+            {
+                id_banco = 2;
+            }
+            
+            Alert confirmacionPago = new Alert(AlertType.CONFIRMATION);
+            confirmacionPago.setTitle("Confirmación de Pago en Banco");
+            confirmacionPago.setHeaderText("Confirmar pago de Factura # " + idFacturaBuscar);
+            confirmacionPago.setContentText("La Factura # " + idFacturaBuscar + " figura con un valor de " + total_pago + " . ¿Desea cancelar este valor y pagar la Factura en Banco?");
+
+            Optional<ButtonType> result = confirmacionPago.showAndWait();
+            if (result.get() == ButtonType.OK){
+                
+                Date date = new Date();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String fecha_pago = dateFormat.format(date);
+                
+                daofactura.registrarPagoDeFacturaEnBanco(id_banco, id_factura, fecha_pago);
+                
+                Alert pagoFacturaRealizado = new Alert(AlertType.INFORMATION);
+                pagoFacturaRealizado.setTitle("Pago de factura en Banco realizado exitosamente");
+                pagoFacturaRealizado.setHeaderText("El pago de la factura en Banco se realizó correctamente");
+                pagoFacturaRealizado.setContentText("La factura # " + idFacturaBuscar + " figura como pagada en Banco de manera exitosa");
+                pagoFacturaRealizado.showAndWait();
+                
+            } else {
+                
+                Alert transaccionCancelada = new Alert(AlertType.ERROR);
+                transaccionCancelada.setTitle("Transacción cancelada");
+                transaccionCancelada.setHeaderText("Transacción cancelada");
+                transaccionCancelada.setContentText("El pago de la Factura # " + idFacturaBuscar + " no se ha completado y la Factura no figurará como pagada.");
+                transaccionCancelada.showAndWait();
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(OperadorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
     @FXML
     void botonBuscarFacturaPagadaEnBancoAction(ActionEvent event) {
 
-        String idFacturaBuscar = verificarPagoBancoFactura.getText();
+        String idFacturaBuscar = verificarPagoBancoFacturaTF.getText();
         
         if(idFacturaBuscar.equals(""))
         {
@@ -298,7 +351,42 @@ public class OperadorController implements Initializable{
 
     @FXML
     void botonRegistrarPagadoAction(ActionEvent event) {
-
+        
+        try {
+            
+            
+            DAOFactura daofactura = new DAOFactura();
+            
+            String idFacturaBuscar = verificarPagoBancoFacturaTF.getText();
+            int id_factura = Integer.parseInt(idFacturaBuscar);
+            
+            String opcionBanco = seleccionBancoComboBoxVerificar.getValue();
+            int id_banco = 0;
+                
+            if(opcionBanco.equals("Banco 1"))
+            {
+                id_banco = 1;
+            }
+            else if(opcionBanco.equals("Banco 2"))
+            {
+                id_banco = 2;
+            }
+            
+            String fecha_pago = daofactura.obtenerFechaDePagoEnBancoConIDFacturaEIDBanco(id_factura, id_banco);
+                
+            daofactura.pagarFacturaConIDFactura(id_factura);
+            daofactura.fechaFacturaPagadaConIDFactura(id_factura, fecha_pago);
+                
+            Alert registroPagoEnBancoRealizado = new Alert(AlertType.INFORMATION);
+            registroPagoEnBancoRealizado.setTitle("Registro de pago en banco exitoso");
+            registroPagoEnBancoRealizado.setHeaderText("El registro de pago en banco se realizó correctamente");
+            registroPagoEnBancoRealizado.setContentText("La factura # " + idFacturaBuscar + " figura como pagada de manera exitosa en la Base de Datos de la Empresa");
+            registroPagoEnBancoRealizado.showAndWait();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(OperadorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     @FXML
@@ -333,6 +421,12 @@ public class OperadorController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        seleccionBancoComboBox.getItems().add("Banco 1");
+        seleccionBancoComboBox.getItems().add("Banco 2");
+        
+        seleccionBancoComboBoxVerificar.getItems().add("Banco 1");
+        seleccionBancoComboBoxVerificar.getItems().add("Banco 2");
+        
         try {
             FXMLLoader loaderOperadorVBox = new FXMLLoader();
             loaderOperadorVBox.setLocation(getClass().getClassLoader().getResource("proyecto/desarrollo1/java/Vista/OperadorVBox.fxml"));
@@ -349,7 +443,7 @@ public class OperadorController implements Initializable{
                             case "BotonPagarEmpresa" :
                                 // Cerramos Verificar
                                 verificarPagoBancoLabel.setVisible(false);
-                                verificarPagoBancoFactura.setVisible(false);
+                                verificarPagoBancoFacturaTF.setVisible(false);
                                 seleccionBancoComboBoxVerificar.setVisible(false);
                                 botonBuscarFacturaPagadaEnBanco.setVisible(false);
                                 botonRegistrarPagado.setVisible(false);
@@ -371,7 +465,7 @@ public class OperadorController implements Initializable{
                             case "BotonPagarBanco" :
                                 // Cerramos Verificar
                                 verificarPagoBancoLabel.setVisible(false);
-                                verificarPagoBancoFactura.setVisible(false);
+                                verificarPagoBancoFacturaTF.setVisible(false);
                                 seleccionBancoComboBoxVerificar.setVisible(false);
                                 botonBuscarFacturaPagadaEnBanco.setVisible(false);
                                 botonRegistrarPagado.setVisible(false);
@@ -406,7 +500,7 @@ public class OperadorController implements Initializable{
                                 botonPagarFacturaDirecto.setDisable(true);
                                 // Abrimos Verificar
                                 verificarPagoBancoLabel.setVisible(true);
-                                verificarPagoBancoFactura.setVisible(true);
+                                verificarPagoBancoFacturaTF.setVisible(true);
                                 seleccionBancoComboBoxVerificar.setVisible(true);
                                 botonBuscarFacturaPagadaEnBanco.setVisible(true);
                                 botonRegistrarPagado.setVisible(true);

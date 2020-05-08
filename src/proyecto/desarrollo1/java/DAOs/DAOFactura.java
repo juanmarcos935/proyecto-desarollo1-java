@@ -198,4 +198,19 @@ public class DAOFactura {
         consultorBD.empezarConexion();
         return respuesta;
     }
+    
+    public void registrarPagoDeFacturaEnBanco(int id_banco, int id_factura, String fecha_pago_banco) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        consultorBD.registrarPagoDeFacturaEnBanco(id_banco, id_factura, fecha_pago_banco);
+        consultorBD.empezarConexion();
+    }
+    
+    public String obtenerFechaDePagoEnBancoConIDFacturaEIDBanco(int id_factura, int id_banco) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        String respuesta = consultorBD.obtenerFechaDePagoEnBancoConIDFacturaEIDBanco(id_factura, id_banco);
+        consultorBD.empezarConexion();
+        return respuesta;
+    }
 }

@@ -856,7 +856,7 @@ public class ConsultasBD {
     
     public int existePagoEnBancoConIDFacturaEIDBanco(int id_factura, int id_banco) throws SQLException
     {
-        String consulta = "SELECT * FROM banco_paga_factura WHERE id_factura = " + id_factura + " AND id_banco = " + id_banco + ";";
+        String consulta = "SELECT * FROM banco_pago_factura WHERE id_factura = " + id_factura + " AND id_banco = " + id_banco + ";";
         Statement st = connec.createStatement();
         ResultSet rs = st.executeQuery(consulta);
         if(rs.next())
@@ -899,6 +899,23 @@ public class ConsultasBD {
         catch(SQLException e)
         {
             System.out.println(e.getMessage());
+        }
+    }
+    
+    public String obtenerFechaDePagoEnBancoConIDFacturaEIDBanco(int id_factura, int id_banco) throws SQLException
+    {
+        String consulta = "SELECT * FROM banco_pago_factura WHERE id_factura = " + id_factura + " AND id_banco = " + id_banco + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta);
+        if(rs.next())
+        {
+            String respuesta = "";
+            respuesta = rs.getString(4);
+            return respuesta;
+        }
+        else
+        {
+            return "";
         }
     }
     

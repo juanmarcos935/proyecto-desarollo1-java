@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -53,6 +54,9 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import proyecto.desarrollo1.java.BD.AccesoBD;
 
 public class GerenteController implements Initializable{
     
@@ -229,6 +233,39 @@ public class GerenteController implements Initializable{
     
     @FXML
     private JFXButton botonGenerarFactura;
+    
+    @FXML
+    private Label reportesLabel;
+    
+    @FXML
+    private JFXButton botonReporteClienteNatural;
+    
+    @FXML
+    void botonReporteClienteNaturalAction(ActionEvent event)
+    {
+        try 
+        {
+            AccesoBD accesobd = new AccesoBD();
+            Connection connec = null;
+            try {
+                connec = accesobd.getConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            JasperReport reporte;
+            reporte = (JasperReport) JRLoader.loadObjectFromFile("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_natural.jasper");
+            JasperPrint jprint = JasperFillManager.fillReport("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_natural.jasper", null, connec);
+            JasperViewer viewer = new JasperViewer(jprint, false);
+            viewer.setVisible(true);
+            
+        } 
+        catch (JRException ex) 
+        {
+            Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
     @FXML
     void botonGenerarFacturaAction(ActionEvent event) throws JRException, FileNotFoundException, IOException {
@@ -1645,6 +1682,93 @@ public class GerenteController implements Initializable{
                                 botonBuscarFactura.setVisible(true);
                                 botonGenerarFactura.setVisible(true);
                                 break;
+                            case "BotonReportes":
+                                // Cerramos Facturacion
+                                facturacionLabel.setVisible(false);
+                                lineaFacturaTF.setVisible(false);
+                                botonBuscarFactura.setVisible(false);
+                                botonGenerarFactura.setVisible(false);
+                                botonGenerarFactura.setDisable(true);
+                                // Cerrar Borrar
+                                borrarClientesLabel.setVisible(false);
+                                cedulaClienteABorrarTF.setVisible(false);
+                                botonBuscarClienteBorrar.setVisible(false);
+                                botonBorrarCliente.setVisible(false);
+                                botonBorrarCliente.setDisable(true);
+                                // Cerrar Registra Plan
+                                asociarVentaPlanConCliente.setVisible(false);
+                                cedulaClientePlan.setVisible(false);
+                                botonBuscarCedulaClientePlan.setVisible(false);
+                                comboBoxPlan.setVisible(false);
+                                lineaTelefonicaPlan.setVisible(false);
+                                botonAsociarPlanCliente.setVisible(false);
+                                comboBoxPlan.setDisable(true);
+                                lineaTelefonicaPlan.setDisable(true);
+                                botonAsociarPlanCliente.setDisable(true);
+                                opcionRenovacionLineaComboBox.setVisible(false);
+                                botonInformacionRenovacion.setVisible(false);
+                                opcionRenovacionLineaComboBox.setDisable(true);
+                                botonInformacionRenovacion.setDisable(true);
+                                // Cerrar Consultar
+                                consultarClientesLabel.setVisible(false);
+                                cedulaConsultaClienteTF.setVisible(false);
+                                botonBuscarConsultaCliente.setVisible(false);
+                                mostrarInfoBotonConsultaCliente.setVisible(false);
+                                muestraNombreTFCliente.setVisible(false);
+                                muestraApellidoTFCliente.setVisible(false);
+                                muestraDireccionTFCliente.setVisible(false);
+                                muestraCiudadTFCliente.setVisible(false);
+                                muestraTipoTFCliente.setVisible(false);
+                                muestraEstadoTFCliente.setVisible(false);
+                                muestraNombreLabelCliente.setVisible(false);
+                                muestraApellidoLabelCliente.setVisible(false);
+                                muestraDireccionLabelCliente.setVisible(false);
+                                muestraCiudadLabelCliente.setVisible(false);
+                                muestraTipoLabelCliente.setVisible(false);
+                                muestraEstadoLabelCliente.setVisible(false);
+                                mostrarInfoBotonConsultaCliente.setDisable(true);
+                                muestraNombreTFCliente.setText("");
+                                muestraApellidoTFCliente.setText("");
+                                muestraDireccionTFCliente.setText("");
+                                muestraCiudadTFCliente.setText("");
+                                muestraTipoTFCliente.setText("");
+                                muestraEstadoTFCliente.setText("");
+                                // Cerrar Activar Inactivar
+                                activarInactivarClienteLabel.setVisible(false);
+                                cedulaBuscarActivarInactivarClienteTF.setVisible(false);
+                                comboBoxActivarInactivarCliente.setVisible(false);
+                                botonGuardarCambiosActivarInactivarCliente.setVisible(false);
+                                botonBuscarActivarInactivarCliente.setVisible(false);
+                                comboBoxActivarInactivarCliente.setDisable(true);
+                                botonGuardarCambiosActivarInactivarCliente.setDisable(true);
+                                // Cerrar Modificar
+                                modificacionClienteLabel.setVisible(false);
+                                cedulaClienteMODRegistroTF.setVisible(false);
+                                botonBuscarCedulaModificar.setVisible(false);
+                                nombreClienteMODRegistroTF.setVisible(false);
+                                apellidoClienteMODRegistroTF.setVisible(false);
+                                direccionClienteMODRegistroTF.setVisible(false);
+                                ciudadClienteMODRegistroTF.setVisible(false);
+                                botonModificarCliente.setVisible(false);
+                                tipoMODClienteComboBox.setVisible(false);
+                                nombreClienteMODRegistroTF.setDisable(true);
+                                apellidoClienteMODRegistroTF.setDisable(true);
+                                direccionClienteMODRegistroTF.setDisable(true);
+                                ciudadClienteMODRegistroTF.setDisable(true);
+                                botonModificarCliente.setDisable(true);
+                                tipoMODClienteComboBox.setDisable(true);
+                                // Cerrar Registro
+                                registroClienteLabel.setVisible(false);
+                                tipoClienteComboBox.setVisible(false);
+                                nombreClienteRegistroTF.setVisible(false);
+                                apellidoClienteRegistroTF.setVisible(false);
+                                direccionClienteRegistroTF.setVisible(false);
+                                ciudadClienteRegistroTF.setVisible(false);
+                                cedulaClienteRegistroTF.setVisible(false);
+                                botonRegistroCliente.setVisible(false);
+                                // Abrimos Reportes
+                                reportesLabel.setVisible(true);
+                                botonReporteClienteNatural.setVisible(true);   
                         }
                         
                         

@@ -95,5 +95,11 @@
       </Label>
       <JFXButton fx:id="botonBuscarFactura" layoutX="302.0" layoutY="165.0" onAction="#botonBuscarFacturaAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Buscar" visible="false" />
       <JFXButton fx:id="botonGenerarFactura" disable="true" layoutX="393.0" layoutY="165.0" onAction="#botonGenerarFacturaAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Generar Factura" visible="false" />
+      <Label fx:id="reportesLabel" layoutX="322.0" layoutY="21.0" style="-fx-text-fill: white;" text="Reportes">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="botonReporteClienteNatural" layoutX="304.0" layoutY="77.0" onAction="#botonReporteClienteNaturalAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Reporte Clientes Naturales" />
    </children>
 </AnchorPane>

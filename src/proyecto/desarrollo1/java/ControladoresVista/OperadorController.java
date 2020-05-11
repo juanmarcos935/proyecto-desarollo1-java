@@ -114,6 +114,7 @@ public class OperadorController implements Initializable{
                 if(respuesta == 1)
                 {
                     Alert facturaEncontrada = new Alert(AlertType.INFORMATION);
+                    facturaEncontrada.setWidth(900);
                     facturaEncontrada.setTitle("Factura encontrada");
                     facturaEncontrada.setHeaderText("Factura encontrada exitosamente");
                     facturaEncontrada.setContentText("La factura correspondiente al ID Factura proveido existe en la Base de Datos");
@@ -123,6 +124,7 @@ public class OperadorController implements Initializable{
                 else
                 {
                     Alert facturaInexistente = new Alert(AlertType.ERROR);
+                    facturaInexistente.setWidth(900);
                     facturaInexistente.setTitle("Factura inexistente");
                     facturaInexistente.setHeaderText("No existe tal factura");
                     facturaInexistente.setContentText("No existe factura correspondiente al ID Factura proveido");
@@ -148,6 +150,7 @@ public class OperadorController implements Initializable{
             int total_pago = daofactura.obtenerPagoTotalConIDFactura(id_factura);
             
             Alert confirmacionPago = new Alert(AlertType.CONFIRMATION);
+            confirmacionPago.setWidth(900);
             confirmacionPago.setTitle("Confirmación de Pago");
             confirmacionPago.setHeaderText("Confirmar pago de Factura # " + idFacturaBuscar);
             confirmacionPago.setContentText("La Factura # " + idFacturaBuscar + " figura con un valor de " + total_pago + " . ¿Desea cancelar este valor y pagar la Factura?");
@@ -163,6 +166,7 @@ public class OperadorController implements Initializable{
                 daofactura.fechaFacturaPagadaConIDFactura(id_factura, fecha_pago);
                 
                 Alert pagoFacturaRealizado = new Alert(AlertType.INFORMATION);
+                pagoFacturaRealizado.setWidth(900);
                 pagoFacturaRealizado.setTitle("Pago de factura realizado exitosamente");
                 pagoFacturaRealizado.setHeaderText("El pago de la factura se realizó correctamente");
                 pagoFacturaRealizado.setContentText("La factura # " + idFacturaBuscar + " figura como pagada de manera exitosa");
@@ -171,6 +175,7 @@ public class OperadorController implements Initializable{
             } else {
                 
                 Alert transaccionCancelada = new Alert(AlertType.ERROR);
+                transaccionCancelada.setWidth(900);
                 transaccionCancelada.setTitle("Transacción cancelada");
                 transaccionCancelada.setHeaderText("Transacción cancelada");
                 transaccionCancelada.setContentText("El pago de la Factura # " + idFacturaBuscar + " no se ha completado y la Factura no figurará como pagada.");
@@ -208,6 +213,7 @@ public class OperadorController implements Initializable{
                 if(respuesta == 1)
                 {
                     Alert facturaEncontrada = new Alert(AlertType.INFORMATION);
+                    facturaEncontrada.setWidth(900);
                     facturaEncontrada.setTitle("Factura encontrada");
                     facturaEncontrada.setHeaderText("Factura encontrada exitosamente");
                     facturaEncontrada.setContentText("La factura correspondiente al ID Factura proveido existe en la Base de Datos");
@@ -218,6 +224,7 @@ public class OperadorController implements Initializable{
                 else
                 {
                     Alert facturaInexistente = new Alert(AlertType.ERROR);
+                    facturaInexistente.setWidth(900);
                     facturaInexistente.setTitle("Factura inexistente");
                     facturaInexistente.setHeaderText("No existe tal factura");
                     facturaInexistente.setContentText("No existe factura correspondiente al ID Factura proveido");
@@ -255,6 +262,7 @@ public class OperadorController implements Initializable{
             }
             
             Alert confirmacionPago = new Alert(AlertType.CONFIRMATION);
+            confirmacionPago.setWidth(900);
             confirmacionPago.setTitle("Confirmación de Pago en Banco");
             confirmacionPago.setHeaderText("Confirmar pago de Factura # " + idFacturaBuscar);
             confirmacionPago.setContentText("La Factura # " + idFacturaBuscar + " figura con un valor de " + total_pago + " . ¿Desea cancelar este valor y pagar la Factura en Banco?");
@@ -269,6 +277,7 @@ public class OperadorController implements Initializable{
                 daofactura.registrarPagoDeFacturaEnBanco(id_banco, id_factura, fecha_pago);
                 
                 Alert pagoFacturaRealizado = new Alert(AlertType.INFORMATION);
+                pagoFacturaRealizado.setWidth(900);
                 pagoFacturaRealizado.setTitle("Pago de factura en Banco realizado exitosamente");
                 pagoFacturaRealizado.setHeaderText("El pago de la factura en Banco se realizó correctamente");
                 pagoFacturaRealizado.setContentText("La factura # " + idFacturaBuscar + " figura como pagada en Banco de manera exitosa");
@@ -277,6 +286,7 @@ public class OperadorController implements Initializable{
             } else {
                 
                 Alert transaccionCancelada = new Alert(AlertType.ERROR);
+                transaccionCancelada.setWidth(900);
                 transaccionCancelada.setTitle("Transacción cancelada");
                 transaccionCancelada.setHeaderText("Transacción cancelada");
                 transaccionCancelada.setContentText("El pago de la Factura # " + idFacturaBuscar + " no se ha completado y la Factura no figurará como pagada.");
@@ -327,6 +337,7 @@ public class OperadorController implements Initializable{
                 if(respuesta == 1)
                 {
                     Alert facturaEncontrada = new Alert(AlertType.INFORMATION);
+                    facturaEncontrada.setWidth(900);
                     facturaEncontrada.setTitle("Factura pagada en Banco encontrada");
                     facturaEncontrada.setHeaderText("Factura pagada en Banco encontrada exitosamente");
                     facturaEncontrada.setContentText("La factura correspondiente al ID Factura proveido si fue pagada en el Banco proveido");
@@ -336,6 +347,7 @@ public class OperadorController implements Initializable{
                 else
                 {
                     Alert facturaInexistente = new Alert(AlertType.ERROR);
+                    facturaInexistente.setWidth(900);
                     facturaInexistente.setTitle("La factura no ha sido pagada en el Banco");
                     facturaInexistente.setHeaderText("No existe pago de tal factura");
                     facturaInexistente.setContentText("Actualmente no se encuentra registro de pago de la factura proveida en el Banco seleccionado");
@@ -378,6 +390,7 @@ public class OperadorController implements Initializable{
             daofactura.fechaFacturaPagadaConIDFactura(id_factura, fecha_pago);
                 
             Alert registroPagoEnBancoRealizado = new Alert(AlertType.INFORMATION);
+            registroPagoEnBancoRealizado.setWidth(900);
             registroPagoEnBancoRealizado.setTitle("Registro de pago en banco exitoso");
             registroPagoEnBancoRealizado.setHeaderText("El registro de pago en banco se realizó correctamente");
             registroPagoEnBancoRealizado.setContentText("La factura # " + idFacturaBuscar + " figura como pagada de manera exitosa en la Base de Datos de la Empresa");

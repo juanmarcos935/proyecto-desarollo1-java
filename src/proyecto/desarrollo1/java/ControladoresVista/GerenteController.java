@@ -246,6 +246,64 @@ public class GerenteController implements Initializable{
     @FXML
     private JFXButton botonReporteMontoTotalPagoClientes;
     
+    @FXML 
+    private JFXButton botonReporteLineasPorCliente;
+    
+    @FXML 
+    private JFXButton botonReporteClientesMorosos;
+    
+    @FXML
+    void botonReporteClientesMorososAction(ActionEvent event)
+    {
+        try 
+        {
+            AccesoBD accesobd = new AccesoBD();
+            Connection connec = null;
+            try {
+                connec = accesobd.getConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            JasperReport reporte;
+            reporte = (JasperReport) JRLoader.loadObjectFromFile("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_morosos.jasper");
+            JasperPrint jprint = JasperFillManager.fillReport("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_morosos.jasper", null, connec);
+            JasperViewer viewer = new JasperViewer(jprint, false);
+            viewer.setVisible(true);
+            
+        } 
+        catch (JRException ex) 
+        {
+            Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    void botonReporteLineasPorClienteAction(ActionEvent event)
+    {
+        try 
+        {
+            AccesoBD accesobd = new AccesoBD();
+            Connection connec = null;
+            try {
+                connec = accesobd.getConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            JasperReport reporte;
+            reporte = (JasperReport) JRLoader.loadObjectFromFile("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_lineas_por_cliente.jasper");
+            JasperPrint jprint = JasperFillManager.fillReport("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_lineas_por_cliente.jasper", null, connec);
+            JasperViewer viewer = new JasperViewer(jprint, false);
+            viewer.setVisible(true);
+            
+        } 
+        catch (JRException ex) 
+        {
+            Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     @FXML
     void botonReporteMontoTotalPagoClientesAction(ActionEvent event)
     {
@@ -260,8 +318,8 @@ public class GerenteController implements Initializable{
             }
             
             JasperReport reporte;
-            reporte = (JasperReport) JRLoader.loadObjectFromFile("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_montos_totales_v2.jasper");
-            JasperPrint jprint = JasperFillManager.fillReport("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_montos_totales_v2.jasper", null, connec);
+            reporte = (JasperReport) JRLoader.loadObjectFromFile("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_montos_totales_v3.jasper");
+            JasperPrint jprint = JasperFillManager.fillReport("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_montos_totales_v3.jasper", null, connec);
             JasperViewer viewer = new JasperViewer(jprint, false);
             viewer.setVisible(true);
             
@@ -286,8 +344,8 @@ public class GerenteController implements Initializable{
             }
             
             JasperReport reporte;
-            reporte = (JasperReport) JRLoader.loadObjectFromFile("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_corporativo.jasper");
-            JasperPrint jprint = JasperFillManager.fillReport("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_corporativo.jasper", null, connec);
+            reporte = (JasperReport) JRLoader.loadObjectFromFile("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_corporativo_v2.jasper");
+            JasperPrint jprint = JasperFillManager.fillReport("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_corporativo_v2.jasper", null, connec);
             JasperViewer viewer = new JasperViewer(jprint, false);
             viewer.setVisible(true);
             
@@ -312,8 +370,8 @@ public class GerenteController implements Initializable{
             }
             
             JasperReport reporte;
-            reporte = (JasperReport) JRLoader.loadObjectFromFile("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_natural.jasper");
-            JasperPrint jprint = JasperFillManager.fillReport("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_natural.jasper", null, connec);
+            reporte = (JasperReport) JRLoader.loadObjectFromFile("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_natural_v2.jasper");
+            JasperPrint jprint = JasperFillManager.fillReport("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_natural_v2.jasper", null, connec);
             JasperViewer viewer = new JasperViewer(jprint, false);
             viewer.setVisible(true);
             
@@ -1167,6 +1225,8 @@ public class GerenteController implements Initializable{
                                 botonReporteClienteNatural.setVisible(false);
                                 botonReporteClienteCorporativo.setVisible(false);
                                 botonReporteMontoTotalPagoClientes.setVisible(false);
+                                botonReporteLineasPorCliente.setVisible(false);
+                                botonReporteClientesMorosos.setVisible(false);
                                 // Cerramos Facturacion
                                 facturacionLabel.setVisible(false);
                                 lineaFacturaTF.setVisible(false);
@@ -1257,6 +1317,8 @@ public class GerenteController implements Initializable{
                                 botonReporteClienteNatural.setVisible(false);
                                 botonReporteClienteCorporativo.setVisible(false);
                                 botonReporteMontoTotalPagoClientes.setVisible(false);
+                                botonReporteLineasPorCliente.setVisible(false);
+                                botonReporteClientesMorosos.setVisible(false);
                                 // Cerramos Facturacion
                                 facturacionLabel.setVisible(false);
                                 lineaFacturaTF.setVisible(false);
@@ -1341,6 +1403,8 @@ public class GerenteController implements Initializable{
                                 botonReporteClienteNatural.setVisible(false);
                                 botonReporteClienteCorporativo.setVisible(false);
                                 botonReporteMontoTotalPagoClientes.setVisible(false);
+                                botonReporteLineasPorCliente.setVisible(false);
+                                botonReporteClientesMorosos.setVisible(false);
                                 // Cerramos Facturacion
                                 facturacionLabel.setVisible(false);
                                 lineaFacturaTF.setVisible(false);
@@ -1435,6 +1499,8 @@ public class GerenteController implements Initializable{
                                 botonReporteClienteNatural.setVisible(false);
                                 botonReporteClienteCorporativo.setVisible(false);
                                 botonReporteMontoTotalPagoClientes.setVisible(false);
+                                botonReporteLineasPorCliente.setVisible(false);
+                                botonReporteClientesMorosos.setVisible(false);
                                 // Cerramos Facturacion
                                 facturacionLabel.setVisible(false);
                                 lineaFacturaTF.setVisible(false);
@@ -1520,6 +1586,8 @@ public class GerenteController implements Initializable{
                                 botonReporteClienteNatural.setVisible(false);
                                 botonReporteClienteCorporativo.setVisible(false);
                                 botonReporteMontoTotalPagoClientes.setVisible(false);
+                                botonReporteLineasPorCliente.setVisible(false);
+                                botonReporteClientesMorosos.setVisible(false);
                                 // Cerramos Facturacion
                                 facturacionLabel.setVisible(false);
                                 lineaFacturaTF.setVisible(false);
@@ -1603,6 +1671,8 @@ public class GerenteController implements Initializable{
                                 botonReporteClienteNatural.setVisible(false);
                                 botonReporteClienteCorporativo.setVisible(false);
                                 botonReporteMontoTotalPagoClientes.setVisible(false);
+                                botonReporteLineasPorCliente.setVisible(false);
+                                botonReporteClientesMorosos.setVisible(false);
                                 // Cerramos Facturacion
                                 facturacionLabel.setVisible(false);
                                 lineaFacturaTF.setVisible(false);
@@ -1692,6 +1762,8 @@ public class GerenteController implements Initializable{
                                 botonReporteClienteNatural.setVisible(false);
                                 botonReporteClienteCorporativo.setVisible(false);
                                 botonReporteMontoTotalPagoClientes.setVisible(false);
+                                botonReporteLineasPorCliente.setVisible(false);
+                                botonReporteClientesMorosos.setVisible(false);
                                 // Cerrar Borrar
                                 borrarClientesLabel.setVisible(false);
                                 cedulaClienteABorrarTF.setVisible(false);
@@ -1864,6 +1936,9 @@ public class GerenteController implements Initializable{
                                 botonReporteClienteNatural.setVisible(true);
                                 botonReporteClienteCorporativo.setVisible(true);
                                 botonReporteMontoTotalPagoClientes.setVisible(true);
+                                botonReporteLineasPorCliente.setVisible(true);
+                                botonReporteClientesMorosos.setVisible(true);
+                                
                         }
                         
                         

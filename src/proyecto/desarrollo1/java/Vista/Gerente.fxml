@@ -95,13 +95,15 @@
       </Label>
       <JFXButton fx:id="botonBuscarFactura" layoutX="302.0" layoutY="165.0" onAction="#botonBuscarFacturaAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Buscar" visible="false" />
       <JFXButton fx:id="botonGenerarFactura" disable="true" layoutX="393.0" layoutY="165.0" onAction="#botonGenerarFacturaAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Generar Factura" visible="false" />
-      <Label fx:id="reportesLabel" layoutX="343.0" layoutY="19.0" style="-fx-text-fill: white;" text="Reportes">
+      <Label fx:id="reportesLabel" layoutX="343.0" layoutY="19.0" style="-fx-text-fill: white;" text="Reportes" visible="false">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
-      <JFXButton fx:id="botonReporteClienteNatural" layoutX="303.0" layoutY="64.0" onAction="#botonReporteClienteNaturalAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Reporte Clientes Naturales" />
-      <JFXButton fx:id="botonReporteClienteCorporativo" layoutX="291.0" layoutY="100.0" onAction="#botonReporteClienteCorporativoAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Reporte Clientes Corporativos" />
-      <JFXButton fx:id="botonReporteMontoTotalPagoClientes" layoutX="275.0" layoutY="137.0" onAction="#botonReporteMontoTotalPagoClientesAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Reporte Monto Total Pago Clientes" />
+      <JFXButton fx:id="botonReporteClienteNatural" layoutX="303.0" layoutY="64.0" onAction="#botonReporteClienteNaturalAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Reporte Clientes Naturales" visible="false" />
+      <JFXButton fx:id="botonReporteClienteCorporativo" layoutX="291.0" layoutY="100.0" onAction="#botonReporteClienteCorporativoAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Reporte Clientes Corporativos" visible="false" />
+      <JFXButton fx:id="botonReporteMontoTotalPagoClientes" layoutX="275.0" layoutY="137.0" onAction="#botonReporteMontoTotalPagoClientesAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Reporte Monto Total Pago Clientes" visible="false" />
+      <JFXButton fx:id="botonReporteLineasPorCliente" layoutX="300.0" layoutY="177.0" onAction="#botonReporteLineasPorClienteAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Reporte Líneas por Cliente" visible="false" />
+      <JFXButton fx:id="botonReporteClientesMorosos" layoutX="303.0" layoutY="215.0" onAction="#botonReporteClientesMorososAction" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;" text="Reporte Clientes Morosos" visible="false" />
    </children>
 </AnchorPane>

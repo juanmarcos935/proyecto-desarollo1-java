@@ -1162,6 +1162,11 @@ public class GerenteController implements Initializable{
                         switch(node.getId())
                         {
                             case "BotonRegistrarClientes" : 
+                                // Cerramos Reportes
+                                reportesLabel.setVisible(false);
+                                botonReporteClienteNatural.setVisible(false);
+                                botonReporteClienteCorporativo.setVisible(false);
+                                botonReporteMontoTotalPagoClientes.setVisible(false);
                                 // Cerramos Facturacion
                                 facturacionLabel.setVisible(false);
                                 lineaFacturaTF.setVisible(false);
@@ -1247,6 +1252,11 @@ public class GerenteController implements Initializable{
                                 botonRegistroCliente.setVisible(true);
                                 break;
                             case "BotonModificarClientes" : 
+                                // Cerramos Reportes
+                                reportesLabel.setVisible(false);
+                                botonReporteClienteNatural.setVisible(false);
+                                botonReporteClienteCorporativo.setVisible(false);
+                                botonReporteMontoTotalPagoClientes.setVisible(false);
                                 // Cerramos Facturacion
                                 facturacionLabel.setVisible(false);
                                 lineaFacturaTF.setVisible(false);
@@ -1326,6 +1336,11 @@ public class GerenteController implements Initializable{
                                 tipoMODClienteComboBox.setVisible(true);
                                 break;
                             case "BotonActivarInactivarClientes" :
+                                // Cerramos Reportes
+                                reportesLabel.setVisible(false);
+                                botonReporteClienteNatural.setVisible(false);
+                                botonReporteClienteCorporativo.setVisible(false);
+                                botonReporteMontoTotalPagoClientes.setVisible(false);
                                 // Cerramos Facturacion
                                 facturacionLabel.setVisible(false);
                                 lineaFacturaTF.setVisible(false);
@@ -1415,6 +1430,11 @@ public class GerenteController implements Initializable{
                                 botonBuscarActivarInactivarCliente.setVisible(true);
                                 break;
                             case "BotonRegistraVentaPlan" : 
+                                // Cerramos Reportes
+                                reportesLabel.setVisible(false);
+                                botonReporteClienteNatural.setVisible(false);
+                                botonReporteClienteCorporativo.setVisible(false);
+                                botonReporteMontoTotalPagoClientes.setVisible(false);
                                 // Cerramos Facturacion
                                 facturacionLabel.setVisible(false);
                                 lineaFacturaTF.setVisible(false);
@@ -1495,6 +1515,11 @@ public class GerenteController implements Initializable{
                                 botonInformacionRenovacion.setVisible(true);
                                 break;
                             case "BotonConsultarClientes" :
+                                // Cerramos Reportes
+                                reportesLabel.setVisible(false);
+                                botonReporteClienteNatural.setVisible(false);
+                                botonReporteClienteCorporativo.setVisible(false);
+                                botonReporteMontoTotalPagoClientes.setVisible(false);
                                 // Cerramos Facturacion
                                 facturacionLabel.setVisible(false);
                                 lineaFacturaTF.setVisible(false);
@@ -1573,6 +1598,11 @@ public class GerenteController implements Initializable{
                                 muestraEstadoLabelCliente.setVisible(true);
                                 break;
                             case "BotonBorrarClientes": 
+                                // Cerramos Reportes
+                                reportesLabel.setVisible(false);
+                                botonReporteClienteNatural.setVisible(false);
+                                botonReporteClienteCorporativo.setVisible(false);
+                                botonReporteMontoTotalPagoClientes.setVisible(false);
                                 // Cerramos Facturacion
                                 facturacionLabel.setVisible(false);
                                 lineaFacturaTF.setVisible(false);
@@ -1657,6 +1687,11 @@ public class GerenteController implements Initializable{
                                 botonBorrarCliente.setVisible(true);
                                 break;
                             case "BotonFacturacion":
+                                // Cerramos Reportes
+                                reportesLabel.setVisible(false);
+                                botonReporteClienteNatural.setVisible(false);
+                                botonReporteClienteCorporativo.setVisible(false);
+                                botonReporteMontoTotalPagoClientes.setVisible(false);
                                 // Cerrar Borrar
                                 borrarClientesLabel.setVisible(false);
                                 cedulaClienteABorrarTF.setVisible(false);
@@ -1826,7 +1861,9 @@ public class GerenteController implements Initializable{
                                 botonRegistroCliente.setVisible(false);
                                 // Abrimos Reportes
                                 reportesLabel.setVisible(true);
-                                botonReporteClienteNatural.setVisible(true);   
+                                botonReporteClienteNatural.setVisible(true);
+                                botonReporteClienteCorporativo.setVisible(true);
+                                botonReporteMontoTotalPagoClientes.setVisible(true);
                         }
                         
                         

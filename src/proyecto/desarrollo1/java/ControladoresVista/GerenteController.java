@@ -241,6 +241,64 @@ public class GerenteController implements Initializable{
     private JFXButton botonReporteClienteNatural;
     
     @FXML
+    private JFXButton botonReporteClienteCorporativo;
+    
+    @FXML
+    private JFXButton botonReporteMontoTotalPagoClientes;
+    
+    @FXML
+    void botonReporteMontoTotalPagoClientesAction(ActionEvent event)
+    {
+        try 
+        {
+            AccesoBD accesobd = new AccesoBD();
+            Connection connec = null;
+            try {
+                connec = accesobd.getConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            JasperReport reporte;
+            reporte = (JasperReport) JRLoader.loadObjectFromFile("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_montos_totales_v2.jasper");
+            JasperPrint jprint = JasperFillManager.fillReport("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_montos_totales_v2.jasper", null, connec);
+            JasperViewer viewer = new JasperViewer(jprint, false);
+            viewer.setVisible(true);
+            
+        } 
+        catch (JRException ex) 
+        {
+            Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    void botonReporteClienteCorporativoAction(ActionEvent event)
+    {
+        try 
+        {
+            AccesoBD accesobd = new AccesoBD();
+            Connection connec = null;
+            try {
+                connec = accesobd.getConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            JasperReport reporte;
+            reporte = (JasperReport) JRLoader.loadObjectFromFile("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_corporativo.jasper");
+            JasperPrint jprint = JasperFillManager.fillReport("/home/marcos/proyecto-desarrollo1-java/src/proyecto/desarrollo1/java/ControladoresVista/reporte_cliente_corporativo.jasper", null, connec);
+            JasperViewer viewer = new JasperViewer(jprint, false);
+            viewer.setVisible(true);
+            
+        } 
+        catch (JRException ex) 
+        {
+            Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
     void botonReporteClienteNaturalAction(ActionEvent event)
     {
         try 

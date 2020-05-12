@@ -201,9 +201,3 @@ INSERT INTO cliente_contrata_plan (id_contrato, id_cliente, id_plan, linea, cont
 INSERT INTO banco VALUES (default, 'Banco A');
 INSERT INTO banco VALUES (default, 'Banco B');
 
--- Facturas vencidas
-
-INSERT INTO factura VALUES (default, 90, '1144120130', 'Alexis Sanchez', 'Calle Colo Colo', 'Valparaiso Chile', 'Plan 1', '3121234567', 231, 0.7, 45, 420, 192, 176, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30900, '2020-01-01', '2020-01-16', default, default);
-
-INSERT INTO factura VALUES (default, 80, '1145430299', 'Arturo Vidal', 'Calle Paco', 'Santiago de Chile', 'Plan 2', '3155287989', 119, 4.3, 67, 280, 227, 246, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39900, '2020-02-04', '2020-02-19', default, default);
-

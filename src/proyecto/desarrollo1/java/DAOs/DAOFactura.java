@@ -157,7 +157,7 @@ public class DAOFactura {
     {
         consultorBD.empezarConexion();
         Factura factura = consultorBD.obtenerFacturaStringPDF(linea, fecha_expedicion);
-        consultorBD.empezarConexion();
+        consultorBD.cerrarConexion();
         return factura;
     }
     
@@ -165,7 +165,7 @@ public class DAOFactura {
     {
         consultorBD.empezarConexion();
         int respuesta = consultorBD.existeFacturaConIDFactura(id_factura);
-        consultorBD.empezarConexion();
+        consultorBD.cerrarConexion();
         return respuesta;
     }
     
@@ -173,21 +173,21 @@ public class DAOFactura {
     {
         consultorBD.empezarConexion();
         consultorBD.pagarFacturaConIDFactura(id_factura);
-        consultorBD.empezarConexion();
+        consultorBD.cerrarConexion();
     }
     
     public void fechaFacturaPagadaConIDFactura(int id_factura, String fecha_pago) throws SQLException
     {
         consultorBD.empezarConexion();
         consultorBD.fechaFacturaPagadaConIDFactura(id_factura, fecha_pago);
-        consultorBD.empezarConexion();
+        consultorBD.cerrarConexion();
     }
     
     public int existePagoEnBancoConIDFacturaEIDBanco(int id_factura, int id_banco) throws SQLException
     {
         consultorBD.empezarConexion();
         int respuesta = consultorBD.existePagoEnBancoConIDFacturaEIDBanco(id_factura, id_banco);
-        consultorBD.empezarConexion();
+        consultorBD.cerrarConexion();
         return respuesta;
     }
     
@@ -195,7 +195,7 @@ public class DAOFactura {
     {
         consultorBD.empezarConexion();
         int respuesta = consultorBD.obtenerPagoTotalConIDFactura(id_factura);
-        consultorBD.empezarConexion();
+        consultorBD.cerrarConexion();
         return respuesta;
     }
     
@@ -203,14 +203,31 @@ public class DAOFactura {
     {
         consultorBD.empezarConexion();
         consultorBD.registrarPagoDeFacturaEnBanco(id_banco, id_factura, fecha_pago_banco);
-        consultorBD.empezarConexion();
+        consultorBD.cerrarConexion();
     }
     
     public String obtenerFechaDePagoEnBancoConIDFacturaEIDBanco(int id_factura, int id_banco) throws SQLException
     {
         consultorBD.empezarConexion();
         String respuesta = consultorBD.obtenerFechaDePagoEnBancoConIDFacturaEIDBanco(id_factura, id_banco);
-        consultorBD.empezarConexion();
+        consultorBD.cerrarConexion();
         return respuesta;
+    }
+    
+    public int obtenerDiasMoroso(int id_factura) throws SQLException
+    {
+        consultorBD.empezarConexion();
+        int respuesta = consultorBD.obtenerDiasMoroso(id_factura);
+        consultorBD.cerrarConexion();
+        return respuesta;
+    }
+    
+    public String[] obtenerMesesMoroso() throws SQLException
+    {
+        consultorBD.empezarConexion();
+        String array[];
+        array = consultorBD.obtenerMesesMoroso();
+        consultorBD.cerrarConexion();
+        return array;
     }
 }

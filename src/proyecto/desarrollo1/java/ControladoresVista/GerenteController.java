@@ -1274,6 +1274,25 @@ public class GerenteController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        DAOFactura daofactura = new DAOFactura();
+        String arreglo[] = null;
+        try {
+            arreglo = daofactura.obtenerMesesMoroso();
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        DAOCliente daocliente = new DAOCliente();
+        
+        for(int i = 0; i < arreglo.length; i++)
+        {
+            try {
+                daocliente.cambiarEstadoDeCliente(arreglo[i], 0);
+            } catch (SQLException ex) {
+                Logger.getLogger(GerenteController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
         comboBoxActivarInactivarCliente.getItems().add("Activar cliente");
         comboBoxActivarInactivarCliente.getItems().add("Inactivar cliente");
         

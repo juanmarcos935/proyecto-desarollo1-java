@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
-import java.time.*;
 import java.util.Date;
 
 public class ConsultasBD {
@@ -917,6 +916,50 @@ public class ConsultasBD {
         {
             return "";
         }
+    }
+    
+    public int obtenerDiasMoroso(int id_factura) throws SQLException
+    {
+        String consulta = "SELECT id_factura, nombre_cliente, linea, total_pago, fecha_expedicion, fecha_vencimiento, DATE_PART('day', NOW() - fecha_vencimiento) AS dias_moroso, (DATE_PART('year', NOW()) - DATE_PART('year', fecha_vencimiento)) * 12 + (DATE_PART('month', NOW()) - DATE_PART('month', fecha_vencimiento)) AS meses_moroso FROM factura WHERE fecha_vencimiento <= NOW() AND factura_pagada = 0 AND id_factura = " + id_factura + ";";
+        Statement st = connec.createStatement();
+        ResultSet rs = st.executeQuery(consulta);
+        if(rs.next())
+        {
+            int respuesta = 0;
+            respuesta = rs.getInt(7);
+            return respuesta;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
+    public String[] obtenerMesesMoroso() throws SQLException
+    {
+        String consulta = "SELECT cc_cliente, (DATE_PART('year', NOW()) - DATE_PART('year', fecha_vencimiento)) * 12 + (DATE_PART('month', NOW()) - DATE_PART('month', fecha_vencimiento)) AS meses_moroso FROM factura WHERE fecha_vencimiento <= NOW() AND factura_pagada = 0 AND (DATE_PART('year', NOW()) - DATE_PART('year', fecha_vencimiento)) * 12 + (DATE_PART('month', NOW()) - DATE_PART('month', fecha_vencimiento)) >= 2;";
+        Statement st = connec.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        ResultSet rs = st.executeQuery(consulta);
+        
+        if(rs.last())
+        {
+            int rows = rs.getRow();
+            rs.beforeFirst();
+            
+            String array[];
+            array = new String[rows];
+            int i = 0;
+            
+            while(rs.next())
+            {
+                array[i] = rs.getString(1);
+                i = i + 1;
+            }
+            
+            return array;
+            
+        }
+        return null;
     }
     
     

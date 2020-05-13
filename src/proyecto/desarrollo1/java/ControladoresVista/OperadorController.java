@@ -149,6 +149,17 @@ public class OperadorController implements Initializable{
             int id_factura = Integer.parseInt(idFacturaBuscar);
             int total_pago = daofactura.obtenerPagoTotalConIDFactura(id_factura);
             
+            int response = daofactura.obtenerDiasMoroso(id_factura);
+            
+            if(response >= 30)
+            {
+                total_pago = (int) (total_pago + (total_pago * 0.3));
+            }
+            else if(response < 30 && response != -1)
+            {
+                total_pago = total_pago + (total_pago * (response / 100));
+            }
+            
             Alert confirmacionPago = new Alert(AlertType.CONFIRMATION);
             confirmacionPago.setWidth(900);
             confirmacionPago.setTitle("Confirmación de Pago");
@@ -248,6 +259,17 @@ public class OperadorController implements Initializable{
             String idFacturaBuscar = pagoBancoFacturaTF.getText();
             int id_factura = Integer.parseInt(idFacturaBuscar);
             int total_pago = daofactura.obtenerPagoTotalConIDFactura(id_factura);
+            
+            int response = daofactura.obtenerDiasMoroso(id_factura);
+            
+            if(response >= 30)
+            {
+                total_pago = (int) (total_pago + (total_pago * 0.3));
+            }
+            else if(response < 30 && response != -1)
+            {
+                total_pago = total_pago + (total_pago * (response / 100));
+            }
             
             String opcionBanco = seleccionBancoComboBox.getValue();
             int id_banco = 0;
